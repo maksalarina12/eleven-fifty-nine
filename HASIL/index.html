@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>The Last Message — Screening Room</title>
+<style>
+  :root{
+    --ink:#07090c;
+    --ink-2:#0b0e13;
+    --line:rgba(196,214,232,.13);
+    --line-soft:rgba(196,214,232,.07);
+    --text:#e8e6e1;
+    --muted:rgba(214,222,232,.52);
+    --dim:rgba(214,222,232,.32);
+    --blue:#8fb6d6;
+    --amber:#d8a273;
+    --accent:var(--blue);
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* atmosphere */
+  .bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(900px 700px at 20% 6%, rgba(58,96,132,.22), transparent 62%),
+      radial-gradient(760px 620px at 86% 82%, rgba(150,96,58,.13), transparent 66%),
+      linear-gradient(180deg,#080b10,#05070a 60%,#040507);
+  }
+  .grain{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.6'/></svg>");
+    animation:grain 1.1s steps(3) infinite;
+  }
+  @keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-2%,1%)}66%{transform:translate(1%,-1.5%)}100%{transform:translate(0,0)}}
+
+  .shell{
+    position:relative;z-index:2;min-height:100dvh;max-width:1540px;margin:0 auto;
+    display:grid;grid-template-columns:auto minmax(300px,344px);gap:clamp(38px,5vw,96px);
+    align-items:center;justify-content:center;justify-items:center;
+    padding:clamp(20px,3.4vw,44px);
+  }
+
+  /* ---------------- stage ---------------- */
+  .stage{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+  .player{
+    position:relative;background:#05070a;
+    height:min(86dvh,calc(100dvh - 130px));
+    aspect-ratio:9/16;max-width:min(560px,92vw);
+    box-shadow:0 40px 120px -30px #000,0 0 0 1px var(--line-soft);
+    overflow:hidden;border-radius:2px;
+  }
+  .player::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    box-shadow:inset 0 0 120px rgba(0,0,0,.55);
+  }
+  video{width:100%;height:100%;object-fit:cover;display:block;background:#04060a}
+  .player:not(.playing) video{filter:saturate(.92) brightness(.9)}
+  .player::before{
+    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(3,5,8,.5),transparent 26%,transparent 62%,rgba(3,5,8,.72));
+    opacity:1;transition:opacity .45s ease;
+  }
+  .player.playing::before{opacity:.45}
+
+  .corner{position:absolute;z-index:3;width:16px;height:16px;border:1px solid rgba(232,240,248,.28);pointer-events:none}
+  .corner.tl{left:10px;top:10px;border-right:0;border-bottom:0}
+  .corner.tr{right:10px;top:10px;border-left:0;border-bottom:0}
+  .corner.bl{left:10px;bottom:10px;border-right:0;border-top:0}
+  .corner.br{right:10px;bottom:10px;border-left:0;border-top:0}
+
+  .bigplay{
+    position:absolute;inset:0;z-index:2;display:grid;place-items:center;cursor:pointer;
+    background:radial-gradient(60% 46% at 50% 50%,rgba(3,5,8,.25),transparent 70%);
+    transition:opacity .35s ease;border:0;padding:0;
+  }
+  .bigplay span{
+    width:78px;height:78px;border-radius:50%;display:grid;place-items:center;
+    border:1px solid rgba(232,240,248,.4);backdrop-filter:blur(6px);
+    background:rgba(8,12,18,.35);
+  }
+  .bigplay svg{width:22px;height:22px;margin-left:3px;fill:#f2efe9}
+  .player.playing .bigplay{opacity:0;pointer-events:none}
+
+  /* ---------------- hud ---------------- */
+  .hud{
+    position:absolute;z-index:3;left:0;right:0;top:0;padding:20px 20px 34px;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:rgba(232,238,246,.62);
+    background:linear-gradient(180deg,rgba(3,5,8,.62),transparent);pointer-events:none;
+  }
+  .hud .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 10px var(--accent);margin-right:8px;transform:translateY(-1px)}
+  .controls{
+    position:absolute;z-index:3;left:0;right:0;bottom:0;padding:30px 18px 16px;
+    background:linear-gradient(180deg,transparent,rgba(3,5,8,.88) 55%,rgba(3,5,8,.96));
+  }
+  .bar{
+    position:relative;height:22px;display:flex;align-items:center;cursor:pointer;touch-action:none;
+  }
+  .bar .track{position:relative;height:2px;width:100%;background:rgba(220,232,244,.16);overflow:hidden}
+  .bar .played{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent)}
+  .bar .knob{position:absolute;top:50%;left:0;width:9px;height:9px;margin-left:-4.5px;transform:translateY(-50%) rotate(45deg);
+    background:var(--accent);opacity:0;transition:opacity .2s}
+  .bar:hover .knob,.bar.drag .knob{opacity:1}
+  .bar .ticks{position:absolute;inset:0;display:flex;justify-content:space-between;pointer-events:none;opacity:.5}
+  .bar .ticks i{width:1px;height:5px;background:rgba(220,232,244,.35);transform:translateY(8.5px)}
+
+  .row{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .iconbtn{
+    appearance:none;background:none;border:0;padding:0;cursor:pointer;color:rgba(236,242,248,.82);
+    width:30px;height:30px;display:grid;place-items:center;border-radius:50%;
+    transition:color .2s,background .2s;
+  }
+  .iconbtn:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .iconbtn svg{width:15px;height:15px;fill:currentColor}
+  .time{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:rgba(226,234,244,.66);margin-left:2px}
+  .time b{color:rgba(240,245,250,.92);font-weight:400}
+  .spacer{flex:1}
+  .tag{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--dim);border:1px solid var(--line);
+    padding:5px 8px;border-radius:1px}
+
+  /* ---------------- rail ---------------- */
+  .rail{width:100%;max-width:380px;display:flex;flex-direction:column;gap:26px}
+  .kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.34em;color:var(--dim);
+    display:flex;align-items:center;gap:10px}
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  h1{
+    font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,52px);line-height:.98;
+    letter-spacing:-.015em;margin:14px 0 10px;text-wrap:balance;
+  }
+  h1 em{font-style:italic;color:var(--muted)}
+  .deck{font-size:13px;line-height:1.6;color:var(--muted);margin:0;max-width:34ch}
+
+  .episodes{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .ep{position:relative;display:block;width:100%;text-align:left;background:none;border:0;
+    padding:16px 2px 15px;cursor:pointer;color:inherit;border-bottom:1px solid var(--line);
+    transition:background .2s}
+  .ep:hover{background:rgba(255,255,255,.02)}
+  .ep .num{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--dim)}
+  .ep .name{display:block;font-family:var(--serif);font-size:20px;margin:5px 0 6px;color:rgba(236,236,231,.86)}
+  .ep .meta{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--dim);display:flex;gap:14px}
+  .ep .prog{position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--accent);opacity:.8}
+  .ep[aria-current="true"] .num{color:var(--accent)}
+  .ep[aria-current="true"] .name{color:#fbf8f2}
+  .ep[aria-current="true"]::before{content:"";position:absolute;left:-14px;top:22px;width:3px;height:22px;background:var(--accent)}
+  .ep .now{font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;color:var(--accent);margin-left:auto}
+
+  .foot{display:flex;flex-direction:column;gap:14px}
+  .rule{height:1px;background:var(--line-soft)}
+  .note{font-family:var(--mono);font-size:9px;line-height:1.9;letter-spacing:.13em;color:var(--dim);margin:0}
+  .actions{display:flex;gap:18px;align-items:center}
+  .dl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:rgba(236,242,248,.8);
+    text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px;transition:.2s}
+  .dl:hover{color:#fff;border-color:rgba(236,242,248,.55)}
+  .keys{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--dim)}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;padding:18px 18px 34px;gap:26px;justify-content:stretch;justify-items:stretch}
+    .player{height:auto;width:100%;max-width:520px;margin:0 auto}
+    .rail{max-width:none;margin:0 auto;width:100%;max-width:520px}
+    h1{font-size:34px}
+    .deck{max-width:none}
+  }
+  @media (max-height:700px) and (min-width:901px){
+    .player{height:78dvh}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .grain{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="grain"></div>
+
+<main class="shell">
+  <section class="stage">
+    <div class="player" id="player">
+      <video id="video" playsinline preload="metadata" poster="poster1.jpg"></video>
+
+      <em class="corner tl"></em><em class="corner tr"></em><em class="corner bl"></em><em class="corner br"></em>
+
+      <div class="hud">
+        <div><span class="dot"></span><span id="hudPart">S01 · PART 01</span></div>
+        <div id="hudTitle">11:59 PM</div>
+      </div>
+
+      <button class="bigplay" id="bigplay" aria-label="Play">
+        <span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+
+      <div class="controls">
+        <div class="bar" id="bar">
+          <div class="track"><div class="played" id="played"></div></div>
+          <div class="ticks" id="ticks"></div>
+          <div class="knob" id="knob"></div>
+        </div>
+        <div class="row">
+          <button class="iconbtn" id="playbtn" aria-label="Play / pause">
+            <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="time"><b id="tcur">0:00</b> / <span id="tdur">0:00</span></span>
+          <span class="spacer"></span>
+          <span class="tag" id="partTag">PART 01 / 05</span>
+          <button class="iconbtn" id="mutebtn" aria-label="Mute">
+            <svg id="volIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+          </button>
+          <button class="iconbtn" id="fsbtn" aria-label="Fullscreen">
+            <svg viewBox="0 0 24 24"><path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="rail">
+    <header>
+      <div class="kicker">ELDRAMYTH · ORIGINAL</div>
+      <h1>The Last<br><em>Message</em></h1>
+      <p class="deck">One apartment, one rainy night, and a minute that keeps happening to someone else.</p>
+    </header>
+
+    <ol class="episodes" id="episodes">
+      <li>
+        <button class="ep" data-part="0" aria-current="true">
+          <span class="num">PART 01</span>
+          <span class="name">11:59 PM</span>
+          <span class="meta"><span>01:00</span><span>S01 · E01</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog0"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="1" aria-current="false">
+          <span class="num">PART 02</span>
+          <span class="name">The Other Me</span>
+          <span class="meta"><span>00:45</span><span>S01 · E02</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog1"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="2" aria-current="false">
+          <span class="num">PART 03</span>
+          <span class="name">The Missing Hour</span>
+          <span class="meta"><span>00:43</span><span>S01 · E03</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog2"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="3" aria-current="false">
+          <span class="num">PART 04</span>
+          <span class="name">The Loop</span>
+          <span class="meta"><span>01:01</span><span>S01 · E04</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog3"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="4" aria-current="false">
+          <span class="num">PART 05</span>
+          <span class="name">The Room</span>
+          <span class="meta"><span>01:07</span><span>S01 · E05</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog4"></span>
+        </button>
+      </li>
+    </ol>
+
+    <div class="foot">
+      <div class="rule"></div>
+      <p class="note">NOAH · RAIN · NO SUBTITLES<br>HEADPHONES RECOMMENDED</p>
+      <div class="actions">
+        <a class="dl" id="dl" href="THE_LAST_MESSAGE_Part1.mp4" download>DOWNLOAD MP4 ↓</a>
+        <span class="keys">SPACE · ← → · 1 2 3 4 5 · F</span>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script>
+(() => {
+  const PARTS = [
+    {
+      src: "THE_LAST_MESSAGE_Part1.mp4",
+      label: "S01 · PART 01",
+      title: "11:59 PM",
+      accent: "#8fb6d6",
+      dl: "THE_LAST_MESSAGE_Part1.mp4",
+      poster: "poster1.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part2.mp4",
+      label: "S01 · PART 02",
+      title: "THE OTHER ME",
+      accent: "#d8a273",
+      dl: "THE_LAST_MESSAGE_Part2.mp4",
+      poster: "poster2.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part3.mp4",
+      label: "S01 · PART 03",
+      title: "12:00 AM",
+      accent: "#c3b4a1",
+      dl: "THE_LAST_MESSAGE_Part3.mp4",
+      poster: "poster3.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part4.mp4",
+      label: "S01 · PART 04",
+      title: "THE LOOP",
+      accent: "#b2a2c0",
+      dl: "THE_LAST_MESSAGE_Part4.mp4",
+      poster: "poster4.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part5.mp4",
+      label: "S01 · PART 05",
+      title: "THE ROOM",
+      accent: "#9fc0c6",
+      dl: "THE_LAST_MESSAGE_Part5.mp4",
+      poster: "poster5.jpg",
+    },
+  ];
+
+  const root = document.documentElement;
+  const video = document.getElementById("video");
+  const player = document.getElementById("player");
+  const playbtn = document.getElementById("playbtn");
+  const playIcon = document.getElementById("playIcon");
+  const bigplay = document.getElementById("bigplay");
+  const bar = document.getElementById("bar");
+  const played = document.getElementById("played");
+  const knob = document.getElementById("knob");
+  const tcur = document.getElementById("tcur");
+  const tdur = document.getElementById("tdur");
+  const hudPart = document.getElementById("hudPart");
+  const hudTitle = document.getElementById("hudTitle");
+  const partTag = document.getElementById("partTag");
+  const mutebtn = document.getElementById("mutebtn");
+  const volIcon = document.getElementById("volIcon");
+  const fsbtn = document.getElementById("fsbtn");
+  const dl = document.getElementById("dl");
+  const ticks = document.getElementById("ticks");
+  const eps = [...document.querySelectorAll(".ep")];
+  const progs = ["prog0", "prog1", "prog2", "prog3", "prog4"].map((id) => document.getElementById(id));
+
+  const ICON_PLAY = "M8 5v14l11-7z";
+  const ICON_PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
+  const ICON_VOL = "M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z";
+  const ICON_MUTE = "M3 9v6h4l5 4V5L7 9H3zm13 1.6 1.4-1.4 1.4 1.4L20.2 9l1.4 1.4-1.4 1.4 1.4 1.4-1.4 1.4-1.4-1.4-1.4 1.4L16 13.2l1.4-1.4z";
+
+  let index = 0;
+  let dragging = false;
+
+  const fmt = (s) => {
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60);
+    const r = Math.floor(s % 60);
+    return m + ":" + String(r).padStart(2, "0");
+  };
+
+  // 24 film ticks
+  for (let i = 0; i < 24; i++) {
+    const t = document.createElement("i");
+    ticks.appendChild(t);
+  }
+
+  function paintAccent(c) {
+    root.style.setProperty("--accent", c);
+  }
+
+  function load(i, autoplay) {
+    index = i;
+    const p = PARTS[i];
+    if (p.poster) video.poster = p.poster;
+    video.src = p.src;
+    video.load();
+    hudPart.textContent = p.label;
+    hudTitle.textContent = p.title;
+    partTag.textContent = "PART 0" + (i + 1) + " / " + String(PARTS.length).padStart(2, "0");
+    dl.href = p.dl;
+    dl.setAttribute("download", p.dl);
+    paintAccent(p.accent);
+    eps.forEach((el, n) => {
+      el.setAttribute("aria-current", n === i ? "true" : "false");
+      const now = el.querySelector(".now");
+      if (now) now.hidden = n !== i;
+      if (n > i) progs[n].style.width = "0%";
+    });
+    if (autoplay) {
+      const play = video.play();
+      if (play && play.catch) play.catch(() => {});
+    }
+  }
+
+  function toggle() {
+    if (video.paused) {
+      const play = video.play();
+      if (play && play.catch) play.catch(() => {});
+    } else {
+      video.pause();
+    }
+  }
+
+  function syncPlayState() {
+    const playing = !video.paused && !video.ended;
+    player.classList.toggle("playing", playing);
+    playIcon.setAttribute("d", playing ? ICON_PAUSE : ICON_PLAY);
+    bigplay.setAttribute("aria-label", playing ? "Pause" : "Play");
+  }
+
+  function syncTime() {
+    const d = video.duration || 0;
+    const c = video.currentTime || 0;
+    const pct = d ? (c / d) * 100 : 0;
+    played.style.width = pct + "%";
+    knob.style.left = pct + "%";
+    tcur.textContent = fmt(c);
+    tdur.textContent = fmt(d);
+    progs[index].style.width = pct + "%";
+  }
+
+  function seekFromEvent(e) {
+    const r = bar.getBoundingClientRect();
+    const x = Math.min(Math.max(e.clientX - r.left, 0), r.width);
+    const d = video.duration || 0;
+    if (d) video.currentTime = (x / r.width) * d;
+  }
+
+  playbtn.addEventListener("click", toggle);
+  bigplay.addEventListener("click", toggle);
+  video.addEventListener("click", toggle);
+  video.addEventListener("play", syncPlayState);
+  video.addEventListener("pause", syncPlayState);
+  video.addEventListener("loadedmetadata", syncTime);
+  video.addEventListener("timeupdate", syncTime);
+  video.addEventListener("ended", () => {
+    syncPlayState();
+    if (index < PARTS.length - 1) load(index + 1, true);
+  });
+
+  bar.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    bar.classList.add("drag");
+    bar.setPointerCapture(e.pointerId);
+    seekFromEvent(e);
+  });
+  bar.addEventListener("pointermove", (e) => {
+    if (dragging) seekFromEvent(e);
+  });
+  bar.addEventListener("pointerup", (e) => {
+    dragging = false;
+    bar.classList.remove("drag");
+  });
+
+  eps.forEach((el, n) => el.addEventListener("click", () => load(n, true)));
+
+  mutebtn.addEventListener("click", () => {
+    video.muted = !video.muted;
+    volIcon.setAttribute("d", video.muted ? ICON_MUTE : ICON_VOL);
+  });
+
+  fsbtn.addEventListener("click", () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (player.requestFullscreen) player.requestFullscreen();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.target.matches("input,textarea")) return;
+    if (e.code === "Space") { e.preventDefault(); toggle(); }
+    else if (e.code === "ArrowRight") video.currentTime = Math.min(video.currentTime + 5, video.duration || 0);
+    else if (e.code === "ArrowLeft") video.currentTime = Math.max(video.currentTime - 5, 0);
+    else if (/^[1-9]$/.test(e.key) && Number(e.key) <= PARTS.length) load(Number(e.key) - 1, true);
+    else if (e.key.toLowerCase() === "f") fsbtn.click();
+    else if (e.key.toLowerCase() === "m") mutebtn.click();
+  });
+
+  video.volume = 0.9;
+  load(0, false);
+  syncPlayState();
+})();
+</script>
+</body>
+</html>

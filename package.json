@@ -1,0 +1,29 @@
+{
+  "name": "noah-remotion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts ClaudeReel out/claude-reel.mp4",
+    "still": "remotion still src/index.ts ClaudeReel",
+    "typecheck": "tsc --noEmit",
+    "pack": "node publish/generate.mjs",
+    "pack:post": "node publish/post.mjs",
+    "dashboard": "node publish/dashboard.mjs",
+    "doctor": "node publish/doctor.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@remotion/cli": "^4.0.542",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.542",
+    "typescript": "^7.0.2"
+  }
+}

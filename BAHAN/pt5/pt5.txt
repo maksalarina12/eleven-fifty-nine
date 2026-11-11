@@ -1,0 +1,343 @@
+# THE LAST MESSAGE — S01E05: SUBJECT 001
+## MASTER ANIME ANIMATION PRODUCTION PROMPT
+
+### PROJECT OBJECTIVE
+
+Produce a complete, cinematic, vertical 9:16 anime episode of **THE LAST MESSAGE, Season 1 Episode 5: SUBJECT 001**.
+
+The supplied audio file `PT 5.mp3` is the authoritative narrative source. Its measured duration is **67.3175 seconds**. Preserve the complete audio, including pauses, whispers, breaths, and embedded sound effects.
+
+This episode continues the same anime series established in Parts 1–4. It must not look like a new show or a different animation style.
+
+Use the supplied character sheets and previous episode screenshots as mandatory visual references.
+
+### 1. STRICT ANIME STYLE LOCK
+
+The visual language is **premium cinematic 2D Japanese anime with subtle 2.5D environmental depth**.
+
+Maintain:
+
+- Detailed, consistent anime facial anatomy.
+- Clean, expressive dark linework.
+- Layered cel shading and restrained soft shadow transitions.
+- Hand-painted, cinematic architectural backgrounds.
+- Desaturated midnight-blue, charcoal, and steel-gray color grading.
+- Subtle warm practical lighting and realistic screen illumination.
+- Natural facial animation, eye tracking, blinking, breathing, and controlled body movement.
+- Believable character scale, perspective, and object permanence.
+- Subtle parallax in backgrounds, not artificial floating cutout characters.
+- Professional cinematic framing and motivated camera movement.
+
+Do not produce photorealistic live action, generic 3D CGI, plastic-looking characters, cartoon comedy, chibi proportions, inconsistent anime faces, or a static slideshow.
+
+Match the supplied screenshots from Parts 1–4 as closely as possible.
+
+### 2. NOAH — DEFINITIVE CHARACTER IDENTITY
+
+Noah is a lean young adult man, approximately 26 years old, with pale olive skin, gray-brown eyes, and an exhausted but expressive face.
+
+His hair is black, thick, layered, and naturally messy, with an asymmetrical fringe falling across his forehead.
+
+**MANDATORY FACIAL FEATURE:** Noah has a distinctive diagonal scar crossing his anatomically LEFT eyebrow, extending near the LEFT eye. This scar is a permanent identity feature. It must appear in every close-up where that region is visible.
+
+The scar must never disappear, move to the opposite eye, change orientation, or become an unrelated facial marking.
+
+His outfit consists of:
+
+- Black open overshirt with natural fabric folds.
+- Dark charcoal crewneck T-shirt.
+- Loose dark charcoal trousers.
+- Black sneakers.
+- Dark wristwatch.
+- Black rectangular glasses where established by the previous animation reference.
+
+Preserve his facial proportions, hairstyle, clothing, accessories, and body scale in every scene.
+
+Noah must have believable emotional reactions: uncertainty, fear, shock, confusion, and dawning recognition.
+
+All archival versions of Noah are visually identical to the present-day Noah. Do not create different faces or costumes to distinguish the loop iterations.
+
+### 3. AMARA — DEFINITIVE CHARACTER IDENTITY
+
+Amara is a young adult woman with an intelligent, guarded expression.
+
+Her dark hair is tied into a slightly messy low bun, with loose strands framing her face. Preserve her recognizable facial proportions, small beauty mark near the eye where shown in the reference, and distinctive silver earrings on the correct ear.
+
+Her clothing follows the supplied character sheet: dark high-neck top, dark outer jacket, dark cargo trousers, belt, wristwatch, and black boots.
+
+Amara's performance must remain emotionally restrained. She is observant, analytical, and quietly defiant.
+
+When Dr. Elias speaks behind her, she must **not turn around** before answering. Her attention remains on the monitors.
+
+Do not alter her hairstyle, earrings, face, or outfit between shots.
+
+### 4. DR. ELIAS — DEFINITIVE CHARACTER IDENTITY
+
+Dr. Elias is a senior authority figure associated with the classified Subject 001 experiment.
+
+His precise facial appearance, hair, age presentation, outfit, and distinguishing features must be taken exclusively from the supplied official Dr. Elias character sheet.
+
+Never invent a replacement doctor design.
+
+His performance is controlled, unsettling, and authoritative. He speaks without exaggerated gestures or facial expressions.
+
+His final whispered line should feel disturbing because of its restraint, not because of shouting or supernatural visual effects.
+
+If his reference sheet is unavailable, do not generate an identifiable close-up until the correct reference is provided.
+
+### 5. ENVIRONMENT A — AMARA'S SURVEILLANCE ROOM
+
+The room is located somewhere across a rain-soaked city at night.
+
+It contains a fixed wall of surveillance monitors, a workstation, a chair, a desk lamp, restrained technical equipment, and believable wiring.
+
+Architectural proportions must be realistic.
+
+Monitor positions remain identical throughout the episode.
+
+The room is illuminated primarily by cold blue screen light, with a subtle warm practical light creating depth.
+
+Amara is seated facing the monitor wall.
+
+Dr. Elias enters from the darkness behind her.
+
+Maintain the same spatial relationship between Amara, Elias, the workstation, and the monitors in every shot.
+
+### 6. ENVIRONMENT B — NOAH'S APARTMENT
+
+Use the established apartment design from previous episodes.
+
+The apartment has a ceiling approximately 2.6 meters high, desaturated blue-gray walls, dark wooden flooring, a compact desk near the rainy window, a standard entrance door, and modest furniture.
+
+The window is approximately 1.2 meters wide and 1.1 meters tall, with its lower edge approximately 0.9 meters above the floor.
+
+The entrance door is approximately 2.0 meters high.
+
+Do not enlarge the window or door beyond believable residential proportions.
+
+The exterior city remains dark and rainy.
+
+### 7. ENVIRONMENT C — ARCHIVED CCTV HALLWAY
+
+Maintain the same hallway from previous episodes.
+
+Use one fixed high-angle security camera with consistent perspective, architecture, lighting, and door placement.
+
+The CCTV footage depicts different recorded iterations of Noah.
+
+When Noah falls, his body must remain physically present on the floor. No disappearance, teleportation, fading, or unintended transformation.
+
+Use subtle surveillance compression and digital noise without destroying the anime visual identity.
+
+### 8. CINEMATOGRAPHY AND COLOR GRADING
+
+Use cinematic lens equivalents:
+
+- 24–35mm for city and environmental establishing shots.
+- 50mm for character medium shots and dialogue.
+- 85mm for facial close-ups, hands, phone screens, and important details.
+- Fixed wide-angle security-camera perspective for CCTV footage.
+
+Camera movements should be subtle, motivated, and spatially logical.
+
+Use restrained dolly-in, over-the-shoulder framing, medium close-ups, and occasional locked-off compositions.
+
+Do not use excessive camera shake, forced depth of field, random zooms, or abrupt perspective changes.
+
+Lighting should remain consistent across adjacent shots.
+
+### 9. COMPLETE STORYBOARD — 16 SHOTS
+
+**SHOT 01 — ACROSS THE CITY**
+
+Audio cue: “Across the city…”
+
+Show a wide establishing view of the rainy city at night. Dark buildings, scattered lit windows, wet surfaces, and a restrained atmospheric haze. Slowly move toward the building containing the surveillance room.
+
+**SHOT 02 — AMARA WATCHES NOAH**
+
+Audio cue: “Amara watched Noah through a wall of monitors.”
+
+Cut inside the surveillance room. Begin behind Amara, showing her recognizable low bun, earrings where visible, dark clothing, and workstation. Perform a slow 50mm dolly-in toward the monitors.
+
+**SHOT 03 — NOAH STANDING**
+
+Audio cue: “One screen showed him standing.”
+
+Show the first monitor displaying Noah standing. His identity, outfit, and left eyebrow scar must match the official reference.
+
+**SHOT 04 — NOAH FALLING**
+
+Audio cue: “Another showed him falling.”
+
+Cut to a second monitor displaying Noah collapsing in the established CCTV hallway. His fall must have natural weight and realistic floor contact.
+
+**SHOT 05 — NOAH DYING**
+
+Audio cue: “And another… showed him dying.”
+
+Show a third archival recording of Noah lying motionless on the hallway floor. Keep the scene non-graphic and psychologically disturbing.
+
+**SHOT 06 — LOOP NUMBERS**
+
+Audio cue: “Every recording carried a different number. One hundred and forty-five. One hundred and forty-six. One hundred and forty-seven.”
+
+Reveal three distinct monitor feeds with exact labels:
+
+145  
+146  
+147
+
+Each number must be associated with its corresponding recording. Do not generate random additional numbers. Add precise typography during post-production if necessary.
+
+**SHOT 07 — DR. ELIAS ENTERS**
+
+Audio cue: “A man stepped out of the darkness behind her. Doctor Elias.”
+
+Introduce Dr. Elias entering from behind Amara. Use a controlled silhouette reveal followed by a medium shot. Match his official character sheet.
+
+**SHOT 08 — ELIAS SPEAKS**
+
+Audio cue: “You shouldn't be watching this.”
+
+Frame Dr. Elias with a 50mm medium close-up. He speaks calmly and firmly, with subtle mouth movement and minimal gestures.
+
+**SHOT 09 — AMARA ANSWERS**
+
+Audio cue: “Amara didn't turn around. Then why is he still alive?”
+
+Show Amara from a side or rear three-quarter angle. She remains facing the monitors. Her expression tightens slightly as she answers without turning around.
+
+**SHOT 10 — THE CLASSIFIED FILE**
+
+Audio cue: “She opened a classified file.”
+
+Close-up of Amara's hand operating the workstation. A secured digital archive opens. Preserve believable finger motion and interface design.
+
+**SHOT 11 — SUBJECT 001**
+
+Audio cue: “Subject zero zero one. Status… terminated.”
+
+Display exact text:
+
+SUBJECT 001
+
+STATUS: TERMINATED
+
+Use clear, professional archival typography. No random codes or invented information. Prefer post-production overlays for exact spelling.
+
+**SHOT 12 — THE ORIGINAL NOAH**
+
+Audio cue: “The original Noah had died three years ago.”
+
+Show archival evidence of the original Noah. His face must match the current Noah, including the scar near his left eye. Convey the revelation through records and restrained visual storytelling, without adding unsupported details about the cause of death.
+
+**SHOT 13 — COPIED CONSCIOUSNESS**
+
+Audio cue: “What remained was something else. A consciousness copied into a body that believed it was human.”
+
+Use cinematic archival laboratory imagery, subtle neural diagrams, recorded subject silhouettes, and controlled monitor transitions.
+
+The imagery should communicate consciousness duplication without creating an unrelated transformation scene.
+
+**SHOT 14 — BACK TO NOAH**
+
+Audio cue: “Back in the apartment, Noah's phone lit up.”
+
+Cut to the present-time Noah inside his apartment. He holds his smartphone. The screen lights up and softly illuminates his face and hands.
+
+Keep his hair, glasses, outfit, and left eyebrow scar consistent.
+
+**SHOT 15 — THE NEW MESSAGE**
+
+Audio cue: “A new message. Find the room where you were born.”
+
+Close-up of Noah's phone.
+
+Display the exact message:
+
+Find the room where you were born.
+
+Do not add additional messages, fake notifications, or random text.
+
+Noah reacts with restrained confusion and fear.
+
+**SHOT 16 — FINAL REVELATION**
+
+Audio cue: “Doctor Elias stared at the monitor. Then whispered, He isn't supposed to remember.”
+
+Return to the surveillance room.
+
+Dr. Elias stares at Noah's monitor. His expression shifts subtly from control to concern.
+
+Use a slow, restrained close-up as he whispers:
+
+“He isn't supposed to remember.”
+
+Cut to black after the final spoken word.
+
+### 10. AUDIO SYNCHRONIZATION
+
+Use the supplied `PT 5.mp3` file as the authoritative soundtrack.
+
+Measured audio duration: 67.3175 seconds.
+
+Analyze the actual audio waveform to identify exact phrase boundaries, pauses, and sound effects.
+
+The 16-shot storyboard is a narrative structure, not permission to assign arbitrary timings.
+
+Adjust every shot boundary to match the narration precisely.
+
+Never accelerate the voice, remove dialogue, duplicate spoken lines, or insert new dialogue.
+
+Add only subtle environmental sound where necessary. Avoid duplicating sound effects already embedded in the source recording.
+
+### 11. TYPOGRAPHY AND SCREEN CONTENT
+
+Exact required text:
+
+- 145
+- 146
+- 147
+- SUBJECT 001
+- STATUS: TERMINATED
+- Find the room where you were born.
+
+Use accurate overlays for text and numbers that video generation cannot reliably reproduce.
+
+No gibberish text, invented dates, or irrelevant interface labels.
+
+### 12. FINAL PRESENTATION
+
+Format: vertical 9:16.
+
+Target export: 1080 × 1920 MP4, using the highest-quality available source footage.
+
+Keep a small, unobtrusive **EldraMyth** watermark in the upper-right safe area.
+
+If English subtitles are included, place them inside the safe area for TikTok, YouTube Shorts, and Instagram Reels. Avoid the bottom-most interface region.
+
+Do not place persistent episode titles, shot labels, production notes, or technical prompts over the video.
+
+Use only a brief opening title if it fits naturally without obscuring the narrative.
+
+### 13. FINAL QUALITY CONTROL
+
+Before final export, verify:
+
+- Noah's left eyebrow scar is consistent and visible in appropriate close-ups.
+- Noah's hair, face, glasses, clothing, and proportions match the official reference.
+- Every archived Noah is the same character.
+- Amara's hair bun, earrings, face, and outfit remain consistent.
+- Dr. Elias matches his official character sheet.
+- Amara does not turn around during her reply.
+- Surveillance monitor positions remain stable.
+- CCTV bodies do not disappear.
+- Text and numbers are accurate.
+- Camera geography and architectural proportions are believable.
+- Animation contains natural movement rather than static-image zooms.
+- Color grading and anime style match previous episodes.
+- Every visual event aligns with the original audio.
+- The ending cuts to black after the final whisper.
+
+Do not declare the episode complete until these checks pass.

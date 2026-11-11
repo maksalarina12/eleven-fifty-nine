@@ -1,0 +1,167 @@
+[
+  {
+    "key": "ep01",
+    "part": 1,
+    "file": "THE_LAST_MESSAGE_Part1.mp4",
+    "poster": "poster1.jpg",
+    "title": "11:59 PM",
+    "alias": null,
+    "runtime": "about a minute",
+    "en": {
+      "logline": "At 11:59 PM an unknown number tells Noah not to open his door. He has spent the last hour pretending he cannot hear the rain.",
+      "hook": "He had one instruction: don't open the door.",
+      "beats": [
+        "Rain, a locked apartment, a phone face-down on the table.",
+        "An unknown number. One line of text.",
+        "The clock refuses to move past 11:59."
+      ],
+      "quote": "Don't open the door.",
+      "cta": "Part 1 of The Last Message. Start from the beginning.",
+      "tags": ["#TheLastMessage", "#anime", "#psychologicalthriller", "#scifi", "#mysteryseries", "#shortfilm"]
+    },
+    "id": {
+      "logline": "Pukul 23.59, nomor tak dikenal mengirim satu pesan ke Noah: jangan buka pintu. Padahal di luar, hujan tidak berhenti sejak satu jam lalu.",
+      "hook": "Cuma satu pesan: jangan buka pintu.",
+      "beats": [
+        "Hujan, apartemen terkunci, ponsel tertelungkup di meja.",
+        "Nomor tak dikenal. Satu baris pesan.",
+        "Jam dinding berhenti di 23.59."
+      ],
+      "quote": "Don't open the door.",
+      "cta": "Part 1 dari The Last Message. Mulai dari awal.",
+      "tags": ["#TheLastMessage", "#anime", "#thrillerpsikologis", "#fiksishortfilm", "#misteri", "#animasi2d"]
+    }
+  },
+  {
+    "key": "ep02",
+    "part": 2,
+    "file": "THE_LAST_MESSAGE_Part2.mp4",
+    "poster": "poster2.jpg",
+    "title": "THE OTHER ME",
+    "alias": null,
+    "runtime": "about a minute",
+    "en": {
+      "logline": "A second message arrives with a link to a live hallway camera. The man standing outside Noah's door is wearing his face.",
+      "hook": "Someone is standing outside his door. It is him.",
+      "beats": [
+        "A link marked LIVE HALLWAY CAMERA.",
+        "An empty corridor, then a figure walks into frame.",
+        "Same hair. Same coat. Same scar."
+      ],
+      "quote": "You're not the first Noah.",
+      "cta": "Part 2 of The Last Message. Watch Part 1 first.",
+      "tags": ["#TheLastMessage", "#anime", "#doppelganger", "#psychologicalthriller", "#mysteryseries", "#shortfilm"]
+    },
+    "id": {
+      "logline": "Pesan kedua datang dengan tautan kamera koridor. Pria yang berdiri di depan pintu Noah memakai wajahnya sendiri.",
+      "hook": "Ada orang di depan pintunya. Itu dia.",
+      "beats": [
+        "Tautan bertuliskan LIVE HALLWAY CAMERA.",
+        "Koridor kosong, lalu sesosok bayangan masuk frame.",
+        "Rambut sama. Mantel sama. Bekas luka sama."
+      ],
+      "quote": "You're not the first Noah.",
+      "cta": "Part 2 dari The Last Message. Tonton Part 1 dulu.",
+      "tags": ["#TheLastMessage", "#anime", "#kembarandiri", "#thrillerpsikologis", "#misteri", "#animasi2d"]
+    }
+  },
+  {
+    "key": "ep03",
+    "part": 3,
+    "file": "THE_LAST_MESSAGE_Part3.mp4",
+    "poster": "poster3.jpg",
+    "title": "12:00 AM",
+    "alias": "THE MISSING HOUR",
+    "runtime": "about a minute",
+    "en": {
+      "logline": "Noah rewinds the hallway recording. It reaches midnight while his own phone is still stuck at 11:59, and the Noah on tape walks out of the apartment.",
+      "hook": "Two clocks. The same minute. Only one of them is his.",
+      "beats": [
+        "The footage runs backwards.",
+        "Timecode rolls from 11:59 to 12:00.",
+        "The recorded Noah steps into the hall."
+      ],
+      "quote": "You have one minute left.",
+      "cta": "Part 3 of The Last Message.",
+      "tags": ["#TheLastMessage", "#anime", "#timetravel", "#loops", "#psychologicalthriller", "#shortfilm"]
+    },
+    "id": {
+      "logline": "Noah memutar ulang rekaman koridor. Rekaman itu sampai tengah malam, sementara ponselnya sendiri masih 23.59. Dan Noah di dalam rekaman melangkah keluar.",
+      "hook": "Dua jam. Satu menit yang sama. Cuma satu yang miliknya.",
+      "beats": [
+        "Rekaman berjalan mundur.",
+        "Timecode bergeser dari 23.59 ke 00.00.",
+        "Noah versi rekaman keluar ke koridor."
+      ],
+      "quote": "You have one minute left.",
+      "cta": "Part 3 dari The Last Message.",
+      "tags": ["#TheLastMessage", "#anime", "#perjalananwaktu", "#loop", "#thrillerpsikologis", "#animasi2d"]
+    }
+  },
+  {
+    "key": "ep04",
+    "part": 4,
+    "file": "THE_LAST_MESSAGE_Part4.mp4",
+    "poster": "poster4.jpg",
+    "title": "THE LOOP",
+    "alias": null,
+    "runtime": "about a minute",
+    "en": {
+      "logline": "One hundred and forty-seven messages arrive at once. The minute never changes. And whatever is texting him already knows he has done this before.",
+      "hook": "147 messages. One warning. No time left.",
+      "beats": [
+        "One minute on the clock, and it never ticks over.",
+        "Every light in the apartment dies.",
+        "147 messages, all saying the same thing."
+      ],
+      "quote": "You've done this before.",
+      "cta": "Part 4 of The Last Message. The loop is closing.",
+      "tags": ["#TheLastMessage", "#anime", "#timeloop", "#psychologicalthriller", "#mysteryseries", "#shortfilm"]
+    },
+    "id": {
+      "logline": "Seratus empat puluh tujuh pesan masuk sekaligus. Menitnya tidak pernah berganti. Dan pengirim pesan itu sudah tahu Noah pernah melakukan ini.",
+      "hook": "147 pesan. Satu peringatan. Waktu habis.",
+      "beats": [
+        "Satu menit di layar, dan tidak pernah berganti.",
+        "Semua lampu di apartemen mati.",
+        "147 pesan, semuanya kalimat yang sama."
+      ],
+      "quote": "You've done this before.",
+      "cta": "Part 4 dari The Last Message. Loop-nya menutup.",
+      "tags": ["#TheLastMessage", "#anime", "#timeloop", "#thrillerpsikologis", "#misteri", "#animasi2d"]
+    }
+  },
+  {
+    "key": "ep05",
+    "part": 5,
+    "file": "THE_LAST_MESSAGE_Part5.mp4",
+    "poster": "poster5.jpg",
+    "title": "THE ROOM",
+    "alias": "SUBJECT 001",
+    "runtime": "67 seconds",
+    "en": {
+      "logline": "Noah wakes in a room he has never seen, in front of a woman who already knows his file. The record says SUBJECT 001 is terminated. He is still breathing.",
+      "hook": "The file says SUBJECT 001: TERMINATED. Noah is still breathing.",
+      "beats": [
+        "A room with a wall of monitors and no windows.",
+        "A woman who answers without turning around.",
+        "A file with his face on it, and a status that should be final."
+      ],
+      "quote": "Find the room where you were born.",
+      "cta": "Part 5 of The Last Message. Four parts before this one.",
+      "tags": ["#TheLastMessage", "#anime", "#subject001", "#psychologicalthriller", "#mysteryseries", "#shortfilm"]
+    },
+    "id": {
+      "logline": "Noah terbangun di ruangan yang belum pernah ia lihat, di depan seorang perempuan yang sudah tahu isi berkasnya. Catatan itu menyebut SUBJECT 001 telah dihentikan. Noah masih bernapas.",
+      "hook": "Berkasnya bilang SUBJECT 001: TERMINATED. Noah masih bernapas.",
+      "beats": [
+        "Ruangan tanpa jendela, dinding penuh monitor.",
+        "Seorang perempuan yang menjawab tanpa berbalik badan.",
+        "Sebuah berkas dengan wajahnya, dan status yang seharusnya sudah final."
+      ],
+      "quote": "Find the room where you were born.",
+      "cta": "Part 5 dari The Last Message. Empat part sebelumnya wajib ditonton.",
+      "tags": ["#TheLastMessage", "#anime", "#subject001", "#thrillerpsikologis", "#misteri", "#animasi2d"]
+    }
+  }
+]

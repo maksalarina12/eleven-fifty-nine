@@ -1,0 +1,74 @@
+{
+  "series": {
+    "name": "The Last Message",
+    "season": "S01",
+    "handle": "@eldramyth",
+    "watermark": "EldraMyth",
+    "baseTags": [
+      "#TheLastMessage",
+      "#EldraMyth",
+      "#anime",
+      "#animatedshort",
+      "#psychologicalthriller",
+      "#scifi",
+      "#mysteryseries",
+      "#shortfilm",
+      "#webcomic",
+      "#2danimation",
+      "#subject001",
+      "#thrillerpsikologis",
+      "#misteri",
+      "#animasi2d",
+      "#fiksishortfilm",
+      "#ceritabersambung"
+    ]
+  },
+  "languages": [
+    "en",
+    "id"
+  ],
+  "defaultLanguage": "en",
+  "videoDir": "HASIL",
+  "outputDir": "publish/out",
+  "llm": {
+    "provider": "openai-compatible",
+    "baseUrl": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini",
+    "temperature": 0.85,
+    "maxTokens": 2400
+  },
+  "style": {
+    "tone": "cinematic, restrained, cold. No hype words, no emoji spam, no clickbait that the video cannot deliver.",
+    "emojiMax": 1,
+    "spoilerFree": true,
+    "instructions": [
+      "Never reveal the ending or the central twist of the episode.",
+      "Always keep the series name and part number findable in the copy.",
+      "Hashtags must be chosen from the allowed pool only. Do not invent tags.",
+      "Do not claim the video contains something it does not (no fake giveaways, no fake dates).",
+      "Do not mention AI tools, rendering engines, or that the episode was made with code."
+    ]
+  },
+  "platforms": {
+    "youtube": {
+      "enabled": true,
+      "maxTags": 12
+    },
+    "tiktok": {
+      "enabled": true,
+      "maxTags": 6
+    },
+    "instagram": {
+      "enabled": true,
+      "maxTags": 12
+    },
+    "facebook": {
+      "enabled": true,
+      "maxTags": 4
+    },
+    "x": {
+      "enabled": true,
+      "maxTags": 3
+    }
+  }
+}

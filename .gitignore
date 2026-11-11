@@ -1,0 +1,21 @@
+node_modules/
+out/
+.env
+.env.*
+!.env.example
+
+publish/out/
+!publish/out/.gitkeep
+
+# Masters are never distributed. Only posters and the player UI ship here.
+*.mp4
+*.mov
+*.webm
+*.m4v
+
+*.log
+.DS_Store
+Thumbs.db
+
+# Remotion / Chrome
+.remotion/
