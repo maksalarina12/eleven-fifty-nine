@@ -53,6 +53,8 @@ export function renderDashboard(state) {
     </div>
   </div>
 
+  ${state.masters === 0 ? `<div class="notice">no video files found in <code>${String(state.videoDir || '').replace(/</g, '&lt;')}</code> — run <code>npm run setup -- --dir &lt;folder&gt;</code> to point the desk at your videos</div>` : ''}
+
   <div class="strip" id="strip" role="group" aria-label="Episodes"></div>
 
   <section class="detail" id="detail" aria-live="polite"></section>
