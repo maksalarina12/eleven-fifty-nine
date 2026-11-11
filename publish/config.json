@@ -3,6 +3,7 @@
     "name": "The Last Message",
     "season": "S01",
     "handle": "@eldramyth",
+    "kind": "serialized 2D anime psychological thriller",
     "watermark": "EldraMyth",
     "baseTags": [
       "#TheLastMessage",
@@ -29,6 +30,7 @@
   ],
   "defaultLanguage": "en",
   "videoDir": "HASIL",
+  "episodesFile": "episodes.json",
   "outputDir": "publish/out",
   "llm": {
     "provider": "openai-compatible",

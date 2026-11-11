@@ -1,11 +1,48 @@
-# Publish pack
+# Release desk
 
-Alat bantu untuk mengubah satu episode jadi paket upload siap tempel: caption +
-hashtag per platform, halaman review untuk mengedit dan menyalin, plus adapter
-API untuk upload otomatis begitu kredensialnya ada.
+Satu folder video vertikal masuk, satu paket upload keluar: caption + hashtag per
+platform, halaman review untuk mengedit dan menyalin, adapter API untuk upload
+otomatis, dan pemeriksa akun. Tidak terikat pada satu seri — arahkan ke folder
+video apa pun.
 
-Tidak ada yang terkirim otomatis. Default-nya **dry run** dan semua platform
-diset ke setelan paling privat.
+Tidak ada yang terkirim otomatis. Default **dry run**, dan tiap platform diset ke
+setelan paling privat yang diizinkan.
+
+---
+
+## Mulai dari nol (video milikmu sendiri)
+
+```bash
+npm run setup
+```
+
+Pertanyaan yang muncul: nama seri, handle, folder video, bahasa, dan pool
+hashtag. Lalu setup akan:
+
+- memindai folder itu (`.mp4 .mov .m4v .webm`), mengurutkan berdasarkan nomor
+  part di nama file, dan memberi judul dari nama file
+- membaca durasi lewat `ffprobe` dan mengambil poster dari detik 1 lewat `ffmpeg`
+  (kalau keduanya terpasang)
+- menulis `publish/config.json` (seri + folder) dan `publish/episodes.json`
+  (satu entri per video)
+- membuat `.env` dari template, permission `600`
+
+Tanpa TTY (mis. di server) semua nilai bisa diberikan lewat flag:
+
+```bash
+npm run setup -- --dir ~/clips --series "Night Drive" --handle @nightdrive \
+  --langs en,id --tags "#nightdrive,#shortfilm,#horror" --yes
+
+npm run setup -- --dir ~/clips --dry-run    # lihat rencananya, tidak menulis
+```
+
+File lama tidak pernah ditimpa diam-diam: `config.json.bak` dan
+`episodes.json.bak` dibuat sebelum menulis, dan entri yang sudah ada dipertahankan
+(lengkap dengan brief-nya).
+
+Folder video boleh di luar repo. Kalau `publish/episodes.json` dihapus, desk
+memindai folder itu setiap kali dibuka — cukup untuk mencoba sebelum menulis
+brief.
 
 ---
 
@@ -16,19 +53,20 @@ npm run dashboard            # http://127.0.0.1:4173
 npm run dashboard -- --port 4200 --no-open
 ```
 
-Satu halaman lokal untuk semua episode:
+Satu halaman lokal:
 
-- strip 5 part dengan status master/pack
-- pilih episode → poster, logline, ukuran file, dan kesiapan pack
-- tabel caption per platform: panjang karakter, jumlah tag, status kredensial (api/manual)
-- **Generate pack** (pakai LLM kalau `LLM_API_KEY` ada) atau **Template only**
+- strip episode dengan status master/pack, dari hasil scan atau `episodes.json`
+- pilih episode → poster, judul, ukuran file, kesiapan pack
+- tabel caption per platform: panjang karakter, jumlah tag, status kredensial
+  (`api` / `manual`)
+- **Generate pack** (LLM kalau `LLM_API_KEY` ada) atau **Template only**
 - **Open review** membuka halaman edit/copy untuk episode itu
-- **Dry-run upload** menjalankan `post.mjs` dan menampilkan paket manual di terminal
+- **Dry-run upload** menjalankan `post.mjs` dan menampilkan rencananya
 - **Pack missing** mengisi semua episode yang belum punya pack (template)
-- copy caption per platform, atau copy semua sekaligus
+- **Connect accounts** → halaman `/connect` untuk menautkan akun
 - shortcut: `1`–`5` ganti episode, `G` generate, `T` template
 
-Halaman ini hanya membaca dan menulis file lokal. Tidak ada upload dari dashboard;
+Dashboard hanya membaca dan menulis file lokal. Tidak ada upload dari dashboard;
 itu tetap tugas `post.mjs --yes`.
 
 ---
@@ -36,53 +74,58 @@ itu tetap tugas `post.mjs --yes`.
 ## Alur kerja
 
 ```bash
-# 1. bikin paket caption untuk Part 5
-node publish/generate.mjs --episode 5 --open
+npm run pack -- --episode 1 --open      # caption untuk video pertama
+# edit / copy dari publish/out/ep01/review.html, upload manual
 
-# 2. edit / copy dari halaman review, upload manual
-#    publish/out/ep05/review.html
-
-# 3. kalau kredensial sudah ada, cek dulu rencananya
-node publish/post.mjs --episode 5
-
-# 4. baru kirim beneran
-node publish/post.mjs --episode 5 --platforms youtube --yes
+npm run pack:post -- --episode 1        # cek rencana upload (dry run)
+npm run pack:post -- --episode 1 --platforms youtube --yes   # kirim beneran
 ```
 
-Tanpa API key LLM, generator tetap jalan memakai copy template yang sudah ditulis
-per episode (`publish/episodes.json`). Hasilnya lebih kaku tapi tetap layak.
+Flag yang berguna:
+
+| Flag | Arti |
+|---|---|
+| `--episode N` | nomor part (default: episode pertama) |
+| `--lang en,id` | bahasa yang dibuat |
+| `--no-llm` | paksa copy template |
+| `--dir <folder>` | pindai folder lain tanpa mengubah config |
+| `--out <folder>` | tulis pack ke folder lain (buat preview) |
+| `--open` | buka review page setelah selesai |
 
 ---
 
 ## Yang dihasilkan
 
 ```
-publish/out/ep05/
+publish/out/ep01/
   captions.json          # sumber kebenaran, dipakai post.mjs
-  review.html            # halaman review: edit, copy, checklist, buka upload
+  review.html            # edit, copy, checklist, buka halaman upload
   youtube.en.txt         # satu file per platform per bahasa
-  youtube.id.txt
   tiktok.en.txt
   instagram.en.txt
   facebook.en.txt
   x.en.txt
-  post-log-YYYY-MM-DD.json
 ```
 
-Halaman review punya:
+Halaman review punya: pemilih bahasa, editor title/caption/hashtag dengan hitungan
+karakter live, peringatan saat melewati batas platform, tombol **Copy caption**,
+**Copy title + caption**, **Save .txt**, **Upload page**, dan checklist per
+platform yang tersimpan di browser.
 
-- dua bahasa (EN / ID) — ganti dengan tombol di atas
-- editor untuk title, caption dan hashtag, dengan hitungan karakter live
-- peringatan kalau melewati batas platform
-- tombol **Copy caption**, **Copy title + caption**, **Save .txt**, **Upload page**
-- checklist per platform yang tersimpan di browser (localStorage)
+Pack terikat ke file videonya. Ganti folder atau seri, dan pack lama otomatis
+dianggap tidak ada — tidak ada caption seri lain yang nyasar muncul.
 
 ---
 
-## Caption otomatis (LLM)
+## Caption: tiga tingkat
 
-Isi `LLM_API_KEY` di `.env`. Endpoint-nya OpenAI-compatible, jadi bisa OpenAI,
-OpenRouter, Groq, Together, atau server lokal:
+1. **Brief tertulis** di `publish/episodes.json` (per episode, per bahasa) —
+   hasil paling tajam, tanpa perlu LLM.
+2. **LLM** — isi `LLM_API_KEY` di `.env`. Endpoint OpenAI-compatible: OpenAI,
+   OpenRouter, Groq, Together, atau server lokal.
+3. **Generic** — kalau tidak ada brief dan tidak ada LLM, desk tetap menulis
+   caption yang rapi dari judul, nomor part, dan durasi. Cukup untuk diposting,
+   tapi datar.
 
 ```bash
 LLM_API_KEY=sk-...
@@ -90,103 +133,96 @@ LLM_BASE_URL=https://openrouter.ai/api/v1
 LLM_MODEL=openai/gpt-4o-mini
 ```
 
-Model diberi: judul episode, logline, beat, kutipan persis dari episode, CTA,
-pool hashtag, dan batas tiap platform. Yang diminta: JSON berisi caption per
-platform per bahasa, hook berbeda tiap platform, tanpa spoiler.
-
-Kalau model gagal atau mengembalikan format aneh, tool otomatis kembali ke copy
-template dan memberi tahu di terminal.
-
-Atur nada di `publish/config.json` → `style`.
+Brief yang dikirim ke model: logline, beat, kutipan persis, CTA, pool hashtag, dan
+batas tiap platform. Kalau model gagal, tool kembali ke template dan memberi tahu
+di terminal. Nada dan aturan ada di `config.json` → `style`.
 
 ---
 
 ## Kaitkan akun
 
-Satu tombol per platform: buka `/connect` di dashboard, tempel Client ID/Secret
-app-mu sekali, tekan **connect →**, klik Allow. Token masuk `.env` sendiri dan
-token X/TikTok di-refresh otomatis.
+Satu tombol per platform: buka `/connect`, tempel Client ID/Secret app-mu sekali,
+tekan **connect →**, klik Allow. Token masuk `.env` sendiri, dan token X (2 jam)
+serta TikTok (24 jam) di-refresh otomatis.
 
 ```bash
 npm run dashboard     # lalu buka http://127.0.0.1:4173/connect
 npm run doctor        # cek token menunjuk ke akun yang benar
 ```
 
-Yang tetap manual hanya pembuatan developer app (platform mewajibkannya). Langkah
+Yang tetap manual hanya pembuatan developer app — platform mewajibkannya. Langkah
 per platform, scope, dan jebakannya ada di [`CONNECT.md`](CONNECT.md).
 
-Dashboard juga punya tombol **check links** yang menjalankan pemeriksaan yang
-sama dan menampilkan nama akun di kolom Link.
+---
 
 ## Platform
 
 | Platform | Batas | Setelan default | Yang perlu disiapkan |
 |---|---|---|---|
-| YouTube Shorts | title 100, desc 5000 | `private` | OAuth client + refresh token, scope `youtube.upload` |
+| YouTube Shorts | title 100, desc 5000 | `private` | OAuth client, scope `youtube.upload` + `youtube.readonly` |
 | TikTok | 2200 | `SELF_ONLY` | Content Posting API; app belum diaudit hanya boleh SELF_ONLY |
-| Instagram Reels | 2200 | langsung publish | akun Business/Creator + Facebook Page + `instagram_content_publish` |
-| Facebook Reels | 5000 | langsung publish | Page + token dengan `publish_video` |
-| X | 280 | langsung publish | OAuth 2.0 user token, `tweet.write` + `media.write` (tier berbayar) |
+| Instagram Reels | 2200 | langsung publish | akun Business/Creator + Page + `instagram_content_publish` |
+| Facebook Reels | 5000 | langsung publish | Page token dengan `pages_manage_posts` |
+| X | 280 | langsung publish | OAuth 2.0 user token, `tweet.write` + `media.write` |
 
-Catatan penting:
-
-- **Instagram dan Facebook tidak punya mode draft.** Begitu `post.mjs --yes`
-  dijalankan, Reels langsung tayang. Kalau mau aman, upload manual dulu.
-- **YouTube default `private`.** Ganti `YT_PRIVACY` kalau sudah yakin.
-- **TikTok** memaksa `SELF_ONLY` untuk app yang belum diaudit — video masuk ke
-  akun sebagai privat, bukan tayang.
-- **X** butuh akses API berbayar. Tanpa itu, pakai jalur manual.
-
-Adapter ini belum pernah diuji ke akun asli. Perlakukan run pertama tiap platform
-sebagai tes: upload satu video privat, cek hasilnya, baru pakai rutin.
+- **Instagram dan Facebook tidak punya draft.** Begitu `--yes` dijalankan, Reels
+  langsung tayang. Uji dengan video pendek dulu.
+- **YouTube default `private`**, TikTok `SELF_ONLY`.
+- **X** butuh plan dengan akses write.
+- Adapter belum diuji ke akun asli di repo ini. Run pertama tiap platform:
+  video privat, cek hasilnya, baru jadikan rutin.
 
 ---
 
 ## Manual (jalur yang selalu berhasil)
 
-Kalau kredensial belum ada, `post.mjs` tidak error — dia menulis daftar file
-caption dan URL upload tiap platform. Tinggal buka `review.html`, copy, tempel.
+Tanpa kredensial, `post.mjs` tidak error — dia menulis daftar file caption dan URL
+upload tiap platform. Buka `review.html`, copy, tempel.
 
-Checklist yang biasa terlewat:
-
-- Cover/thumbnail dipilih manual (0.5 s untuk TikTok, frame monitor untuk Reels)
-- Share to Feed aktif di Instagram
-- Post dari Page, bukan profil pribadi, untuk Facebook Reels
-- Video di-attach native di X, jangan link
+Yang biasa terlewat: cover/thumbnail manual (0.5 s untuk TikTok), Share to Feed di
+Instagram, post dari Page (bukan profil) untuk Facebook Reels, dan attach video
+native di X (jangan link).
 
 ---
 
-## Menambah episode
+## Mengubah seri
 
-Tambah satu objek di `publish/episodes.json`:
+`publish/config.json`:
+
+```jsonc
+{
+  "series": {
+    "name": "Night Drive",        // dipakai di title YouTube dan caption generic
+    "handle": "@nightdrive",
+    "kind": "short-form video series",  // konteks untuk LLM
+    "watermark": "NightDrive",
+    "baseTags": ["#nightdrive"]   // satu-satunya pool hashtag yang diizinkan
+  },
+  "languages": ["en", "id"],
+  "videoDir": "videos",           // relatif ke root repo, atau absolut
+  "outputDir": "publish/out"
+}
+```
+
+Semua hashtag wajib berasal dari `series.baseTags`. Model tidak boleh mengarang tag
+baru, dan `generate.mjs` membuang tag di luar pool.
+
+Menambah episode tanpa setup:
 
 ```json
 {
   "key": "ep06",
   "part": 6,
-  "file": "THE_LAST_MESSAGE_Part6.mp4",
+  "file": "my-video.mp4",
   "poster": "poster6.jpg",
   "title": "JUDUL",
-  "alias": null,
-  "runtime": "about a minute",
-  "en": {"logline": "...", "hook": "...", "beats": ["..."], "quote": "...", "cta": "...", "tags": ["#TheLastMessage"]},
-  "id": {"logline": "...", "hook": "...", "beats": ["..."], "quote": "...", "cta": "...", "tags": ["#TheLastMessage"]}
+  "runtime": "1:02",
+  "en": {"logline": "...", "hook": "...", "beats": ["..."], "quote": "...", "cta": "...", "tags": ["#nightdrive"]}
 }
 ```
 
-`file` dan `poster` relatif ke `HASIL/`. Setelah itu:
-
-```bash
-node publish/generate.mjs --episode 6 --open
-```
-
----
-
-## Mengubah tag
-
-Semua hashtag wajib berasal dari `series.baseTags` di `config.json`. Model tidak
-boleh mengarang tag baru, dan `generate.mjs` membuang tag di luar pool. Tambah
-tag di situ kalau butuh.
+`en`/`id` boleh dihilangkan — caption generic yang akan dipakai. `poster` boleh
+`null`; halaman review akan menyembunyikan gambarnya.
 
 ---
 
@@ -194,8 +230,10 @@ tag di situ kalau butuh.
 
 | Gejala | Sebab |
 |---|---|
+| dashboard kosong | tidak ada video di `videoDir` — jalankan `npm run setup -- --dir <folder>` |
 | `no credentials` | `.env` belum diisi untuk platform itu — pakai jalur manual |
-| `401` di YouTube | refresh token kedaluwarsa atau scope kurang |
+| master `missing` | `file` di episodes.json tidak cocok dengan isi folder |
+| `401` di YouTube | refresh token kedaluwarsa (7 hari di mode Testing) atau scope kurang |
 | `instagram container` error | akun bukan Business/Creator, atau belum terhubung ke Page |
 | `TikTok init` error | app belum diaudit → `SELF_ONLY`, atau scope `video.publish` belum ada |
 | caption kepotong | batas platform; edit di `review.html` sebelum copy |

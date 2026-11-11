@@ -338,7 +338,7 @@ if (warnings.length) {
   $('#warnings').appendChild(box);
 }
 
-$('#poster').src = ${embed(data.posterSrc || '')};
+if (DATA.posterSrc) $('#poster').src = DATA.posterSrc; else $('#poster').style.display = 'none';
 renderLangs();
 renderGrid();
 

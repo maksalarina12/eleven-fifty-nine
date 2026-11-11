@@ -141,15 +141,24 @@ Renders take roughly 15–25 minutes per part on three threads.
 
 ![Release desk](docs/release-desk.png)
 
-`publish/` turns an episode into a publish pack: platform-specific captions,
-hashtags, a review page, and upload adapters.
+`publish/` turns one vertical video into a publish pack: platform-specific
+captions, hashtags, a review page, and upload adapters. It is not tied to this
+series — point it at any folder of vertical videos and it behaves the same.
 
 ```bash
+npm run setup                        # point the desk at a folder of videos
 npm run pack -- --episode 5 --open   # captions for all five platforms
 npm run pack:post -- --episode 5     # dry run: show exactly what would upload
 npm run doctor                       # which accounts are actually linked
 npm run dashboard                    # local control desk for all of the above
 ```
+
+`npm run setup -- --dir ~/my-clips --series "Night Drive" --handle @nightdrive`
+scans the folder, reads durations with `ffprobe`, grabs a poster per video with
+`ffmpeg`, and writes `publish/config.json` plus `publish/episodes.json`. Existing
+files are backed up, never silently overwritten. With no written brief and no
+LLM key the desk still produces a clean caption from the title, part number and
+runtime; a brief or an `LLM_API_KEY` makes it sharper.
 
 What the pack contains:
 
@@ -168,10 +177,11 @@ button that opens the upload screen. Nothing posts by itself.
 
 ### Captions
 
-Copy can be written by any OpenAI-compatible model (`LLM_API_KEY` in `.env`), or
-fall back to hand-written templates per episode in `publish/episodes.json`.
-Hashtags are restricted to a fixed pool, so the model cannot invent tags.
-Captions are generated in English and Indonesian.
+Copy can be written by any OpenAI-compatible model (`LLM_API_KEY` in `.env`), by
+hand-written briefs per episode in `publish/episodes.json`, or — with neither — by
+a generic template that only uses the title, part number and runtime. Hashtags are
+restricted to the pool in `config.json`, so the model cannot invent tags.
+Languages are whatever you list in `config.languages`.
 
 ### Accounts — one click each
 

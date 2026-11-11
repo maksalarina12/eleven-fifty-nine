@@ -7,7 +7,8 @@ import {PLATFORMS, PLATFORM_KEYS} from './platforms.mjs';
 export function buildPrompt({config, episode, languages, seed}) {
   const series = config.series;
   const style = config.style || {};
-  const tagPool = series.baseTags;
+  const tagPool = series.baseTags || [];
+  const kind = series.kind || 'short-form video series';
 
   const platformBrief = PLATFORM_KEYS.map((key) => {
     const p = PLATFORMS[key];
@@ -19,8 +20,8 @@ export function buildPrompt({config, episode, languages, seed}) {
   }).join('\n');
 
   const system = [
-    'You write social copy for a serialized 2D anime psychological thriller called "The Last Message".',
-    'The voice is cold, cinematic and restrained. Short sentences. No hype, no exclamation marks, no emoji spam.',
+    `You write social copy for a ${kind} called "${series.name}".`,
+    `The voice is ${style.tone || 'cinematic and restrained'}. Short sentences. No hype, no exclamation marks, no emoji spam.`,
     'You never reveal the episode ending or its twist.',
     'You never invent facts, dates, numbers, or quotes that are not in the episode brief.',
     'You never mention AI, prompts, rendering, or that the show was made with code.',
@@ -34,7 +35,9 @@ export function buildPrompt({config, episode, languages, seed}) {
     `Maximum ${style.emojiMax ?? 0} emoji in any single caption.`,
     'Hook lines must differ between platforms: do not paste the same first sentence onto all five.',
     'Do not put hashtags inside the body; return them in the tags array.',
-    'Use only these hashtags, copied exactly: ' + tagPool.join(' '),
+    tagPool.length
+      ? 'Use only these hashtags, copied exactly: ' + tagPool.join(' ')
+      : 'Return an empty tags array: this series has no hashtag pool configured.',
     'Keep the exact wording of any line you quote from the show.',
   ];
 
@@ -46,17 +49,25 @@ export function buildPrompt({config, episode, languages, seed}) {
 
   for (const lang of languages) {
     const e = episode[lang];
-    if (!e) continue;
+    const hasBrief = e && (e.logline || e.hook || (e.beats || []).length || e.cta);
+    if (!hasBrief) {
+      blocks.push(
+        `EPISODE BRIEF (${lang.toUpperCase()}): none supplied. Write only from the title, the runtime and the series name. Do not invent characters, plot points, dates, quotes or numbers.`
+      );
+      continue;
+    }
     blocks.push(
       [
         `EPISODE BRIEF (${lang.toUpperCase()}):`,
-        `Logline: ${e.logline}`,
-        `Hook already used in production: ${e.hook}`,
-        `Beats: ${e.beats.join(' | ')}`,
-        `Exact line from the episode: "${e.quote}"`,
-        `Call to action: ${e.cta}`,
-        `Suggested tags: ${e.tags.join(' ')}`,
-      ].join('\n')
+        e.logline ? `Logline: ${e.logline}` : '',
+        e.hook ? `Hook already used in production: ${e.hook}` : '',
+        (e.beats || []).length ? `Beats: ${e.beats.join(' | ')}` : '',
+        e.quote ? `Exact line from the episode: "${e.quote}"` : '',
+        e.cta ? `Call to action: ${e.cta}` : '',
+        (e.tags || []).length ? `Suggested tags: ${e.tags.join(' ')}` : '',
+      ]
+        .filter(Boolean)
+        .join('\n')
     );
   }
 

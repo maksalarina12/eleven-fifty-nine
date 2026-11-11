@@ -16,6 +16,7 @@ import {PLATFORMS, PLATFORM_KEYS, validate} from './lib/platforms.mjs';
 import {ADAPTERS, missingCreds} from './lib/adapters.mjs';
 import {renderDashboard} from './lib/dashboard.mjs';
 import {handleConnect} from './lib/connector.mjs';
+import {loadEpisodes} from './lib/episodes.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -23,7 +24,9 @@ loadEnv(path.join(root, '.env'));
 
 const args = parseArgs();
 const config = readJson(path.join(here, 'config.json'));
-const episodes = readJson(path.join(here, 'episodes.json'));
+const catalog = loadEpisodes({root, publishDir: here, config});
+const episodes = catalog.episodes;
+const videoDirAbs = path.resolve(root, config.videoDir || '.');
 
 const MAX_BODY = 2 * 1024 * 1024;
 let lastRun = {at: null, kind: null, episode: null, log: ''};
@@ -53,6 +56,13 @@ function packState(episode) {
   } catch {
     return null;
   }
+
+  // A pack belongs to one video in one series. Keys are positional, so switching
+  // folders must not silently show another project's captions.
+  const expected = path.relative(root, path.resolve(videoDirAbs, episode.file)).split(path.sep).join('/');
+  const packedFile = String(pack.episode?.file || '').split(path.sep).join('/');
+  if (packedFile && packedFile !== expected) return null;
+  if (pack.series && pack.series !== config.series?.name) return null;
 
   const captions = {};
   const stats = {};
@@ -104,8 +114,8 @@ function buildState() {
   }
 
   const list = episodes.map((episode) => {
-    const videoAbs = path.join(root, config.videoDir, episode.file);
-    const posterAbs = path.join(root, config.videoDir, episode.poster);
+    const videoAbs = path.resolve(videoDirAbs, episode.file);
+    const posterAbs = episode.poster ? path.resolve(videoDirAbs, episode.poster) : null;
     const video = statSafe(videoAbs);
     const poster = statSafe(posterAbs);
     return {
@@ -118,7 +128,7 @@ function buildState() {
       videoOk: Boolean(video),
       videoBytes: video ? video.size : 0,
       posterOk: Boolean(poster),
-      posterUrl: poster ? `/files/${rel(posterAbs)}` : null,
+      posterUrl: poster ? `/poster/${encodeURIComponent(episode.key)}` : null,
       briefs: {
         en: episode.en ? {logline: episode.en.logline} : null,
         id: episode.id ? {logline: episode.id.logline} : null,
@@ -137,6 +147,9 @@ function buildState() {
     defaultLanguage: config.defaultLanguage,
     mode: process.env.LLM_API_KEY || process.env.OPENAI_API_KEY ? 'llm' : 'template',
     model: process.env.LLM_MODEL || config.llm.model,
+    videoDir: config.videoDir,
+    screeningRoom: fs.existsSync(path.join(root, 'HASIL', 'index.html')) && videoDirAbs === path.join(root, 'HASIL'),
+    episodesSource: catalog.source,
     masters: list.filter((episode) => episode.videoOk).length,
     packs: list.filter((episode) => episode.pack).length,
     apiCount,
@@ -227,7 +240,7 @@ const readBody = (req) =>
 
 /* -------------------------------- static -------------------------------- */
 
-const ALLOWED = [path.join(root, 'HASIL'), path.join(root, config.outputDir)];
+const ALLOWED = [path.join(root, 'HASIL'), path.join(root, config.outputDir), videoDirAbs];
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -368,6 +381,23 @@ async function handle(req, res) {
     const {code, output} = await runNode(argv, 120000);
     lastRun = {at: new Date().toISOString(), kind: 'post (dry run)', episode: episode.key, log: output};
     return sendJson(res, 200, {ok: code === 0, log: output, state: buildState()});
+  }
+
+  if (req.method === 'GET' && route.startsWith('/poster/')) {
+    const key = decodeURIComponent(route.slice('/poster/'.length));
+    const episode = findEpisode(key);
+    const posterAbs = episode?.poster ? path.resolve(videoDirAbs, episode.poster) : null;
+    const inside = posterAbs && (posterAbs === videoDirAbs || posterAbs.startsWith(videoDirAbs + path.sep));
+    const info = inside ? statSafe(posterAbs) : null;
+    if (!info || !info.isFile()) {
+      res.writeHead(404, {'content-type': 'text/plain'});
+      res.end('no poster');
+      return;
+    }
+    const type = TYPES[path.extname(posterAbs).toLowerCase()] || 'image/jpeg';
+    res.writeHead(200, {'content-type': type, 'cache-control': 'public, max-age=60'});
+    fs.createReadStream(posterAbs).pipe(res);
+    return;
   }
 
   if (await handleConnect(req, res, {root})) return;

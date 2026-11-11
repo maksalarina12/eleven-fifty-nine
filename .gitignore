@@ -15,6 +15,7 @@ publish/out/
 *.m4v
 
 *.log
+*.bak
 .DS_Store
 Thumbs.db
 

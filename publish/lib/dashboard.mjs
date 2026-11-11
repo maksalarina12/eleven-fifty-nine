@@ -18,7 +18,8 @@ function safeJson(value) {
  * the embedded state; the server owns generation, credentials and static files.
  */
 export function renderDashboard(state) {
-  const series = state.series?.name || 'The Last Message';
+  const series = state.series?.name || 'Release desk';
+  if (!state.episodes?.length) return emptyDashboard({state, series, css});
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@ export function renderDashboard(state) {
 <main class="shell">
   <header class="top">
     <div class="brand">
-      <div class="kicker">EldraMyth · ${state.series?.season || 'S01'} · release desk</div>
+      <div class="kicker">${state.series?.handle || 'local'} · ${state.series?.season || 'S01'} · release desk</div>
       <h1>${series} <em>— release desk</em></h1>
       <p class="tagline">master → pack → platform · local only · nothing posts by itself</p>
     </div>
@@ -48,7 +49,7 @@ export function renderDashboard(state) {
       <button class="mini" id="doctor">check links</button>
       <button class="mini" id="genAll">pack missing</button>
       <a class="mini accent" href="/connect">connect accounts →</a>
-      <a class="mini" href="/files/HASIL/index.html" target="_blank" rel="noopener">screening room ↗</a>
+      ${state.screeningRoom ? '<a class="mini" href="/files/HASIL/index.html" target="_blank" rel="noopener">screening room ↗</a>' : ''}
     </div>
   </div>
 
@@ -82,4 +83,49 @@ export function renderDashboard(state) {
 </body>
 </html>
 `;
+}
+
+/**
+ * Shown when no videos were found: the desk is useless until the user points it
+ * at a folder, so replace the whole page with one instruction.
+ */
+function emptyDashboard({state, series, css}) {
+  const dir = state.videoDir || 'videos';
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Release desk — ${series}</title>
+<style>${css}</style>
+</head>
+<body>
+<main class="shell">
+  <header class="top">
+    <div class="brand">
+      <div class="kicker">${state.series?.handle || 'local'} · ${state.series?.season || 'S01'} · release desk</div>
+      <h1>${series} <em>— release desk</em></h1>
+      <p class="tagline">no videos found · point the desk at a folder</p>
+    </div>
+  </header>
+  <section class="detail" style="display:block;padding:34px 0 10px">
+    <h2 style="font-family:var(--serif);font-weight:400;font-size:26px;margin:0 0 10px">Nothing to publish yet</h2>
+    <p style="max-width:64ch;color:var(--muted);line-height:1.6;margin:0 0 18px">
+      The desk looked in <code style="font-family:var(--mono);color:var(--text)">${dir}/</code> for
+      .mp4, .mov, .m4v or .webm files and found none. Put your videos there, or scan another folder:
+    </p>
+    <pre style="font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text);border:1px solid var(--line);background:rgba(0,0,0,.28);padding:14px 16px;margin:0 0 18px;overflow:auto">npm run setup -- --dir ~/my-videos</pre>
+    <p style="max-width:64ch;color:var(--dim);line-height:1.6;margin:0 0 22px">
+      The setup writes <code style="font-family:var(--mono)">publish/config.json</code> and
+      <code style="font-family:var(--mono)">publish/episodes.json</code> for you, then reload this page.
+    </p>
+    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase">
+      <a href="/connect" style="color:var(--accent)">link accounts</a>
+      &nbsp;·&nbsp;
+      <a href="/" style="color:var(--accent)">reload</a>
+    </p>
+  </section>
+</main>
+</body></html>`;
 }

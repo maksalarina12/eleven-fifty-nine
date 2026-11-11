@@ -15,6 +15,7 @@ import {PLATFORM_KEYS, PLATFORMS, compose, validate} from './lib/platforms.mjs';
 import {buildPrompt} from './lib/prompts.mjs';
 import {chatJSON, hasLLM, templateCaptions, normalizeCaptions} from './lib/llm.mjs';
 import {buildReviewHtml} from './lib/review.mjs';
+import {loadEpisodes} from './lib/episodes.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -23,9 +24,17 @@ loadEnv(path.join(root, '.env'));
 
 const args = parseArgs();
 const config = readJson(path.join(here, 'config.json'));
-const episodes = readJson(path.join(here, 'episodes.json'));
+const catalog = loadEpisodes({root, publishDir: here, config});
+const episodes = catalog.episodes;
 
-const wanted = String(args.episode ?? args.e ?? '5').toLowerCase();
+if (!episodes.length) {
+  const where = path.resolve(root, args.dir || config.videoDir || '.');
+  console.error(`No videos found in ${where}`);
+  console.error('Put MP4s there, or point the desk at another folder: npm run setup -- --dir <folder>');
+  process.exit(1);
+}
+
+const wanted = String(args.episode ?? args.e ?? episodes[0].part).toLowerCase();
 const episode = episodes.find(
   (e) => e.key === wanted || String(e.part) === wanted || String(e.part) === wanted.replace(/^ep0*/, '')
 );
@@ -35,16 +44,19 @@ if (!episode) {
 }
 
 const languages = args.lang ? parseList(args.lang) : config.languages;
-const unknownLang = languages.filter((l) => !episode[l]);
-if (unknownLang.length) {
-  console.error(`No copy for language(s) ${unknownLang.join(', ')} on ${episode.key}. Available: ${['en', 'id'].filter((l) => episode[l]).join(', ')}`);
-  process.exit(1);
+const missingBrief = languages.filter((l) => {
+  const e = episode[l];
+  return !(e && (e.logline || e.hook || (e.beats || []).length || e.cta));
+});
+if (missingBrief.length) {
+  log('copy', `no written brief for ${missingBrief.join(', ')} — using generic copy`);
 }
 
-const videoAbs = path.resolve(root, args.video || path.join(config.videoDir, episode.file));
+const videoDir = path.resolve(root, args.dir || config.videoDir || '.');
+const videoAbs = path.resolve(root, args.video || path.join(videoDir, episode.file));
 if (!fs.existsSync(videoAbs)) console.warn(`! video not found: ${videoAbs}`);
 
-const outDir = path.join(root, config.outputDir, episode.key);
+const outDir = path.join(path.resolve(root, args.out || config.outputDir), episode.key);
 fs.mkdirSync(outDir, {recursive: true});
 
 const seed = Number(args.seed || 0) || Math.floor(Math.random() * 9000) + 100;
@@ -90,6 +102,7 @@ const stampNow = new Date();
 const p2 = (n) => String(n).padStart(2, '0');
 const generatedAt = `${stampNow.getFullYear()}-${p2(stampNow.getMonth() + 1)}-${p2(stampNow.getDate())} ${p2(stampNow.getHours())}:${p2(stampNow.getMinutes())}`;
 const pack = {
+  series: config.series?.name || null,
   episode: {
     key: episode.key,
     part: episode.part,
@@ -125,7 +138,7 @@ writeFile(
     episode,
     captions,
     videoPath: path.relative(outDir, videoAbs),
-    posterSrc: path.relative(outDir, path.join(root, config.videoDir, episode.poster)),
+    posterSrc: episode.poster ? path.relative(outDir, path.join(videoDir, episode.poster)) : null,
     generatedAt,
     warnings,
     mode,

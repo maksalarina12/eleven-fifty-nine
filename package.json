@@ -9,6 +9,7 @@
     "still": "remotion still src/index.ts ClaudeReel",
     "typecheck": "tsc --noEmit",
     "pack": "node publish/generate.mjs",
+    "setup": "node publish/setup.mjs",
     "pack:post": "node publish/post.mjs",
     "dashboard": "node publish/dashboard.mjs",
     "doctor": "node publish/doctor.mjs"
