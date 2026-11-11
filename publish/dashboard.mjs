@@ -24,9 +24,9 @@ loadEnv(path.join(root, '.env'));
 
 const args = parseArgs();
 const config = readJson(path.join(here, 'config.json'));
-const catalog = loadEpisodes({root, publishDir: here, config});
+const catalog = loadEpisodes({root, publishDir: here, config, dir: args.dir});
 const episodes = catalog.episodes;
-const videoDirAbs = path.resolve(root, config.videoDir || '.');
+const videoDirAbs = path.resolve(root, args.dir || config.videoDir || '.');
 
 const MAX_BODY = 2 * 1024 * 1024;
 let lastRun = {at: null, kind: null, episode: null, log: ''};
@@ -147,7 +147,7 @@ function buildState() {
     defaultLanguage: config.defaultLanguage,
     mode: process.env.LLM_API_KEY || process.env.OPENAI_API_KEY ? 'llm' : 'template',
     model: process.env.LLM_MODEL || config.llm.model,
-    videoDir: config.videoDir,
+    videoDir: args.dir || config.videoDir,
     screeningRoom: fs.existsSync(path.join(root, 'HASIL', 'index.html')) && videoDirAbs === path.join(root, 'HASIL'),
     episodesSource: catalog.source,
     masters: list.filter((episode) => episode.videoOk).length,

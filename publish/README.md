@@ -88,7 +88,7 @@ Flag yang berguna:
 | `--episode N` | nomor part (default: episode pertama) |
 | `--lang en,id` | bahasa yang dibuat |
 | `--no-llm` | paksa copy template |
-| `--dir <folder>` | pindai folder lain tanpa mengubah config |
+| `--dir <folder>` | pakai folder video lain tanpa mengubah config (dipindai kalau belum ada `episodes.json`) |
 | `--out <folder>` | tulis pack ke folder lain (buat preview) |
 | `--open` | buka review page setelah selesai |
 

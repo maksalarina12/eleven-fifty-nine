@@ -24,7 +24,7 @@ loadEnv(path.join(root, '.env'));
 
 const args = parseArgs();
 const config = readJson(path.join(here, 'config.json'));
-const catalog = loadEpisodes({root, publishDir: here, config});
+const catalog = loadEpisodes({root, publishDir: here, config, dir: args.dir});
 const episodes = catalog.episodes;
 
 if (!episodes.length) {

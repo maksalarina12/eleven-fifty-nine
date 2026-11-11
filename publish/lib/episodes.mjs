@@ -159,7 +159,7 @@ export function episodesPathFor(config, publishDir) {
  * Return {episodes, source, file}. `source` is "file" or "scan" so the UI can
  * say which one it is showing.
  */
-export function loadEpisodes({root, publishDir, config}) {
+export function loadEpisodes({root, publishDir, config, dir}) {
   const file = episodesPathFor(config, publishDir);
   if (fs.existsSync(file)) {
     try {
@@ -172,6 +172,6 @@ export function loadEpisodes({root, publishDir, config}) {
     }
   }
 
-  const dir = path.resolve(root, config.videoDir || '.');
-  return {episodes: draftEpisodes({dir}), source: 'scan', file: null, dir};
+  const scanDir = dir ? path.resolve(root, dir) : path.resolve(root, config.videoDir || '.');
+  return {episodes: draftEpisodes({dir: scanDir}), source: 'scan', file: null, dir: scanDir};
 }
