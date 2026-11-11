@@ -15,6 +15,7 @@ import {loadEnv, readJson, parseArgs, openInBrowser, log} from './lib/util.mjs';
 import {PLATFORMS, PLATFORM_KEYS, validate} from './lib/platforms.mjs';
 import {ADAPTERS, missingCreds} from './lib/adapters.mjs';
 import {renderDashboard} from './lib/dashboard.mjs';
+import {handleConnect} from './lib/connector.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -368,6 +369,8 @@ async function handle(req, res) {
     lastRun = {at: new Date().toISOString(), kind: 'post (dry run)', episode: episode.key, log: output};
     return sendJson(res, 200, {ok: code === 0, log: output, state: buildState()});
   }
+
+  if (await handleConnect(req, res, {root})) return;
 
   if (req.method === 'GET' && route.startsWith('/files/')) {
     serveFile(req, res, route);

@@ -173,11 +173,22 @@ fall back to hand-written templates per episode in `publish/episodes.json`.
 Hashtags are restricted to a fixed pool, so the model cannot invent tags.
 Captions are generated in English and Indonesian.
 
-### Accounts
+### Accounts — one click each
 
-Each platform requires its own developer app — there is no universal login.
-[`publish/CONNECT.md`](publish/CONNECT.md) walks through every app, scope and
-token, and `npm run doctor` verifies which account a token really belongs to:
+![Connections](docs/connections.png)
+
+`npm run dashboard`, then open `/connect`. Paste an app's Client ID and secret
+once, press **connect →**, approve in the browser, and the tokens are written to
+`.env` for you. No token copying, no expiry babysitting: X (2 h) and TikTok
+(24 h) access tokens refresh themselves from their refresh tokens.
+
+The only manual part left is creating the developer app — Google, Meta, TikTok
+and X all require it, so no tool can skip it. [`publish/CONNECT.md`](publish/CONNECT.md)
+walks through each console, scope and redirect URI, plus the failure messages
+that actually show up.
+
+`npm run doctor` (or **check links** on the desk) then proves which account a
+token belongs to, rather than merely that a token exists:
 
 ```
 PLATFORM        STATUS    ACCOUNT          DETAIL
@@ -186,10 +197,11 @@ Instagram       linked    @eldramyth       BUSINESS
 TikTok          —         not configured   missing TIKTOK_ACCESS_TOKEN
 ```
 
-Credentials live in `.env` at the repository root (never committed).
-Uploads default to the most private setting each platform allows: YouTube
-`private`, TikTok `SELF_ONLY`. Instagram and Facebook Reels have no draft state —
-publishing is immediate.
+Meta links Instagram and Facebook from a single app: pick the Page, and the Page
+token plus `IG_USER_ID` are written together. Credentials live in `.env` at the
+repository root (chmod 600, never committed). Uploads default to the most private
+setting each platform allows: YouTube `private`, TikTok `SELF_ONLY`. Instagram and
+Facebook Reels have no draft state — publishing is immediate.
 
 ---
 

@@ -7,6 +7,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import {ensureFresh} from './tokens.mjs';
 
 const GRAPH = 'https://graph.facebook.com/v21.0';
 
@@ -231,6 +232,7 @@ const tiktok = {
     };
   },
   async post({video, caption}) {
+    await ensureFresh('tiktok').catch(() => null);
     const body = fileBytes(video);
     const size = body.length;
     // TikTok requires chunks between 5 MB and 64 MB; one chunk is fine for a 17 MB reel.
@@ -296,6 +298,7 @@ const x = {
     };
   },
   async post({video, caption}) {
+    await ensureFresh('x').catch(() => null);
     const body = fileBytes(video);
     const token = process.env.X_ACCESS_TOKEN;
     const auth = {authorization: `Bearer ${token}`};

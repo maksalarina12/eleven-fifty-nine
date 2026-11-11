@@ -47,6 +47,7 @@ export function renderDashboard(state) {
     <div class="tools">
       <button class="mini" id="doctor">check links</button>
       <button class="mini" id="genAll">pack missing</button>
+      <a class="mini accent" href="/connect">connect accounts →</a>
       <a class="mini" href="/files/HASIL/index.html" target="_blank" rel="noopener">screening room ↗</a>
     </div>
   </div>

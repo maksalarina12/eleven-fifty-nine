@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadEnv, parseArgs, writeFile} from './lib/util.mjs';
+import {ensureFresh} from './lib/tokens.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -105,6 +106,7 @@ const checks = {
     label: 'TikTok',
     env: ['TIKTOK_ACCESS_TOKEN'],
     async run() {
+      await ensureFresh('tiktok').catch(() => null);
       const data = await call('https://open.tiktokapis.com/v2/user/info/?fields=display_name,username,open_id', {
         headers: {authorization: `Bearer ${process.env.TIKTOK_ACCESS_TOKEN}`},
       });
@@ -118,6 +120,7 @@ const checks = {
     label: 'X',
     env: ['X_ACCESS_TOKEN'],
     async run() {
+      await ensureFresh('x').catch(() => null);
       const data = await call('https://api.x.com/2/users/me', {
         headers: {authorization: `Bearer ${process.env.X_ACCESS_TOKEN}`},
       });

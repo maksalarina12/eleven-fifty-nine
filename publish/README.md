@@ -103,13 +103,17 @@ Atur nada di `publish/config.json` → `style`.
 
 ## Kaitkan akun
 
-Langkah lengkap per platform (app, scope, token, batas umur token) ada di
-[`CONNECT.md`](CONNECT.md). Ringkasnya:
+Satu tombol per platform: buka `/connect` di dashboard, tempel Client ID/Secret
+app-mu sekali, tekan **connect →**, klik Allow. Token masuk `.env` sendiri dan
+token X/TikTok di-refresh otomatis.
 
 ```bash
-cp publish/.env.example .env   # isi kredensial
-npm run doctor                 # cek token menunjuk ke akun yang benar
+npm run dashboard     # lalu buka http://127.0.0.1:4173/connect
+npm run doctor        # cek token menunjuk ke akun yang benar
 ```
+
+Yang tetap manual hanya pembuatan developer app (platform mewajibkannya). Langkah
+per platform, scope, dan jebakannya ada di [`CONNECT.md`](CONNECT.md).
 
 Dashboard juga punya tombol **check links** yang menjalankan pemeriksaan yang
 sama dan menampilkan nama akun di kolom Link.
