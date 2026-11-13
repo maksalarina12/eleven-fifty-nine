@@ -1,6 +1,6 @@
 # THE LAST MESSAGE
 
-**A five-part animated psychological thriller.**
+**A six-part animated psychological thriller.**
 One apartment, one rainy night, and a minute that keeps happening to someone else.
 
 ![The screening room](docs/screening-room.png)
@@ -21,7 +21,7 @@ vector artwork — character rigs, rain, monitors, lighting — composed in Reac
 rendered to 1080 × 1920 vertical video.
 
 The series follows Noah. At 11:59 PM an unknown number tells him not to open his
-door. Over five parts, the hallway, the clock, and the messages stop behaving
+door. Over six parts, the hallway, the clock, and the messages stop behaving
 like things that belong to him.
 
 | Part | Title | Runtime | Frames |
@@ -31,6 +31,7 @@ like things that belong to him.
 | 03 | **12:00 AM** *(The Missing Hour)* | 0:43 | 1305 |
 | 04 | **The Loop** | 1:01 | 1815 |
 | 05 | **The Room** *(Subject 001)* | 1:07 | 2020 |
+| 06 | **DON'T TRUST NOAH.** *(Subject 002)* | 1:23 | 2497 |
 
 Each episode is 1080 × 1920, 30 fps, H.264 + AAC, with the supplied narration
 kept intact — pauses, breaths and room tone included.
@@ -51,8 +52,8 @@ repository ships the code that renders them plus poster frames. See
 ├─ src/
 │  ├─ character/     vector rigs — Noah, Amara, Dr. Elias
 │  ├─ Episode.tsx    Part 1 + shared camera/room/grain components
-│  ├─ Part2–Part5.tsx
-│  └─ c5, c7, c8, c9, c10.tsx   render entry points per part
+│  ├─ Part2–Part6.tsx
+│  └─ c5, c7, c8, c9, c10, c11.tsx   render entry points per part
 ├─ publish/          release desk: captions, review pages, upload adapters
 ├─ docs/             screenshots used by this README
 └─ out/              working renders (not committed)
@@ -80,8 +81,8 @@ npm install
 ## Watch
 
 Copy your own masters into `HASIL/` using the names the player expects
-(`THE_LAST_MESSAGE_Part1.mp4` … `Part5.mp4`), then open
-[`HASIL/index.html`](HASIL/index.html). The screening room plays all five parts,
+(`THE_LAST_MESSAGE_Part1.mp4` … `Part6.mp4`), then open
+[`HASIL/index.html`](HASIL/index.html). The screening room plays all six parts,
 remembers where you are, and keeps the poster frames.
 
 If you only have a clone, the player still runs and shows the poster rail — the
@@ -115,6 +116,9 @@ npx remotion render src/c9.tsx  Part4   out/part4.mp4 --timeout=120000 --concurr
 
 # Part 5 — 67.3 s
 npx remotion render src/c10.tsx Part5   out/part5.mp4 --timeout=180000 --concurrency=3 --crf=19
+
+# Part 6 — 83.2 s (finale)
+npx remotion render src/c11.tsx Part6   out/part6.mp4 --timeout=240000 --concurrency=3 --crf=19
 ```
 
 Grab a single frame while tuning a shot:
@@ -132,7 +136,10 @@ Renders take roughly 15–25 minutes per part on three threads.
 - Small `EldraMyth` watermark, upper right
 - On-screen text is limited to what the storyboard allows — in Part 5 that is
   `145`, `146`, `147`, `SUBJECT 001`, `STATUS: TERMINATED`, and
-  `Find the room where you were born.`
+  `Find the room where you were born.` In Part 6 it is `11:59`, `12:00 AM`,
+  `SUBJECT 002` and `DON'T TRUST NOAH.`, plus that same `Find the room where you
+  were born.` line on Noah's phone, which the storyboard calls for as diegetic
+  text.
 - A short black tail so the last frame is not clipped by players
 
 ---
@@ -219,9 +226,11 @@ Facebook Reels have no draft state — publishing is immediate.
 
 - Narration uses the supplied audio as-is: no re-recording, no stretching, no
   added beats.
-- Part 4 and Part 5 timelines come from forced alignment (Whisper `base.en`) plus
-  `silencedetect`, so cuts follow the words actually spoken.
-- Character rigs share a single visual language across all five parts: same
+- Part 4, Part 5 and Part 6 timelines come from forced alignment (Whisper
+  `base.en`) plus `silencedetect`, so cuts follow the words actually spoken. The
+  Part 6 grid was cut against the real audio length, 83.226 s, not the
+  storyboard's stale 84.478 s estimate.
+- Character rigs share a single visual language across all six parts: same
   faces, same scars, same light.
 - `node_modules` may be a symlink in the author's working copy; a fresh clone
   just runs `npm install`.

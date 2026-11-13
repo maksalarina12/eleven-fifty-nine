@@ -17,7 +17,14 @@
       ],
       "quote": "Don't open the door.",
       "cta": "Part 1 of The Last Message. Start from the beginning.",
-      "tags": ["#TheLastMessage", "#anime", "#psychologicalthriller", "#scifi", "#mysteryseries", "#shortfilm"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#psychologicalthriller",
+        "#scifi",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
     },
     "id": {
       "logline": "Pukul 23.59, nomor tak dikenal mengirim satu pesan ke Noah: jangan buka pintu. Padahal di luar, hujan tidak berhenti sejak satu jam lalu.",
@@ -29,7 +36,14 @@
       ],
       "quote": "Don't open the door.",
       "cta": "Part 1 dari The Last Message. Mulai dari awal.",
-      "tags": ["#TheLastMessage", "#anime", "#thrillerpsikologis", "#fiksishortfilm", "#misteri", "#animasi2d"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#thrillerpsikologis",
+        "#fiksishortfilm",
+        "#misteri",
+        "#animasi2d"
+      ]
     }
   },
   {
@@ -50,7 +64,14 @@
       ],
       "quote": "You're not the first Noah.",
       "cta": "Part 2 of The Last Message. Watch Part 1 first.",
-      "tags": ["#TheLastMessage", "#anime", "#doppelganger", "#psychologicalthriller", "#mysteryseries", "#shortfilm"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#doppelganger",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
     },
     "id": {
       "logline": "Pesan kedua datang dengan tautan kamera koridor. Pria yang berdiri di depan pintu Noah memakai wajahnya sendiri.",
@@ -62,7 +83,14 @@
       ],
       "quote": "You're not the first Noah.",
       "cta": "Part 2 dari The Last Message. Tonton Part 1 dulu.",
-      "tags": ["#TheLastMessage", "#anime", "#kembarandiri", "#thrillerpsikologis", "#misteri", "#animasi2d"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#kembarandiri",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
     }
   },
   {
@@ -83,7 +111,14 @@
       ],
       "quote": "You have one minute left.",
       "cta": "Part 3 of The Last Message.",
-      "tags": ["#TheLastMessage", "#anime", "#timetravel", "#loops", "#psychologicalthriller", "#shortfilm"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#timetravel",
+        "#loops",
+        "#psychologicalthriller",
+        "#shortfilm"
+      ]
     },
     "id": {
       "logline": "Noah memutar ulang rekaman koridor. Rekaman itu sampai tengah malam, sementara ponselnya sendiri masih 23.59. Dan Noah di dalam rekaman melangkah keluar.",
@@ -95,7 +130,14 @@
       ],
       "quote": "You have one minute left.",
       "cta": "Part 3 dari The Last Message.",
-      "tags": ["#TheLastMessage", "#anime", "#perjalananwaktu", "#loop", "#thrillerpsikologis", "#animasi2d"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#perjalananwaktu",
+        "#loop",
+        "#thrillerpsikologis",
+        "#animasi2d"
+      ]
     }
   },
   {
@@ -116,7 +158,14 @@
       ],
       "quote": "You've done this before.",
       "cta": "Part 4 of The Last Message. The loop is closing.",
-      "tags": ["#TheLastMessage", "#anime", "#timeloop", "#psychologicalthriller", "#mysteryseries", "#shortfilm"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#timeloop",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
     },
     "id": {
       "logline": "Seratus empat puluh tujuh pesan masuk sekaligus. Menitnya tidak pernah berganti. Dan pengirim pesan itu sudah tahu Noah pernah melakukan ini.",
@@ -128,7 +177,14 @@
       ],
       "quote": "You've done this before.",
       "cta": "Part 4 dari The Last Message. Loop-nya menutup.",
-      "tags": ["#TheLastMessage", "#anime", "#timeloop", "#thrillerpsikologis", "#misteri", "#animasi2d"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#timeloop",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
     }
   },
   {
@@ -149,7 +205,14 @@
       ],
       "quote": "Find the room where you were born.",
       "cta": "Part 5 of The Last Message. Four parts before this one.",
-      "tags": ["#TheLastMessage", "#anime", "#subject001", "#psychologicalthriller", "#mysteryseries", "#shortfilm"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject001",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
     },
     "id": {
       "logline": "Noah terbangun di ruangan yang belum pernah ia lihat, di depan seorang perempuan yang sudah tahu isi berkasnya. Catatan itu menyebut SUBJECT 001 telah dihentikan. Noah masih bernapas.",
@@ -161,7 +224,61 @@
       ],
       "quote": "Find the room where you were born.",
       "cta": "Part 5 dari The Last Message. Empat part sebelumnya wajib ditonton.",
-      "tags": ["#TheLastMessage", "#anime", "#subject001", "#thrillerpsikologis", "#misteri", "#animasi2d"]
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject001",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep06",
+    "part": 6,
+    "file": "THE_LAST_MESSAGE_Part6.mp4",
+    "poster": "poster6.jpg",
+    "title": "DON'T TRUST NOAH.",
+    "alias": "SUBJECT 002",
+    "runtime": "83 seconds",
+    "en": {
+      "logline": "Noah opens his own apartment door and finds the laboratory that has been recording him. Every screen shows a different death, every clock is stuck at 11:59, and the only person still answering him is a woman who will not turn around.",
+      "hook": "Every screen is him. Every clock says 11:59.",
+      "beats": [
+        "A door that opens onto a laboratory instead of a hallway.",
+        "Wall after wall of Noah, each one dying at the same minute.",
+        "Midnight finally arrives, and Amara's phone says DON'T TRUST NOAH."
+      ],
+      "quote": "Don't trust Noah.",
+      "cta": "Part 6 of The Last Message. The finale.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject002",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Noah membuka pintu apartemennya sendiri dan menemukan laboratorium yang selama ini merekamnya. Setiap layar menampilkan kematian yang berbeda, setiap jam berhenti di 23.59, dan satu-satunya orang yang masih menjawabnya adalah perempuan yang tak pernah berbalik badan.",
+      "hook": "Semua layar adalah dia. Semua jam menunjukkan 23.59.",
+      "beats": [
+        "Pintu yang terbuka ke laboratorium, bukan ke koridor.",
+        "Dinding demi dinding berisi Noah, semuanya mati di menit yang sama.",
+        "Tengah malam akhirnya tiba, dan ponsel Amara berbunyi DON'T TRUST NOAH."
+      ],
+      "quote": "Don't trust Noah.",
+      "cta": "Part 6 dari The Last Message. Penutup.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject002",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
     }
   }
 ]

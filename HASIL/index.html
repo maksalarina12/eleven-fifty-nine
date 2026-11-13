@@ -224,7 +224,7 @@
     <header>
       <div class="kicker">ELDRAMYTH · ORIGINAL</div>
       <h1>The Last<br><em>Message</em></h1>
-      <p class="deck">One apartment, one rainy night, and a minute that keeps happening to someone else.</p>
+      <p class="deck">One apartment, one rainy night, and a minute that keeps happening to someone else. Six parts, one minute.</p>
     </header>
 
     <ol class="episodes" id="episodes">
@@ -268,6 +268,14 @@
           <span class="prog" id="prog4"></span>
         </button>
       </li>
+      <li>
+        <button class="ep" data-part="5" aria-current="false">
+          <span class="num">PART 06</span>
+          <span class="name">Don't Trust Noah.</span>
+          <span class="meta"><span>01:23</span><span>S01 · E06</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog5"></span>
+        </button>
+      </li>
     </ol>
 
     <div class="foot">
@@ -275,7 +283,7 @@
       <p class="note">NOAH · RAIN · NO SUBTITLES<br>HEADPHONES RECOMMENDED</p>
       <div class="actions">
         <a class="dl" id="dl" href="THE_LAST_MESSAGE_Part1.mp4" download>DOWNLOAD MP4 ↓</a>
-        <span class="keys">SPACE · ← → · 1 2 3 4 5 · F</span>
+        <span class="keys">SPACE · ← → · 1–6 · F</span>
       </div>
     </div>
   </aside>
@@ -324,6 +332,14 @@
       dl: "THE_LAST_MESSAGE_Part5.mp4",
       poster: "poster5.jpg",
     },
+    {
+      src: "THE_LAST_MESSAGE_Part6.mp4",
+      label: "S01 · PART 06",
+      title: "DON'T TRUST NOAH.",
+      accent: "#c8a5a0",
+      dl: "THE_LAST_MESSAGE_Part6.mp4",
+      poster: "poster6.jpg",
+    },
   ];
 
   const root = document.documentElement;
@@ -346,7 +362,7 @@
   const dl = document.getElementById("dl");
   const ticks = document.getElementById("ticks");
   const eps = [...document.querySelectorAll(".ep")];
-  const progs = ["prog0", "prog1", "prog2", "prog3", "prog4"].map((id) => document.getElementById(id));
+  const progs = ["prog0", "prog1", "prog2", "prog3", "prog4", "prog5"].map((id) => document.getElementById(id));
 
   const ICON_PLAY = "M8 5v14l11-7z";
   const ICON_PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
