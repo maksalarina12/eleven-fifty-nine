@@ -10,6 +10,7 @@ type Props = {
   turn?: number;
   rim?: number;
   screen?: number;
+  lidOverride?: number;
   preserve?: string;
   viewBox?: string;
   style?: React.CSSProperties;
@@ -136,11 +137,12 @@ export const Amara: React.FC<Props> = ({
   turn = 0,
   rim = 1,
   screen = 0.4,
+  lidOverride = 0,
   preserve = 'xMidYMax meet',
   viewBox = '0 0 600 1200',
   style,
 }) => {
-  const lid = LID[expression];
+  const lid = Math.max(LID[expression], lidOverride);
   const brow = BROW[expression];
   const lk = LOOK[look];
   const t = Math.max(-1, Math.min(1, turn + lk.head * 0.3));

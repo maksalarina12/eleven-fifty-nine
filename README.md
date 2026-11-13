@@ -1,6 +1,6 @@
 # THE LAST MESSAGE
 
-**A six-part animated psychological thriller.**
+**A ten-part animated psychological thriller.**
 One apartment, one rainy night, and a minute that keeps happening to someone else.
 
 ![The screening room](docs/screening-room.png)
@@ -21,8 +21,9 @@ vector artwork — character rigs, rain, monitors, lighting — composed in Reac
 rendered to 1080 × 1920 vertical video.
 
 The series follows Noah. At 11:59 PM an unknown number tells him not to open his
-door. Over six parts, the hallway, the clock, and the messages stop behaving
-like things that belong to him.
+door. Over ten parts, the hallway, the clock, and the messages stop behaving
+like things that belong to him, until the laboratory underneath the building
+starts behaving like it has been waiting for him.
 
 | Part | Title | Runtime | Frames |
 |---|---|---|---|
@@ -32,6 +33,10 @@ like things that belong to him.
 | 04 | **The Loop** | 1:01 | 1816 |
 | 05 | **The Room** *(Subject 001)* | 1:07 | 2020 |
 | 06 | **DON'T TRUST NOAH.** *(Subject 002)* | 1:23 | 2497 |
+| 07 | **SHE SENT IT HERSELF** *(Subject 002)* | 1:14 | 2212 |
+| 08 | **THE SECOND AMARA** | 1:18 | 2329 |
+| 09 | **THE FIRST EXPERIMENT** *(Project Origin)* | 1:34 | 2831 |
+| 10 | **THE ORIGINAL SIN** *(Project Eden)* | 2:04 | 3733 |
 
 Each episode is 1080 × 1920, 30 fps, H.264 + AAC, with the supplied narration
 kept intact — pauses, breaths and room tone included.
@@ -52,8 +57,10 @@ repository ships the code that renders them plus poster frames. See
 ├─ src/
 │  ├─ character/     vector rigs — Noah, Amara, Dr. Elias
 │  ├─ Episode.tsx    Part 1 + shared camera/room/grain components
-│  ├─ Part2–Part6.tsx
-│  └─ c5, c7, c8, c9, c10, c11.tsx   render entry points per part
+│  ├─ kit/           shared chrome for Parts 7–10: watermark, monitors,
+│  │                 control wall, phone UI, NoahBack, helpers
+│  ├─ Part2–Part10.tsx
+│  └─ c5, c7 … c15.tsx   render entry points per part
 ├─ publish/          release desk: captions, review pages, upload adapters
 ├─ docs/             screenshots used by this README
 └─ out/              working renders (not committed)
@@ -81,8 +88,8 @@ npm install
 ## Watch
 
 Copy your own masters into `HASIL/` using the names the player expects
-(`THE_LAST_MESSAGE_Part1.mp4` … `Part6.mp4`), then open
-[`HASIL/index.html`](HASIL/index.html). The screening room plays all six parts,
+(`THE_LAST_MESSAGE_Part1.mp4` … `Part10.mp4`), then open
+[`HASIL/index.html`](HASIL/index.html). The screening room plays all ten parts,
 remembers where you are, and keeps the poster frames.
 
 If you only have a clone, the player still runs and shows the poster rail — the
@@ -117,8 +124,20 @@ npx remotion render src/c9.tsx  Part4   out/part4.mp4 --timeout=120000 --concurr
 # Part 5 — 67.3 s
 npx remotion render src/c10.tsx Part5   out/part5.mp4 --timeout=180000 --concurrency=3 --crf=19
 
-# Part 6 — 83.2 s (finale)
+# Part 6 — 83.2 s
 npx remotion render src/c11.tsx Part6   out/part6.mp4 --timeout=240000 --concurrency=3 --crf=19
+
+# Part 7 — 73.7 s  (Subject 002, one live monitor)
+npx remotion render src/c12.tsx Part7   out/part7.mp4 --timeout=300000 --concurrency=3 --crf=19
+
+# Part 8 — 77.6 s  (The Second Amara)
+npx remotion render src/c13.tsx Part8   out/part8.mp4 --timeout=300000 --concurrency=3 --crf=19
+
+# Part 9 — 94.4 s  (The First Experiment)
+npx remotion render src/c14.tsx Part9   out/part9.mp4 --timeout=300000 --concurrency=3 --crf=19
+
+# Part 10 — 124.4 s (season finale, the sealed chamber)
+npx remotion render src/c15.tsx Part10  out/part10.mp4 --timeout=300000 --concurrency=3 --crf=19
 ```
 
 Grab a single frame while tuning a shot:
@@ -139,8 +158,15 @@ Renders take roughly 15–25 minutes per part on three threads.
   `Find the room where you were born.` In Part 6 it is `11:59`, `12:00 AM`,
   `SUBJECT 002` and `DON'T TRUST NOAH.`, plus that same `Find the room where you
   were born.` line on Noah's phone, which the storyboard calls for as diegetic
-  text.
-- A short black tail so the last frame is not clipped by players
+  text. Parts 7–10 carry `MESSAGES`, `SUBJECT 002`, `He remembers you.`,
+  `You were never Subject 002.`, `You were the one who created it.`,
+  `THE FIRST EXPERIMENT`, `PROJECT ORIGIN`, `MEMORY SYNCHRONIZATION INITIATED`,
+  `ACCESS DENIED`, `11:59 PM` / `12:00 AM`, `Thank you for remembering me.`,
+  the coordinates `35.6812° N / 139.7671° E`, and `PROJECT EDEN` — all of it
+  inside the fiction: phone screens, monitor labels, clocks and walls. There are
+  no subtitles and no title cards.
+- A short black tail (Parts 1–7) or a fade to black inside the last spoken word
+  (Parts 8–10), so the last frame is never clipped by players
 
 ---
 
@@ -226,11 +252,15 @@ Facebook Reels have no draft state — publishing is immediate.
 
 - Narration uses the supplied audio as-is: no re-recording, no stretching, no
   added beats.
-- Part 4, Part 5 and Part 6 timelines come from forced alignment (Whisper
-  `base.en`) plus `silencedetect`, so cuts follow the words actually spoken. The
-  Part 6 grid was cut against the real audio length, 83.226 s, not the
-  storyboard's stale 84.478 s estimate.
-- Character rigs share a single visual language across all six parts: same
+- Part 4 onwards, timelines come from forced alignment (Whisper `base.en`)
+  plus `silencedetect`, so cuts follow the words actually spoken. The Part 6
+  grid was cut against the real audio length, 83.226 s, not the storyboard's
+  stale 84.478 s estimate; Parts 7–10 were cut the same way (73.72 s, 77.64 s,
+  94.35 s, 124.45 s).
+- `src/kit/` is the shared chrome for Parts 7–10 — watermark, scanlines, glass,
+  monitors, control wall, phone UI and `NoahBack`. It exists so four episodes
+  keep one visual language without copying two thousand lines four times.
+- Character rigs share a single visual language across all ten parts: same
   faces, same scars, same light.
 - `node_modules` may be a symlink in the author's working copy; a fresh clone
   just runs `npm install`.

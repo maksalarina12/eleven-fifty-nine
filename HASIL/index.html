@@ -276,6 +276,38 @@
           <span class="prog" id="prog5"></span>
         </button>
       </li>
+      <li>
+        <button class="ep" data-part="6" aria-current="false">
+          <span class="num">PART 07</span>
+          <span class="name">Subject 002</span>
+          <span class="meta"><span>01:14</span><span>S01 · E07</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog6"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="7" aria-current="false">
+          <span class="num">PART 08</span>
+          <span class="name">The Second Amara</span>
+          <span class="meta"><span>01:18</span><span>S01 · E08</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog7"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="8" aria-current="false">
+          <span class="num">PART 09</span>
+          <span class="name">The First Experiment</span>
+          <span class="meta"><span>01:34</span><span>S01 · E09</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog8"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="9" aria-current="false">
+          <span class="num">PART 10</span>
+          <span class="name">The Original Sin</span>
+          <span class="meta"><span>02:04</span><span>S01 · E10</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog9"></span>
+        </button>
+      </li>
     </ol>
 
     <div class="foot">
@@ -283,7 +315,7 @@
       <p class="note">NOAH · RAIN · NO SUBTITLES<br>HEADPHONES RECOMMENDED</p>
       <div class="actions">
         <a class="dl" id="dl" href="THE_LAST_MESSAGE_Part1.mp4" download>DOWNLOAD MP4 ↓</a>
-        <span class="keys">SPACE · ← → · 1–6 · F</span>
+        <span class="keys">SPACE · ← → · 1–9 · 0 · F</span>
       </div>
     </div>
   </aside>
@@ -340,6 +372,38 @@
       dl: "THE_LAST_MESSAGE_Part6.mp4",
       poster: "poster6.jpg",
     },
+    {
+      src: "THE_LAST_MESSAGE_Part7.mp4",
+      label: "S01 · PART 07",
+      title: "SUBJECT 002",
+      accent: "#8fa8b8",
+      dl: "THE_LAST_MESSAGE_Part7.mp4",
+      poster: "poster7.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part8.mp4",
+      label: "S01 · PART 08",
+      title: "THE SECOND AMARA",
+      accent: "#b7c9d6",
+      dl: "THE_LAST_MESSAGE_Part8.mp4",
+      poster: "poster8.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part9.mp4",
+      label: "S01 · PART 09",
+      title: "THE FIRST EXPERIMENT",
+      accent: "#a9b48f",
+      dl: "THE_LAST_MESSAGE_Part9.mp4",
+      poster: "poster9.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_Part10.mp4",
+      label: "S01 · PART 10",
+      title: "THE ORIGINAL SIN",
+      accent: "#d9c48f",
+      dl: "THE_LAST_MESSAGE_Part10.mp4",
+      poster: "poster10.jpg",
+    },
   ];
 
   const root = document.documentElement;
@@ -362,7 +426,7 @@
   const dl = document.getElementById("dl");
   const ticks = document.getElementById("ticks");
   const eps = [...document.querySelectorAll(".ep")];
-  const progs = ["prog0", "prog1", "prog2", "prog3", "prog4", "prog5"].map((id) => document.getElementById(id));
+  const progs = ["prog0", "prog1", "prog2", "prog3", "prog4", "prog5", "prog6", "prog7", "prog8", "prog9"].map((id) => document.getElementById(id));
 
   const ICON_PLAY = "M8 5v14l11-7z";
   const ICON_PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
@@ -490,7 +554,10 @@
     if (e.code === "Space") { e.preventDefault(); toggle(); }
     else if (e.code === "ArrowRight") video.currentTime = Math.min(video.currentTime + 5, video.duration || 0);
     else if (e.code === "ArrowLeft") video.currentTime = Math.max(video.currentTime - 5, 0);
-    else if (/^[1-9]$/.test(e.key) && Number(e.key) <= PARTS.length) load(Number(e.key) - 1, true);
+    else if (/^[0-9]$/.test(e.key)) {
+      const n = e.key === "0" ? 10 : Number(e.key);
+      if (n <= PARTS.length) load(n - 1, true);
+    }
     else if (e.key.toLowerCase() === "f") fsbtn.click();
     else if (e.key.toLowerCase() === "m") mutebtn.click();
   });
