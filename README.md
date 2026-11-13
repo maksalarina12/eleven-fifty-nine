@@ -27,9 +27,9 @@ like things that belong to him.
 | Part | Title | Runtime | Frames |
 |---|---|---|---|
 | 01 | **11:59 PM** | 1:00 | 1800 |
-| 02 | **The Other Me** | 0:45 | 1360 |
-| 03 | **12:00 AM** *(The Missing Hour)* | 0:43 | 1305 |
-| 04 | **The Loop** | 1:01 | 1815 |
+| 02 | **The Other Me** | 0:45 | 1358 |
+| 03 | **12:00 AM** *(The Missing Hour)* | 0:43 | 1304 |
+| 04 | **The Loop** | 1:01 | 1816 |
 | 05 | **The Room** *(Subject 001)* | 1:07 | 2020 |
 | 06 | **DON'T TRUST NOAH.** *(Subject 002)* | 1:23 | 2497 |
 
