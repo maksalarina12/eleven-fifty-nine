@@ -33,7 +33,7 @@ const API = process.env.ELEVENLABS_API_BASE || 'https://api.elevenlabs.io/v1';
 const STATE = path.join(root, 'out', 'tts-state.json');
 
 const DEFAULTS = {
-  model: 'eleven_multilingual_v2',
+  model: 'eleven_v4', // model 4: reads audio tags (SFX, music, emotion)
   format: 'mp3_44100_128',
   stability: '0.5',
   similarity: '0.8',
