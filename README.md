@@ -152,13 +152,33 @@ The narration can be generated without opening the ElevenLabs website. The key
 goes in `.env` once (copy `.env.example`), then everything else is a command:
 
 ```bash
+cp .env.example .env
 echo 'ELEVENLABS_API_KEY=sk_...' >> .env
 
-npm run tts -- --voices                       # names and ids on your account
+npm run voices                                # every account: credits and voice names
 npm run tts -- --models                       # model ids and their limits
 npm run tts -- --part 11 --voice "Amara"      # reads BAHAN/pt11/*.md
 npm run tts -- --part 11 --voice "Amara" --dry-run   # price it, spend nothing
 ```
+
+Several accounts can share the work. Add as many keys as you like, and a key
+that runs out is swapped mid-render without losing the script:
+
+```bash
+ELEVENLABS_API_KEY=sk_main
+ELEVENLABS_API_KEY_2=sk_backup
+ELEVENLABS_API_KEY_3=sk_third        # … up to _9
+ELEVENLABS_API_KEYS=sk_a,sk_b        # or one comma-separated line
+```
+
+Any `401 quota_exceeded`, invalid key or `402` marks that account dead in
+`out/tts-state.json`, the request moves to the next account, and the report line
+`via account 2, account 3` shows exactly who paid for which paragraph. A long
+script is also spread across accounts: each request goes to the first one with
+enough characters left. `npm run voices` prints the remaining credits per
+account, and `--account 2` (or `--account "main channel"`) pins one account when
+you do not want rotation. Delete `out/tts-state.json` to retry keys that were
+marked dead before their credits reset.
 
 `--part N` reads the single `.md`/`.txt` script in `BAHAN/ptN/`, strips the
 markdown (headings and asterisks would otherwise be read aloud), writes
