@@ -146,6 +146,33 @@ Grab a single frame while tuning a shot:
 npx remotion still src/c10.tsx Part5 out/frame.png --frame=110
 ```
 
+### Narration from the terminal
+
+The narration can be generated without opening the ElevenLabs website. The key
+goes in `.env` once (copy `.env.example`), then everything else is a command:
+
+```bash
+echo 'ELEVENLABS_API_KEY=sk_...' >> .env
+
+npm run tts -- --voices                       # names and ids on your account
+npm run tts -- --models                       # model ids and their limits
+npm run tts -- --part 11 --voice "Amara"      # reads BAHAN/pt11/*.md
+npm run tts -- --part 11 --voice "Amara" --dry-run   # price it, spend nothing
+```
+
+`--part N` reads the single `.md`/`.txt` script in `BAHAN/ptN/`, strips the
+markdown (headings and asterisks would otherwise be read aloud), writes
+`BAHAN/ptN/ptN.mp3`, copies it to `public/audio/ptN.mp3`, and prints the exact
+`durationInFrames` for the matching `src/c*.tsx` entry — the frame count comes
+from the real file, never from the brief.
+
+Anything else is a flag: `--text "…"` for one line, `--file path.md` for a
+script somewhere else, `--out file.mp3` to choose the destination, plus the
+performance knobs `--stability`, `--similarity`, `--style`, `--speed`,
+`--language` and `--format`. Long scripts are split on paragraph and sentence
+boundaries, sent with `previous_text`/`next_text` so the prosody carries across
+requests, and joined with ffmpeg. `--voice` accepts a name or an id.
+
 Renders take roughly 15–25 minutes per part on three threads.
 
 ### Output contract

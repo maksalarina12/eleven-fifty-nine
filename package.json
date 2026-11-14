@@ -8,6 +8,8 @@
     "render": "remotion render src/index.ts ClaudeReel out/claude-reel.mp4",
     "still": "remotion still src/index.ts ClaudeReel",
     "typecheck": "tsc --noEmit",
+    "tts": "node scripts/tts.mjs",
+    "voices": "node scripts/tts.mjs --voices",
     "pack": "node publish/generate.mjs",
     "setup": "node publish/setup.mjs",
     "pack:post": "node publish/post.mjs",
