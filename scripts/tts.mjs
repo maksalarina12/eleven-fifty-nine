@@ -149,6 +149,22 @@ class DeadKey extends Error {
   }
 }
 
+/** The key works; the plan does not allow this voice/model. Not an exhausted key. */
+class PlanError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'PlanError';
+  }
+}
+
+/** The key works, it just was not granted this endpoint. Not an exhausted key. */
+class ScopeError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ScopeError';
+  }
+}
+
 async function call(entry, pathname, options = {}) {
   const res = await fetch(`${API}${pathname}`, {
     ...options,
@@ -171,9 +187,15 @@ async function call(entry, pathname, options = {}) {
   } catch {
     /* raw text it is */
   }
-  const out = ['quota_exceeded', 'insufficient_credits', 'invalid_api_key', 'payment_required'].includes(code);
-  if (res.status === 401 || res.status === 402 || out) {
-    throw new DeadKey(`${res.status} ${code || res.statusText}${detail ? ` — ${detail}` : ''}`);
+  const spent = ['quota_exceeded', 'insufficient_credits', 'invalid_api_key'].includes(code);
+  const plan = ['paid_plan_required', 'subscription_required', 'plan_required', 'voice_not_allowed'].includes(code);
+  if (spent) throw new DeadKey(`${res.status} ${code}${detail ? ` — ${detail}` : ''}`);
+  if (res.status === 402 || plan) {
+    throw new PlanError(`${res.status} ${code || res.statusText}${detail ? ` — ${detail}` : ''}`);
+  }
+  if (res.status === 401) {
+    // the key exists but lacks a permission (models_read, voices_read, …)
+    throw new ScopeError(`${res.status} ${code || res.statusText}${detail ? ` — ${detail}` : ''}`);
   }
   if (res.status === 429) {
     const err = new Error(`429 ${detail || 'rate limited'}`);
@@ -339,8 +361,24 @@ async function speak(pool, pathname, body, need) {
         tried.push(`${entry.label}: rate limited`);
         continue;
       }
+      if (error instanceof PlanError) {
+        tried.push(`${entry.label}: ${error.message}`);
+        continue;
+      }
       tried.push(`${entry.label}: ${error.message}`);
-      if (error.status && error.status >= 500) continue;
+      if (error.status >= 500) continue;
+      if (error.status === 404) {
+        die(
+          `Voice not found on ${entry.label}.`,
+          `${error.message}\n  Copy the voice id from the ElevenLabs UI (Voices → the voice → id) and pass it with --voice.`
+        );
+      }
+      if (error.status === 400 || error.status === 422) {
+        die(
+          `${entry.label} rejected the request.`,
+          `${error.message}\n  If this mentions the model, run --models (needs the models_read permission) or pass a known id with --model.`
+        );
+      }
       throw error;
     }
   }
@@ -369,14 +407,30 @@ async function listAccounts() {
       console.log(`     voices unavailable — ${error.message}`);
     }
   }
-  const left = KEYS.filter((k) => !k.dead).reduce((sum, k) => sum + (k.remaining || 0), 0);
-  console.log(`\n  usable now: ${left.toLocaleString()} characters across ${KEYS.filter((k) => !k.dead).length} account(s)\n`);
+  const alive = KEYS.filter((k) => !k.dead);
+  const known = alive.filter((k) => k.remaining !== undefined);
+  const summary = known.length
+    ? `${known.reduce((sum, k) => sum + k.remaining, 0).toLocaleString()} characters`
+    : 'credits unknown (keys have no usage-read permission)';
+  console.log(`\n  usable now: ${summary} across ${alive.length} account(s)\n`);
 }
 
 async function listModels() {
   const pool = selectKey(args.account);
   const entry = pool[0];
-  const data = await (await call(entry, '/models')).json();
+  let data;
+  try {
+    data = await (await call(entry, '/models')).json();
+  } catch (error) {
+    if (error instanceof ScopeError) {
+      die(
+        `This key cannot read the model list: ${error.message}`,
+        'Enable the models_read permission on the key, or pass --model explicitly (npm run tts -- --text "…" --model eleven_v4).'
+      );
+    }
+    if (error instanceof DeadKey) die(`First usable account is unusable: ${error.message}`);
+    throw error;
+  }
   console.log(`\n  models for ${entry.label}\n`);
   console.log('  model id                          chars   languages');
   for (const model of data) {
@@ -462,15 +516,18 @@ async function synth() {
 
   await refreshUsage(pool.filter((k) => !k.dead));
   const usable = pool.filter((k) => !k.dead);
-  if (usable.length && usable.every((k) => (k.remaining || 0) < total)) {
-    const sum = usable.reduce((s, k) => s + (k.remaining || 0), 0);
+  if (usable.length && usable.every((k) => k.remaining !== undefined)) {
+    const sum = usable.reduce((s, k) => s + k.remaining, 0);
     if (sum < total) {
       die(
         `Not enough credits: the script needs ${total.toLocaleString()} and the accounts have ${sum.toLocaleString()}.`,
         'Add another ELEVENLABS_API_KEY_n, or split the script with --file.'
       );
     }
-    console.log(`  spread   ${total.toLocaleString()} characters over ${usable.length} accounts`);
+    const short = usable.find((k) => k.remaining < total);
+    if (short) console.log(`  spread   ${total.toLocaleString()} characters over ${usable.length} accounts`);
+  } else if (usable.length && !usable.some((k) => k.remaining !== undefined)) {
+    console.log(`  credits  unknown — the key has no usage-read permission, trying anyway`);
   }
 
   if (!usable.length) {
