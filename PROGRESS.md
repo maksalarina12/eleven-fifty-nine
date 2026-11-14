@@ -55,6 +55,9 @@ landmarks: 0, 168, 322, 502, 596, 717, 836, 1034, 1311, 1395, 1487, 1669, 1777,
 text: `MEMORY SYNCHRONIZATION INITIATED`, `ACCESS DENIED`, `11:59 PM` →
 `12:00 AM`, `Thank you for remembering me.`, coordinates
 `35.6812° N / 139.7671° E`, `PROJECT EDEN`.
+`CARD = 3656`: after the room is fully black, a fade-in card reads
+`NOAH AND AMARA / WILL COME BACK / — SEASON 2`; the watermark is hidden from
+3640 so it never sits on the black.
 ASR: `out/asr/pt10.json` (word timestamps).
 
 ## Done — nothing left in this build
@@ -68,8 +71,9 @@ ASR: `out/asr/pt10.json` (word timestamps).
 - `publish/episodes.json` ep07–ep10 (EN + ID), `HASIL/index.html` (10 rows,
   10 `PARTS`, `prog6..prog9`, `0` → Part 10, hint `1–9 · 0`), `README.md`,
   `HASIL/README.md`, this file.
-- Commit `354b80f` (source, kit, posters 7–9, docs) pushed to `origin/master`;
-  poster 10 + this update ride the follow-up commit.
+- Commit `354b80f` (source, kit, posters 7–9, docs) pushed to `origin/master`,
+  `2a373fb` (poster 10 + notes) after it; the season-two card is a third
+  commit and needs one more Part 10 master render (3733 frames).
 - `git ls-files | grep -E "\.(mp4|mov|webm|m4v)$"` → 0 lines.
 
 ## Commands

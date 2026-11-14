@@ -69,4 +69,6 @@ dari `HASIL` ini — lihat `../README.md` untuk struktur dan cara render ulang.
   `MEMORY SYNCHRONIZATION INITIATED`, `ACCESS DENIED`, `11:59 PM` / `12:00 AM`,
   `Thank you for remembering me.`, koordinat `35.6812° N / 139.7671° E`,
   `PROJECT EDEN`).
+- Part 10 ditutup kartu `NOAH AND AMARA / WILL COME BACK / — SEASON 2` di dalam
+  hitam, setelah ruangan padam; watermark disembunyikan di kartu itu.
 - Part 1–7 ditutup tail hitam; Part 8–10 memudar ke hitam di dalam kata terakhir.

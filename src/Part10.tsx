@@ -57,6 +57,7 @@ const C = {
 };
 
 const FADE = 3722; // last spoken word 3718; close to black over the final beats
+const CARD = 3656; // after the room is fully black: the season-two card
 
 const Ambient: React.FC<{f: number; glow?: number; red?: number}> = ({f, glow = 1, red = 0}) => (
   <>
@@ -2118,7 +2119,54 @@ const ShotEden: React.FC<{f: number}> = ({f}) => {
       <Vignette strength={0.94} />
       <Grain f={f} opacity={0.08} />
       <div style={{position: 'absolute', inset: 0, background: '#000', opacity: drown}} />
-      {f < FADE ? <Watermark /> : null}
+      {/* the last thing on screen: a card in the black, no watermark */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          opacity: smooth(clamp01((f - CARD) / 16)),
+          transform: `translateY(${(1 - smooth(clamp01((f - CARD) / 16))) * 10}px)`,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: MONO,
+            fontSize: 58,
+            lineHeight: 1.42,
+            letterSpacing: '0.16em',
+            textAlign: 'center',
+            color: 'rgba(233,245,251,0.93)',
+            textShadow: '0 0 42px rgba(126,196,232,0.34)',
+          }}
+        >
+          NOAH AND AMARA
+          <br />
+          WILL COME BACK
+        </div>
+        <div
+          style={{
+            width: 132,
+            height: 1,
+            margin: '46px 0 34px',
+            background: 'rgba(156,198,218,0.34)',
+          }}
+        />
+        <div
+          style={{
+            fontFamily: MONO,
+            fontSize: 27,
+            letterSpacing: '0.42em',
+            color: 'rgba(168,204,222,0.72)',
+          }}
+        >
+          — SEASON 2
+        </div>
+      </div>
+      {f < CARD - 16 ? <Watermark /> : null}
     </AbsoluteFill>
   );
 };

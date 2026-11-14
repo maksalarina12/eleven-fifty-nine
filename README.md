@@ -162,9 +162,11 @@ Renders take roughly 15–25 minutes per part on three threads.
   `You were never Subject 002.`, `You were the one who created it.`,
   `THE FIRST EXPERIMENT`, `PROJECT ORIGIN`, `MEMORY SYNCHRONIZATION INITIATED`,
   `ACCESS DENIED`, `11:59 PM` / `12:00 AM`, `Thank you for remembering me.`,
-  the coordinates `35.6812° N / 139.7671° E`, and `PROJECT EDEN` — all of it
-  inside the fiction: phone screens, monitor labels, clocks and walls. There are
-  no subtitles and no title cards.
+  the coordinates `35.6812° N / 139.7671° E`, `PROJECT EDEN`, and — after the
+  room goes black in the finale — `NOAH AND AMARA / WILL COME BACK / — SEASON 2`,
+  the one card that speaks to the audience rather than to the characters.
+  Everything else sits inside the fiction: phone screens, monitor labels, clocks
+  and walls. There are no subtitles.
 - A short black tail (Parts 1–7) or a fade to black inside the last spoken word
   (Parts 8–10), so the last frame is never clipped by players
 
