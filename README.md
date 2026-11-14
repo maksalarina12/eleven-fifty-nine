@@ -171,14 +171,27 @@ ELEVENLABS_API_KEY_3=sk_third        # … up to _9
 ELEVENLABS_API_KEYS=sk_a,sk_b        # or one comma-separated line
 ```
 
-Any `401 quota_exceeded`, invalid key or `402` marks that account dead in
+A `401 quota_exceeded` or an invalid key marks that account dead in
 `out/tts-state.json`, the request moves to the next account, and the report line
-`via account 2, account 3` shows exactly who paid for which paragraph. A long
+`via account 2 · eleven_v4` shows exactly who paid for which paragraph. A long
 script is also spread across accounts: each request goes to the first one with
 enough characters left. `npm run voices` prints the remaining credits per
 account, and `--account 2` (or `--account "main channel"`) pins one account when
 you do not want rotation. Delete `out/tts-state.json` to retry keys that were
 marked dead before their credits reset.
+
+Model 4 (`eleven_v4`) is the default because it is the one that performs audio
+tags — `[whispers]`, `[sighs]`, `[rain falling]`, `[music]`. If an account
+refuses that model (not in the plan, retired, `model_not_found`), the request is
+retried on the next model in `--fallback` instead of dying: by default
+`eleven_multilingual_v2 → eleven_turbo_v2_5 → eleven_flash_v2_5`. Those older
+models read `[tags]` aloud, so they are stripped automatically and the report
+says `tags dropped for an older model — check the take`. Set your own chain with
+`--fallback a,b` or `ELEVENLABS_MODEL_FALLBACK`, and `--no-fallback` when a take
+must not be downgraded — then a refused model is an error, not a compromise.
+
+A refused *voice* is the one case that stops immediately: no model or account
+swap changes what the plan allows, and a quieter failure would just cost credits.
 
 `--part N` reads the single `.md`/`.txt` script in `BAHAN/ptN/`, strips the
 markdown (headings and asterisks would otherwise be read aloud), writes

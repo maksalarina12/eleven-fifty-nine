@@ -34,6 +34,7 @@ const STATE = path.join(root, 'out', 'tts-state.json');
 
 const DEFAULTS = {
   model: 'eleven_v4', // model 4: reads audio tags (SFX, music, emotion)
+  fallback: 'eleven_multilingual_v2,eleven_turbo_v2_5,eleven_flash_v2_5',
   format: 'mp3_44100_128',
   stability: '0.5',
   similarity: '0.8',
@@ -154,6 +155,7 @@ class PlanError extends Error {
   constructor(message) {
     super(message);
     this.name = 'PlanError';
+    this.scope = /voice/i.test(message) ? 'voice' : /model/i.test(message) ? 'model' : 'plan';
   }
 }
 
@@ -326,64 +328,98 @@ function modelLimit(model) {
 }
 
 /** Render one request, walking the account list until one accepts it. */
-async function speak(pool, pathname, body, need) {
-  const tried = [];
-  for (const entry of pool) {
-    if (entry.dead) continue;
-    if (need && entry.remaining !== undefined && entry.remaining < need) {
-      entry.dead = true;
-      entry.remaining = 0;
-      saveKey(entry);
-      continue;
-    }
-    try {
-      const res = await call(entry, pathname, {method: 'POST', body: JSON.stringify(body)});
-      const buffer = Buffer.from(await res.arrayBuffer());
-      if (buffer.length < 2000) throw new Error(`response looked empty (${buffer.length} bytes)`);
-      if (entry.remaining !== undefined) {
-        entry.remaining = Math.max(0, entry.remaining - need);
-        entry.used = (entry.used || 0) + need;
-        entry.checkedAt = Date.now();
-        saveKey(entry);
-      }
-      return {buffer, entry};
-    } catch (error) {
-      if (error instanceof DeadKey) {
+/** Audio tags are performed by v3/v4 only; older models would read them aloud. */
+function supportsTags(model) {
+  return /^eleven_(v3|v4)/.test(model);
+}
+
+const stripTags = (text) => text.replace(/\[[^\]]{1,60}\]/g, ' ').replace(/\s{2,}/g, ' ').trim();
+
+/**
+ * One request, walked over models first and accounts second:
+ * a credit problem moves to the next account, a model problem to the next
+ * model. Voice problems are not fixable here, so they stop the run.
+ */
+async function speak(pool, models, text, {pathname, settings, language, need, prev, next}) {
+  const failures = [];
+  for (let mi = 0; mi < models.length; mi++) {
+    const model = models[mi];
+    const body = {
+      text: supportsTags(model) ? text : stripTags(text),
+      model_id: model,
+      voice_settings: settings,
+    };
+    if (language) body.language_code = language;
+    if (prev) body.previous_text = prev.slice(-400);
+    if (next) body.next_text = next.slice(0, 400);
+
+    let modelDead = false;
+    for (const entry of pool) {
+      if (entry.dead) continue;
+      if (need && entry.remaining !== undefined && entry.remaining < need) {
         entry.dead = true;
         entry.remaining = 0;
-        entry.checkedAt = Date.now();
         saveKey(entry);
-        tried.push(`${entry.label}: out of credits (${error.message})`);
-        console.log(`\n  ${entry.label} is done — switching account`);
         continue;
       }
-      if (error.retryable) {
-        tried.push(`${entry.label}: rate limited`);
-        continue;
+      try {
+        const res = await call(entry, pathname, {method: 'POST', body: JSON.stringify(body)});
+        const buffer = Buffer.from(await res.arrayBuffer());
+        if (buffer.length < 2000) throw new Error(`response looked empty (${buffer.length} bytes)`);
+        if (entry.remaining !== undefined) {
+          entry.remaining = Math.max(0, entry.remaining - need);
+          entry.used = (entry.used || 0) + need;
+          entry.checkedAt = Date.now();
+          saveKey(entry);
+        }
+        return {buffer, entry, model, tagsDropped: body.text !== text};
+      } catch (error) {
+        if (error instanceof DeadKey) {
+          entry.dead = true;
+          entry.remaining = 0;
+          entry.checkedAt = Date.now();
+          saveKey(entry);
+          failures.push(`${entry.label} · ${model}: out of credits`);
+          console.log(`\n  ${entry.label} is done — switching account`);
+          continue;
+        }
+        if (error.retryable) {
+          failures.push(`${entry.label} · ${model}: rate limited`);
+          continue;
+        }
+        if (error instanceof PlanError) {
+          failures.push(`${entry.label} · ${model}: ${error.message}`);
+          if (error.scope === 'voice') {
+            die(
+              'This account cannot use that voice through the API.',
+              `${error.message}\n  A library voice needs a paid plan; a cloned voice of your own is allowed on free.\n  Pick another --voice, or upgrade the account.`
+            );
+          }
+          modelDead = true;
+          continue;
+        }
+        failures.push(`${entry.label} · ${model}: ${error.message}`);
+        if (error.status >= 500) continue;
+        if (error.status === 404) {
+          die(
+            `Voice not found on ${entry.label}.`,
+            `${error.message}\n  Copy the voice id from the ElevenLabs UI (Voices → the voice → id) and pass it with --voice.`
+          );
+        }
+        if (error.status === 400 || error.status === 422) {
+          modelDead = true;
+          continue;
+        }
+        throw error;
       }
-      if (error instanceof PlanError) {
-        tried.push(`${entry.label}: ${error.message}`);
-        continue;
-      }
-      tried.push(`${entry.label}: ${error.message}`);
-      if (error.status >= 500) continue;
-      if (error.status === 404) {
-        die(
-          `Voice not found on ${entry.label}.`,
-          `${error.message}\n  Copy the voice id from the ElevenLabs UI (Voices → the voice → id) and pass it with --voice.`
-        );
-      }
-      if (error.status === 400 || error.status === 422) {
-        die(
-          `${entry.label} rejected the request.`,
-          `${error.message}\n  If this mentions the model, run --models (needs the models_read permission) or pass a known id with --model.`
-        );
-      }
-      throw error;
+    }
+    if (modelDead && mi < models.length - 1) {
+      console.log(`\n  model ${model} refused the request — falling back to ${models[mi + 1]}`);
     }
   }
-  die('No account could take this request.', tried.join('\n  ') || 'all accounts are marked out of credits');
+  die('No model/account combination could take this request.', failures.join('\n  '));
 }
+
 
 /* ------------------------------------------------------------------ */
 /* commands                                                            */
@@ -490,6 +526,15 @@ async function synth() {
   if (!args.raw) text = toSpeech(text);
 
   const model = String(args.model || env.ELEVENLABS_MODEL || DEFAULTS.model);
+  const chainArg = args['no-fallback']
+    ? 'none'
+    : args.fallback ?? env.ELEVENLABS_MODEL_FALLBACK ?? DEFAULTS.fallback;
+  const models = [
+    model,
+    ...(String(chainArg).trim().toLowerCase() === 'none' ? [] : String(chainArg).split(',')),
+  ]
+    .map((m) => m.trim())
+    .filter((m, i, all) => m && all.indexOf(m) === i);
   const format = String(args.format || DEFAULTS.format);
   const out = path.resolve(root, String(args.out || (part ? `BAHAN/pt${part}/pt${part}.mp3` : 'out/tts.mp3')));
   const settings = {
@@ -504,7 +549,7 @@ async function synth() {
   const chunks = chunk(text, modelLimit(model));
   const total = text.length;
   console.log(`\n  voice    ${args.voice || '(none — run --voices)'}`);
-  console.log(`  model    ${model}`);
+  console.log(`  model    ${models[0]}${models.length > 1 ? `  (fallback: ${models.slice(1).join(' → ')})` : ''}`);
   console.log(`  text     ${total.toLocaleString()} characters from ${source}${chunks.length > 1 ? ` (${chunks.length} requests)` : ''}`);
   console.log(`  out      ${path.relative(root, out)}`);
   if (args['dry-run']) {
@@ -554,19 +599,24 @@ async function synth() {
   const tmp = fs.mkdtempSync(path.join(root, 'out', 'tts-'));
   const files = [];
   const used = [];
+  let droppedTags = false;
   try {
     for (let i = 0; i < chunks.length; i++) {
-      const body = {text: chunks[i], model_id: model, voice_settings: settings};
-      if (args.language) body.language_code = String(args.language);
-      if (i > 0) body.previous_text = chunks[i - 1].slice(-400);
-      if (i < chunks.length - 1) body.next_text = chunks[i + 1].slice(0, 400);
-
       process.stdout.write(`  rendering ${i + 1}/${chunks.length}…\r`);
-      const {buffer, entry} = await speak(pool, `/text-to-speech/${voiceId}?output_format=${encodeURIComponent(format)}`, body, chunks[i].length);
+      const result = await speak(pool, models, chunks[i], {
+        pathname: `/text-to-speech/${voiceId}?output_format=${encodeURIComponent(format)}`,
+        settings,
+        language: args.language ? String(args.language) : undefined,
+        need: chunks[i].length,
+        prev: i > 0 ? chunks[i - 1] : undefined,
+        next: i < chunks.length - 1 ? chunks[i + 1] : undefined,
+      });
       const file = path.join(tmp, `chunk-${String(i).padStart(3, '0')}.mp3`);
-      fs.writeFileSync(file, buffer);
+      fs.writeFileSync(file, result.buffer);
       files.push(file);
-      if (!used.includes(entry.label)) used.push(entry.label);
+      const stamp = `${result.entry.label} · ${result.model}`;
+      if (!used.includes(stamp)) used.push(stamp);
+      if (result.tagsDropped) droppedTags = true;
     }
     joinChunks(files, out);
   } finally {
@@ -577,6 +627,9 @@ async function synth() {
   const size = fs.statSync(out).size;
   console.log(`  done     ${path.relative(root, out)}`);
   console.log(`  via      ${used.join(', ')}`);
+  if (droppedTags) {
+    console.log(`  tags     dropped for an older model — it cannot perform [audio tags]; check the take`);
+  }
   console.log(`  length   ${seconds ? seconds.toFixed(3) + ' s' : 'unknown'}${seconds ? ` → ${Math.round(seconds * 30)} frames @30fps` : ''}, ${(size / 1024 / 1024).toFixed(1)} MB\n`);
 
   if (part) {
@@ -600,13 +653,22 @@ else if (args.help || args._[0] === 'help') {
   npm run tts -- --part 11 --voice Amara
   npm run tts -- --part 11 --file BAHAN/pt11/script.md --dry-run
   npm run tts -- --part 11 --voice Amara --account 2
+  npm run tts -- --part 11 --model eleven_v4 --fallback eleven_multilingual_v2
 
   flags  --voice <name|id>   --model <id>   --out <file>   --file <script>
          --part <n>          --text "…"     --format mp3_44100_128
          --account <n|label>  (force one account, no rotation)
+         --fallback <a,b,c>  models to try when one is refused or missing
+         --no-fallback       stay on --model, never downgrade the take
          --stability 0.5     --similarity 0.8   --style 0     --speed 1
          --language <code>   --raw (keep markdown)   --no-boost
          --dry-run (credits only, nothing sent)
+
+  what a failure does
+    out of credits / invalid key   next account, same model
+    429 rate limited               next account, same model
+    model refused / not in plan    next model, tags stripped for v2 models
+    voice not allowed by the plan  stops at once — a voice does not change
 
   accounts live in .env:  ELEVENLABS_API_KEY  ELEVENLABS_API_KEY_2 … _9
                           or ELEVENLABS_API_KEYS=sk_a,sk_b
