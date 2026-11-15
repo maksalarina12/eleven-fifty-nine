@@ -1,6 +1,6 @@
-# THE LAST MESSAGE — S01
+# THE LAST MESSAGE — S01 + S02
 
-Folder ini berisi sepuluh episode vertikal (9:16) plus halaman pemutar client-side.
+Folder ini berisi dua puluh episode vertikal (9:16) plus halaman pemutar client-side.
 
 ## Isi
 
@@ -15,8 +15,18 @@ Folder ini berisi sepuluh episode vertikal (9:16) plus halaman pemutar client-si
 | `THE_LAST_MESSAGE_Part7.mp4` | 73,7 s | 1080×1920 | H.264 + AAC 48 kHz |
 | `THE_LAST_MESSAGE_Part8.mp4` | 77,6 s | 1080×1920 | H.264 + AAC 48 kHz |
 | `THE_LAST_MESSAGE_Part9.mp4` | 94,4 s | 1080×1920 | H.264 + AAC 48 kHz |
-| `THE_LAST_MESSAGE_Part10.mp4` | 124,4 s | 1080×1920 | H.264 + AAC 48 kHz — finale |
-| `poster1.jpg` … `poster10.jpg` | — | 1080×1920 | thumbnail untuk halaman |
+| `THE_LAST_MESSAGE_Part10.mp4` | 124,4 s | 1080×1920 | H.264 + AAC 48 kHz — finale S01 |
+| `THE_LAST_MESSAGE_S02E01.mp4` | 42,7 s | 1080×1920 | H.264 + AAC 48 kHz — The Eden Signal |
+| `THE_LAST_MESSAGE_S02E02.mp4` | 42,1 s | 1080×1920 | H.264 + AAC 48 kHz — The Empty City |
+| `THE_LAST_MESSAGE_S02E03.mp4` | 47,8 s | 1080×1920 | H.264 + AAC 48 kHz — The Archive |
+| `THE_LAST_MESSAGE_S02E04.mp4` | 44,0 s | 1080×1920 | H.264 + AAC 48 kHz — The False Memory |
+| `THE_LAST_MESSAGE_S02E05.mp4` | 41,0 s | 1080×1920 | H.264 + AAC 48 kHz — The Witness |
+| `THE_LAST_MESSAGE_S02E06.mp4` | 40,7 s | 1080×1920 | H.264 + AAC 48 kHz — The Divide |
+| `THE_LAST_MESSAGE_S02E07.mp4` | 41,0 s | 1080×1920 | H.264 + AAC 48 kHz — The Source |
+| `THE_LAST_MESSAGE_S02E08.mp4` | 39,3 s | 1080×1920 | H.264 + AAC 48 kHz — The Awakening |
+| `THE_LAST_MESSAGE_S02E09.mp4` | 43,8 s | 1080×1920 | H.264 + AAC 48 kHz — The Eden Protocol |
+| `THE_LAST_MESSAGE_S02E10.mp4` | 46,9 s | 1080×1920 | H.264 + AAC 48 kHz — The Other Side |
+| `poster1.jpg` … `poster20.jpg` | — | 1080×1920 | thumbnail untuk halaman |
 | `index.html` | — | — | pemutar + daftar part (100% client-side) |
 
 ## Cara buka
@@ -28,13 +38,14 @@ xdg-open index.html
 ```
 
 Tidak butuh server. Video dan poster dimuat dari folder yang sama, jadi
-`index.html` harus tetap berada satu folder dengan kesepuluh MP4.
+`index.html` harus tetap berada satu folder dengan kedua puluh MP4.
 
 ## Kontrol
 
 - `Space` play / pause
 - `←` / `→` mundur / maju 5 detik
-- `1` … `9` pindah part, `0` untuk Part 10
+- `1` … `9` pindah part, `0` untuk Part 10 (Season 1)
+- Season 2 dipilih dari daftar di kanan pemutar (Part 11–20)
 - `F` fullscreen, `M` mute
 - Setiap part otomatis lanjut ke part berikutnya saat habis
 
@@ -72,3 +83,13 @@ dari `HASIL` ini — lihat `../README.md` untuk struktur dan cara render ulang.
 - Part 10 ditutup kartu `NOAH AND AMARA / WILL COME BACK / — SEASON 2` di dalam
   hitam, setelah ruangan padam; watermark disembunyikan di kartu itu.
 - Part 1–7 ditutup tail hitam; Part 8–10 memudar ke hitam di dalam kata terakhir.
+- Season 2 memakai kontrak model-agnostik: jumlah frame = `floor(durasi MP3 × 30)`
+  dari audio yang benar-benar ada di `public/audio/`, dan setiap potongan jatuh di
+  kata hasil Whisper `base.en` — bukan di timestamp bible. `npm run lock` memeriksa
+  itu sebelum render; `S02ENN.audio.json` menyimpan voice, durasi, jumlah frame,
+  dan sha256 MP3 supaya hasilnya bisa direproduksi dengan model suara apa pun.
+- Teks di layar Season 2 hanya: `11:59`, `12:01`, `SUBJECT 001`, `SUBJECT 002`,
+  `DR. ELIAS`, `DON'T TRUST NOAH.`, `You have already been here.`,
+  `Emotional attachment trial: successful.`, `Phase 3 is waiting.`, plus baris
+  diegetik `Find the room where you were born.` di ponsel Noah. Tidak ada subtitle,
+  tidak ada title card, tidak ada label season di layar.

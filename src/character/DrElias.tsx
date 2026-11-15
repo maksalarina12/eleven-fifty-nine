@@ -248,6 +248,18 @@ export const DrElias: React.FC<Props> = ({
         <filter id="eSoft2" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="4" />
         </filter>
+        <clipPath id="eTorsoClip">
+          <path d="M 300 300
+             C 272 300 244 308 224 322
+             C 206 336 195 358 191 384
+             L 205 512
+             L 199 700
+             L 401 700
+             L 395 512
+             L 409 384
+             C 405 358 394 336 376 322
+             C 356 308 328 300 300 300 Z" />
+        </clipPath>
       </defs>
 
       {/* ---------- legs ---------- */}
@@ -349,7 +361,7 @@ export const DrElias: React.FC<Props> = ({
         <path d="M 224 460 C 218 530 220 612 226 686" stroke="#2E3540" strokeWidth={1.1} fill="none" opacity={0.26} />
         <path d="M 376 460 C 382 530 380 612 374 686" stroke="#333A45" strokeWidth={1.1} fill="none" opacity={0.22} />
         <path d="M 300 470 C 292 540 293 620 300 690" stroke="#000000" strokeWidth={7} fill="none" opacity={0.1} filter="url(#eSoft2)" />
-        <path d="M 190 330 L 410 330 L 410 704 L 190 704 Z" fill="url(#eBodyShade)" opacity={0.4} />
+        <path d="M 190 330 L 410 330 L 410 704 L 190 704 Z" fill="url(#eBodyShade)" opacity={0.4} clipPath="url(#eTorsoClip)" />
       </g>
 
       {/* ---------- head ---------- */}

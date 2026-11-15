@@ -57,6 +57,20 @@ const Eye: React.FC<{
   const ix = lookX * 1.4 * s;
   const iy = 0.2 + lookY * 1.0;
   const lashY = lid * 5.6;
+  if (lid >= 0.86) {
+    return (
+      <g transform={`translate(${cx} ${cy}) scale(${s * 0.86} 0.84)`}>
+        <ellipse cx={0} cy={-3.4} rx={18} ry={9.4} fill="#3A241C" opacity={0.1} filter="url(#aSoft2)" />
+        <path d="M -17 0.6 C -10 7.4 10 7.4 17.4 -0.6" stroke="#241814" strokeWidth={2.2} fill="none" strokeLinecap="round" />
+        <path d="M -16.2 -1.8 C -9 3.6 9 3.6 16.8 -2.8" stroke="#2E1D17" strokeWidth={0.9} fill="none" opacity={0.45} />
+        <path d="M 13 -2.6 Q 18.4 -1.8 21 0.6" stroke="#241814" strokeWidth={1.7} fill="none" strokeLinecap="round" />
+        <path d="M 16 -4.6 L 20.2 -7.6" stroke="#241814" strokeWidth={0.9} strokeLinecap="round" opacity={0.7} />
+        <path d="M -14 -8 Q 0 -13 15 -8.2 L 15 -6.8 Q 0 -11.4 -14 -6.6 Z" fill="#7A5142" opacity={0.16} filter="url(#aSoft1)" />
+        <path d="M -9.6 7.4 C -3 9.4 6 8.8 13 4.2" stroke="#7C5647" strokeWidth={0.7} opacity={0.34} fill="none" />
+        <path d="M -8.6 10 C -2 11.8 6.6 10.8 13 6" stroke="#F6DCC9" strokeWidth={1.4} opacity={0.2} fill="none" filter="url(#aSoft1)" />
+      </g>
+    );
+  }
   return (
     <g transform={`translate(${cx} ${cy}) scale(${s * 0.86} 0.84)`}>
       {/* socket + lid shading */}
@@ -241,6 +255,16 @@ export const Amara: React.FC<Props> = ({
         <filter id="aSoft2" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="4" />
         </filter>
+        <clipPath id="aTorsoClip">
+          <path d="M 300 292
+             C 286 292 274 296 262 304
+             C 242 314 224 336 216 366
+             C 210 388 208 420 208 452
+             L 206 560 L 208 760 L 392 760 L 394 560 L 392 452
+             C 392 420 390 388 384 366
+             C 376 336 358 314 338 304
+             C 326 296 314 292 300 292 Z" />
+        </clipPath>
       </defs>
 
       {/* ---------- neck ---------- */}
@@ -296,7 +320,7 @@ export const Amara: React.FC<Props> = ({
         <path d="M 240 560 L 266 564 L 270 598 L 244 594 Z" stroke="#0B0D11" strokeWidth={1.3} fill="none" opacity={0.4} />
         <path d="M 360 560 L 334 564 L 330 598 L 356 594 Z" stroke="#0B0D11" strokeWidth={1.3} fill="none" opacity={0.36} />
         <path d="M 300 470 C 292 520 293 590 300 660" stroke="#000000" strokeWidth={6} fill="none" opacity={0.14} filter="url(#aSoft2)" />
-        <path d="M 186 300 L 414 300 L 414 764 L 186 764 Z" fill="url(#aBodyShade)" opacity={0.45} />
+        <path d="M 186 300 L 414 300 L 414 764 L 186 764 Z" fill="url(#aBodyShade)" opacity={0.45} clipPath="url(#aTorsoClip)" />
       </g>
 
       {/* ---------- low bun ---------- */}

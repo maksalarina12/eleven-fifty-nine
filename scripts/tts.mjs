@@ -262,6 +262,24 @@ function toSpeech(markdown) {
     .trim();
 }
 
+/** One markdown section, without the heading and without the notes below it. */
+function section(markdown, heading) {
+  const needle = String(heading).toLowerCase();
+  const lines = markdown.split(/\r?\n/);
+  const start = lines.findIndex((line) => /^#{1,6}\s+/.test(line) && line.toLowerCase().includes(needle));
+  if (start === -1) {
+    die(`No heading matching "${heading}".`, `Headings here: ${lines.filter((l) => /^#{1,6}\s+/.test(l)).join(' | ')}`);
+  }
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i++) {
+    if (/^#{1,6}\s+/.test(lines[i])) {
+      end = i;
+      break;
+    }
+  }
+  return lines.slice(start + 1, end).join('\n');
+}
+
 /** Split on paragraph, then sentence, so no request is over the model limit. */
 function chunk(text, limit) {
   if (text.length <= limit) return [text];
@@ -520,6 +538,7 @@ async function synth() {
     }
   }
 
+  if (args.section) text = section(text, args.section);
   if (!text.trim()) {
     die('Nothing to say.', 'Pass --text "…", or --file <script.md>, or --part 11 to read BAHAN/pt11/*.md.');
   }
@@ -548,7 +567,7 @@ async function synth() {
   const pool = selectKey(args.account);
   const chunks = chunk(text, modelLimit(model));
   const total = text.length;
-  console.log(`\n  voice    ${args.voice || '(none — run --voices)'}`);
+  console.log(`\n  voice    ${args.voice || env.ELEVENLABS_VOICE || '(none — run --voices)'}`);
   console.log(`  model    ${models[0]}${models.length > 1 ? `  (fallback: ${models.slice(1).join(' → ')})` : ''}`);
   console.log(`  text     ${total.toLocaleString()} characters from ${source}${chunks.length > 1 ? ` (${chunks.length} requests)` : ''}`);
   console.log(`  out      ${path.relative(root, out)}`);
@@ -657,6 +676,7 @@ else if (args.help || args._[0] === 'help') {
 
   flags  --voice <name|id>   --model <id>   --out <file>   --file <script>
          --part <n>          --text "…"     --format mp3_44100_128
+         --section "copy into"  read one ##/### block of a script file
          --account <n|label>  (force one account, no rotation)
          --fallback <a,b,c>  models to try when one is refused or missing
          --no-fallback       stay on --model, never downgrade the take

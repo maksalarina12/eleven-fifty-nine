@@ -151,6 +151,8 @@
   .ep[aria-current="true"] .name{color:#fbf8f2}
   .ep[aria-current="true"]::before{content:"";position:absolute;left:-14px;top:22px;width:3px;height:22px;background:var(--accent)}
   .ep .now{font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;color:var(--accent);margin-left:auto}
+  .season{font-family:var(--mono);font-size:9px;letter-spacing:.26em;color:rgba(200,165,160,.85);
+    padding:20px 22px 9px;border-top:1px solid var(--line);background:rgba(255,255,255,.012)}
 
   .foot{display:flex;flex-direction:column;gap:14px}
   .rule{height:1px;background:var(--line-soft)}
@@ -224,7 +226,7 @@
     <header>
       <div class="kicker">ELDRAMYTH · ORIGINAL</div>
       <h1>The Last<br><em>Message</em></h1>
-      <p class="deck">One apartment, one rainy night, and a minute that keeps happening to someone else. Six parts, one minute.</p>
+      <p class="deck">One apartment, one rainy night, and a minute that keeps happening to someone else. Ten parts, then ten more after the door opens.</p>
     </header>
 
     <ol class="episodes" id="episodes">
@@ -306,6 +308,87 @@
           <span class="name">The Original Sin</span>
           <span class="meta"><span>02:04</span><span>S01 · E10</span><span class="now" hidden>NOW PLAYING</span></span>
           <span class="prog" id="prog9"></span>
+        </button>
+      </li>
+      <li class="season">SEASON 02 · PROJECT EDEN</li>
+      <li>
+        <button class="ep" data-part="10" aria-current="false">
+          <span class="num">S02 · E01</span>
+          <span class="name">THE EDEN SIGNAL</span>
+          <span class="meta"><span>00:43</span><span>S02 · E01</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog10"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="11" aria-current="false">
+          <span class="num">S02 · E02</span>
+          <span class="name">The Empty City</span>
+          <span class="meta"><span>00:42</span><span>S02 · E02</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog11"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="12" aria-current="false">
+          <span class="num">S02 · E03</span>
+          <span class="name">The Archive</span>
+          <span class="meta"><span>00:48</span><span>S02 · E03</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog12"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="13" aria-current="false">
+          <span class="num">S02 · E04</span>
+          <span class="name">The False Memory</span>
+          <span class="meta"><span>00:44</span><span>S02 · E04</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog13"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="14" aria-current="false">
+          <span class="num">S02 · E05</span>
+          <span class="name">The Witness</span>
+          <span class="meta"><span>00:41</span><span>S02 · E05</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog14"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="15" aria-current="false">
+          <span class="num">S02 · E06</span>
+          <span class="name">The Divide</span>
+          <span class="meta"><span>00:41</span><span>S02 · E06</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog15"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="16" aria-current="false">
+          <span class="num">S02 · E07</span>
+          <span class="name">The Source</span>
+          <span class="meta"><span>00:41</span><span>S02 · E07</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog16"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="17" aria-current="false">
+          <span class="num">S02 · E08</span>
+          <span class="name">The Awakening</span>
+          <span class="meta"><span>00:39</span><span>S02 · E08</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog17"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="18" aria-current="false">
+          <span class="num">S02 · E09</span>
+          <span class="name">The Eden Protocol</span>
+          <span class="meta"><span>00:44</span><span>S02 · E09</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog18"></span>
+        </button>
+      </li>
+      <li>
+        <button class="ep" data-part="19" aria-current="false">
+          <span class="num">S02 · E10</span>
+          <span class="name">The Other Side</span>
+          <span class="meta"><span>00:47</span><span>S02 · E10</span><span class="now" hidden>NOW PLAYING</span></span>
+          <span class="prog" id="prog19"></span>
         </button>
       </li>
     </ol>
@@ -404,6 +487,86 @@
       dl: "THE_LAST_MESSAGE_Part10.mp4",
       poster: "poster10.jpg",
     },
+    {
+      src: "THE_LAST_MESSAGE_S02E01.mp4",
+      label: "S02 · E01",
+      title: "THE EDEN SIGNAL",
+      accent: "#7ec0e0",
+      dl: "THE_LAST_MESSAGE_S02E01.mp4",
+      poster: "poster11.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E02.mp4",
+      label: "S02 · E02",
+      title: "THE EMPTY CITY",
+      accent: "#9fc0c6",
+      dl: "THE_LAST_MESSAGE_S02E02.mp4",
+      poster: "poster12.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E03.mp4",
+      label: "S02 · E03",
+      title: "THE ARCHIVE",
+      accent: "#c8a5a0",
+      dl: "THE_LAST_MESSAGE_S02E03.mp4",
+      poster: "poster13.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E04.mp4",
+      label: "S02 · E04",
+      title: "THE FALSE MEMORY",
+      accent: "#b2a2c0",
+      dl: "THE_LAST_MESSAGE_S02E04.mp4",
+      poster: "poster14.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E05.mp4",
+      label: "S02 · E05",
+      title: "THE WITNESS",
+      accent: "#a9b48f",
+      dl: "THE_LAST_MESSAGE_S02E05.mp4",
+      poster: "poster15.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E06.mp4",
+      label: "S02 · E06",
+      title: "THE DIVIDE",
+      accent: "#d8a273",
+      dl: "THE_LAST_MESSAGE_S02E06.mp4",
+      poster: "poster16.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E07.mp4",
+      label: "S02 · E07",
+      title: "THE SOURCE",
+      accent: "#8fa8b8",
+      dl: "THE_LAST_MESSAGE_S02E07.mp4",
+      poster: "poster17.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E08.mp4",
+      label: "S02 · E08",
+      title: "THE AWAKENING",
+      accent: "#b7c9d6",
+      dl: "THE_LAST_MESSAGE_S02E08.mp4",
+      poster: "poster18.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E09.mp4",
+      label: "S02 · E09",
+      title: "THE EDEN PROTOCOL",
+      accent: "#d9c48f",
+      dl: "THE_LAST_MESSAGE_S02E09.mp4",
+      poster: "poster19.jpg",
+    },
+    {
+      src: "THE_LAST_MESSAGE_S02E10.mp4",
+      label: "S02 · E10",
+      title: "THE OTHER SIDE",
+      accent: "#c3b4a1",
+      dl: "THE_LAST_MESSAGE_S02E10.mp4",
+      poster: "poster20.jpg",
+    },
   ];
 
   const root = document.documentElement;
@@ -426,7 +589,7 @@
   const dl = document.getElementById("dl");
   const ticks = document.getElementById("ticks");
   const eps = [...document.querySelectorAll(".ep")];
-  const progs = ["prog0", "prog1", "prog2", "prog3", "prog4", "prog5", "prog6", "prog7", "prog8", "prog9"].map((id) => document.getElementById(id));
+  const progs = Array.from({length: PARTS.length}, (_, n) => document.getElementById("prog" + n));
 
   const ICON_PLAY = "M8 5v14l11-7z";
   const ICON_PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
@@ -461,7 +624,7 @@
     video.load();
     hudPart.textContent = p.label;
     hudTitle.textContent = p.title;
-    partTag.textContent = "PART 0" + (i + 1) + " / " + String(PARTS.length).padStart(2, "0");
+    partTag.textContent = "PART " + String(i + 1).padStart(2, "0") + " / " + String(PARTS.length).padStart(2, "0");
     dl.href = p.dl;
     dl.setAttribute("download", p.dl);
     paintAccent(p.accent);

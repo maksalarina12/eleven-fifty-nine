@@ -92,6 +92,16 @@ const Eye: React.FC<{
   const irisR = wide ? 3.55 : fear ? 4.1 : 4.9;
   const irisX = cx + lookX * 1.7;
   const irisY = cy + lookY * 1.2;
+  if (lid >= 0.86) {
+    return (
+      <g transform={flip ? `translate(${cx * 2} 0) scale(-1 1)` : undefined}>
+        <ellipse cx={cx + 1} cy={cy - 1} rx={w + 4} ry={h + 5} fill="#3A2A22" opacity={0.14} />
+        <path d={`M ${cx - w} ${cy + 0.2} Q ${cx} ${cy + h * 0.95} ${cx + w} ${cy - 0.6}`} fill="none" stroke="#161210" strokeWidth={2.4} strokeLinecap="round" />
+        <path d={`M ${cx - w * 0.6} ${cy + h * 0.3} Q ${cx} ${cy + h * 0.85} ${cx + w * 0.66} ${cy + h * 0.1}`} fill="none" stroke="#7E6656" strokeWidth={1} opacity={0.5} />
+        <path d={`M ${cx - w * 0.5} ${cy + h * 1.25} Q ${cx} ${cy + h * 1.6} ${cx + w * 0.55} ${cy + h * 1.05}`} fill="none" stroke="#7A5344" strokeWidth={1} opacity={0.22} />
+      </g>
+    );
+  }
   return (
     <g transform={flip ? `translate(${cx * 2} 0) scale(-1 1)` : undefined}>
       {/* eye socket shadow */}
@@ -212,7 +222,7 @@ export const Noah: React.FC<Props> = ({
           <stop offset="100%" stopColor="#B4703F" stopOpacity="0" />
         </linearGradient>
         <radialGradient id="nFaceLight" cx="0.28" cy="0.3" r="0.95">
-          <stop offset="0%" stopColor="#F2D6BF" stopOpacity="0.3" />
+          <stop offset="0%" stopColor="#F2D6BF" stopOpacity="0.2" />
           <stop offset="45%" stopColor="#8A6653" stopOpacity="0.06" />
           <stop offset="100%" stopColor="#0C0806" stopOpacity="0.72" />
         </radialGradient>
@@ -229,6 +239,15 @@ export const Noah: React.FC<Props> = ({
         <clipPath id="eyeClip">
           <path d="M 246 197 Q 266 186 286 197 Q 266 206 246 197 Z" />
           <path d="M 314 197 Q 334 186 354 197 Q 334 206 314 197 Z" />
+        </clipPath>
+        <clipPath id="nTorsoClip">
+          <path d="M 300 300
+             C 268 302 240 314 226 336
+             C 210 360 204 404 202 452
+             L 208 648 L 262 652 L 270 486 L 272 652 L 328 652 L 330 486 L 338 652 L 392 648
+             L 398 452
+             C 396 404 390 360 374 336
+             C 360 314 332 302 300 300 Z" />
         </clipPath>
         <clipPath id="faceClip">
           <path d="M 244 138 Q 300 112 356 138 L 356 200 Q 354 250 300 274 Q 246 250 244 200 Z" />
@@ -269,9 +288,11 @@ export const Noah: React.FC<Props> = ({
       </g>
 
       {/* ---------- neck (under the collar) ---------- */}
-      <path d="M 284 246 L 284 312 Q 300 324 316 312 L 316 246 Z" fill="url(#nSkin)" />
-      <path d="M 285 258 Q 300 294 315 260 L 315 312 Q 300 322 285 312 Z" fill="#33231C" opacity="0.62" />
-      <path d="M 284 252 L 284 292 Q 300 306 316 292 L 316 252 Z" fill="#1D120E" opacity="0.45" filter="url(#soft2)" />
+      <path d="M 288 244 C 285 270 282 296 280 320 C 292 330 310 330 322 320 C 319 296 316 270 313 244 Z" fill="url(#nSkin)" />
+      <path d="M 289 246 C 292 270 292 288 290 306 C 300 314 310 314 320 306 C 318 288 318 270 312 246 Z" fill="#33231C" opacity="0.55" filter="url(#soft2)" />
+      <path d="M 284 250 C 288 278 288 300 286 318" stroke="#1D120E" strokeWidth="6" opacity="0.4" fill="none" filter="url(#soft2)" />
+      <path d="M 292 264 C 295 286 295 304 294 318" stroke="#4A3025" strokeWidth="2" opacity="0.35" fill="none" filter="url(#soft1)" />
+      <path d="M 310 264 C 307 286 307 304 308 318" stroke="#1B110D" strokeWidth="2.2" opacity="0.4" fill="none" filter="url(#soft1)" />
 
       {/* ---------- torso ---------- */}
       <g transform={`translate(${t * 2.5} 0)`}>
@@ -308,7 +329,7 @@ export const Noah: React.FC<Props> = ({
         <path d="M 264 566 Q 300 578 338 566" stroke="#2E323A" strokeWidth="1" fill="none" opacity="0.35" />
         <path d="M 270 612 Q 300 624 332 612" stroke="#282C34" strokeWidth="1" fill="none" opacity="0.28" />
         {/* torso shadow pass */}
-        <path d="M 202 336 L 398 336 L 398 652 L 202 652 Z" fill="url(#nBodyShade)" opacity="0.55" />
+        <path d="M 202 336 L 398 336 L 398 652 L 202 652 Z" fill="url(#nBodyShade)" opacity="0.55" clipPath="url(#nTorsoClip)" />
         {/* crew collar over the neck base */}
         <path d="M 278 296 Q 300 320 322 296 L 330 312 Q 300 344 270 312 Z" fill="url(#nTee)" />
         <path d="M 278 296 Q 300 320 322 296" stroke="#3A3F48" strokeWidth="1.4" fill="none" opacity="0.55" />
@@ -330,9 +351,15 @@ export const Noah: React.FC<Props> = ({
             fill="url(#nSkin)"
           />
           <g clipPath="url(#faceClip)">
-            <rect x="230" y="100" width="150" height="200" fill="url(#nFaceLight)" />
+            <path
+              d="M 244 138 Q 300 112 356 138 L 356 200 Q 354 250 300 274 Q 246 250 244 200 Z"
+              fill="url(#nFaceLight)"
+            />
             <ellipse cx="348" cy="214" rx="30" ry="52" fill="#3E2A20" opacity="0.3" filter="url(#soft2)" />
             <ellipse cx="252" cy="220" rx="20" ry="36" fill="#4E3327" opacity="0.22" filter="url(#soft2)" />
+            {/* the temple turns away from the light: it must not sit flat beside the silhouette */}
+            <path d="M 360 132 L 358 206 C 348 200 342 184 340 166 C 339 152 347 138 360 132 Z" fill="#0A0605" opacity="0.42" filter="url(#soft2)" />
+            <path d="M 356 128 C 358 152 358 178 356 204 C 350 198 346 182 345 166 C 344 152 348 138 356 128 Z" fill="#070404" opacity="0.3" filter="url(#soft2)" />
             <path d="M 244 250 Q 300 282 356 250 L 356 280 L 244 280 Z" fill="#1A100C" opacity="0.25" filter="url(#soft2)" />
           </g>
 
@@ -388,7 +415,7 @@ export const Noah: React.FC<Props> = ({
                   d={`M ${-mouthW} ${-1 + smile * 0.2} Q 0 ${-5 + smile * 0.4} ${mouthW} ${-1 + smile * 0.2} Q 0 ${5 + mouthOpen * 12} ${-mouthW} ${-1 + smile * 0.2} Z`}
                   fill="#25100E"
                 />
-                {mouthOpen > 0.38 ? (
+                {mouthOpen > 0.16 ? (
                   <>
                     {/* upper teeth + tongue, keeps the gasp from reading as a black hole */}
                     <path
@@ -475,7 +502,7 @@ export const Noah: React.FC<Props> = ({
           <path d="M 306 100 C 304 122 302 142 300 164" stroke="#242935" strokeWidth="1.3" fill="none" opacity="0.3" />
           <path d="M 336 110 C 340 128 342 146 340 166" stroke="#2B313D" strokeWidth="1.1" fill="none" opacity="0.28" />
           {/* hair shadow on the forehead, just under the fringe */}
-          <path d="M 250 162 Q 300 176 350 160 L 350 172 Q 300 188 250 174 Z" fill="#1B0F0B" opacity="0.18" filter="url(#soft2)" />
+          <path d="M 250 162 Q 300 176 350 160 L 350 174 Q 300 190 250 176 Z" fill="#1B0F0B" opacity="0.24" filter="url(#soft2)" />
         </g>
 
         {/* ---------- stress sheen (only when asked) ---------- */}

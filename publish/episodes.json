@@ -1,472 +1,942 @@
 [
- {
-  "key": "ep01",
-  "part": 1,
-  "file": "THE_LAST_MESSAGE_Part1.mp4",
-  "poster": "poster1.jpg",
-  "title": "11:59 PM",
-  "alias": null,
-  "runtime": "60 seconds",
-  "en": {
-   "logline": "At 11:59 PM an unknown number tells Noah not to open his door. He has spent the last hour pretending he cannot hear the rain.",
-   "hook": "He had one instruction: don't open the door.",
-   "beats": [
-    "Rain, a locked apartment, a phone face-down on the table.",
-    "An unknown number. One line of text.",
-    "The clock refuses to move past 11:59."
-   ],
-   "quote": "Don't open the door.",
-   "cta": "Part 1 of The Last Message. Start from the beginning.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#psychologicalthriller",
-    "#scifi",
-    "#mysteryseries",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep01",
+    "part": 1,
+    "file": "THE_LAST_MESSAGE_Part1.mp4",
+    "poster": "poster1.jpg",
+    "title": "11:59 PM",
+    "alias": null,
+    "runtime": "60 seconds",
+    "en": {
+      "logline": "At 11:59 PM an unknown number tells Noah not to open his door. He has spent the last hour pretending he cannot hear the rain.",
+      "hook": "He had one instruction: don't open the door.",
+      "beats": [
+        "Rain, a locked apartment, a phone face-down on the table.",
+        "An unknown number. One line of text.",
+        "The clock refuses to move past 11:59."
+      ],
+      "quote": "Don't open the door.",
+      "cta": "Part 1 of The Last Message. Start from the beginning.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#psychologicalthriller",
+        "#scifi",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Pukul 23.59, nomor tak dikenal mengirim satu pesan ke Noah: jangan buka pintu. Padahal di luar, hujan tidak berhenti sejak satu jam lalu.",
+      "hook": "Cuma satu pesan: jangan buka pintu.",
+      "beats": [
+        "Hujan, apartemen terkunci, ponsel tertelungkup di meja.",
+        "Nomor tak dikenal. Satu baris pesan.",
+        "Jam dinding berhenti di 23.59."
+      ],
+      "quote": "Don't open the door.",
+      "cta": "Part 1 dari The Last Message. Mulai dari awal.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#thrillerpsikologis",
+        "#fiksishortfilm",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Pukul 23.59, nomor tak dikenal mengirim satu pesan ke Noah: jangan buka pintu. Padahal di luar, hujan tidak berhenti sejak satu jam lalu.",
-   "hook": "Cuma satu pesan: jangan buka pintu.",
-   "beats": [
-    "Hujan, apartemen terkunci, ponsel tertelungkup di meja.",
-    "Nomor tak dikenal. Satu baris pesan.",
-    "Jam dinding berhenti di 23.59."
-   ],
-   "quote": "Don't open the door.",
-   "cta": "Part 1 dari The Last Message. Mulai dari awal.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#thrillerpsikologis",
-    "#fiksishortfilm",
-    "#misteri",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep02",
-  "part": 2,
-  "file": "THE_LAST_MESSAGE_Part2.mp4",
-  "poster": "poster2.jpg",
-  "title": "THE OTHER ME",
-  "alias": null,
-  "runtime": "45 seconds",
-  "en": {
-   "logline": "A second message arrives with a link to a live hallway camera. The man standing outside Noah's door is wearing his face.",
-   "hook": "Someone is standing outside his door. It is him.",
-   "beats": [
-    "A link marked LIVE HALLWAY CAMERA.",
-    "An empty corridor, then a figure walks into frame.",
-    "Same hair. Same coat. Same scar."
-   ],
-   "quote": "You're not the first Noah.",
-   "cta": "Part 2 of The Last Message. Watch Part 1 first.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#doppelganger",
-    "#psychologicalthriller",
-    "#mysteryseries",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep02",
+    "part": 2,
+    "file": "THE_LAST_MESSAGE_Part2.mp4",
+    "poster": "poster2.jpg",
+    "title": "THE OTHER ME",
+    "alias": null,
+    "runtime": "45 seconds",
+    "en": {
+      "logline": "A second message arrives with a link to a live hallway camera. The man standing outside Noah's door is wearing his face.",
+      "hook": "Someone is standing outside his door. It is him.",
+      "beats": [
+        "A link marked LIVE HALLWAY CAMERA.",
+        "An empty corridor, then a figure walks into frame.",
+        "Same hair. Same coat. Same scar."
+      ],
+      "quote": "You're not the first Noah.",
+      "cta": "Part 2 of The Last Message. Watch Part 1 first.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#doppelganger",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Pesan kedua datang dengan tautan kamera koridor. Pria yang berdiri di depan pintu Noah memakai wajahnya sendiri.",
+      "hook": "Ada orang di depan pintunya. Itu dia.",
+      "beats": [
+        "Tautan bertuliskan LIVE HALLWAY CAMERA.",
+        "Koridor kosong, lalu sesosok bayangan masuk frame.",
+        "Rambut sama. Mantel sama. Bekas luka sama."
+      ],
+      "quote": "You're not the first Noah.",
+      "cta": "Part 2 dari The Last Message. Tonton Part 1 dulu.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#kembarandiri",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Pesan kedua datang dengan tautan kamera koridor. Pria yang berdiri di depan pintu Noah memakai wajahnya sendiri.",
-   "hook": "Ada orang di depan pintunya. Itu dia.",
-   "beats": [
-    "Tautan bertuliskan LIVE HALLWAY CAMERA.",
-    "Koridor kosong, lalu sesosok bayangan masuk frame.",
-    "Rambut sama. Mantel sama. Bekas luka sama."
-   ],
-   "quote": "You're not the first Noah.",
-   "cta": "Part 2 dari The Last Message. Tonton Part 1 dulu.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#kembarandiri",
-    "#thrillerpsikologis",
-    "#misteri",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep03",
-  "part": 3,
-  "file": "THE_LAST_MESSAGE_Part3.mp4",
-  "poster": "poster3.jpg",
-  "title": "12:00 AM",
-  "alias": "THE MISSING HOUR",
-  "runtime": "43 seconds",
-  "en": {
-   "logline": "Noah rewinds the hallway recording. It reaches midnight while his own phone is still stuck at 11:59, and the Noah on tape walks out of the apartment.",
-   "hook": "Two clocks. The same minute. Only one of them is his.",
-   "beats": [
-    "The footage runs backwards.",
-    "Timecode rolls from 11:59 to 12:00.",
-    "The recorded Noah steps into the hall."
-   ],
-   "quote": "You have one minute left.",
-   "cta": "Part 3 of The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#timetravel",
-    "#loops",
-    "#psychologicalthriller",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep03",
+    "part": 3,
+    "file": "THE_LAST_MESSAGE_Part3.mp4",
+    "poster": "poster3.jpg",
+    "title": "12:00 AM",
+    "alias": "THE MISSING HOUR",
+    "runtime": "43 seconds",
+    "en": {
+      "logline": "Noah rewinds the hallway recording. It reaches midnight while his own phone is still stuck at 11:59, and the Noah on tape walks out of the apartment.",
+      "hook": "Two clocks. The same minute. Only one of them is his.",
+      "beats": [
+        "The footage runs backwards.",
+        "Timecode rolls from 11:59 to 12:00.",
+        "The recorded Noah steps into the hall."
+      ],
+      "quote": "You have one minute left.",
+      "cta": "Part 3 of The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#timetravel",
+        "#loops",
+        "#psychologicalthriller",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Noah memutar ulang rekaman koridor. Rekaman itu sampai tengah malam, sementara ponselnya sendiri masih 23.59. Dan Noah di dalam rekaman melangkah keluar.",
+      "hook": "Dua jam. Satu menit yang sama. Cuma satu yang miliknya.",
+      "beats": [
+        "Rekaman berjalan mundur.",
+        "Timecode bergeser dari 23.59 ke 00.00.",
+        "Noah versi rekaman keluar ke koridor."
+      ],
+      "quote": "You have one minute left.",
+      "cta": "Part 3 dari The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#perjalananwaktu",
+        "#loop",
+        "#thrillerpsikologis",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Noah memutar ulang rekaman koridor. Rekaman itu sampai tengah malam, sementara ponselnya sendiri masih 23.59. Dan Noah di dalam rekaman melangkah keluar.",
-   "hook": "Dua jam. Satu menit yang sama. Cuma satu yang miliknya.",
-   "beats": [
-    "Rekaman berjalan mundur.",
-    "Timecode bergeser dari 23.59 ke 00.00.",
-    "Noah versi rekaman keluar ke koridor."
-   ],
-   "quote": "You have one minute left.",
-   "cta": "Part 3 dari The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#perjalananwaktu",
-    "#loop",
-    "#thrillerpsikologis",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep04",
-  "part": 4,
-  "file": "THE_LAST_MESSAGE_Part4.mp4",
-  "poster": "poster4.jpg",
-  "title": "THE LOOP",
-  "alias": null,
-  "runtime": "61 seconds",
-  "en": {
-   "logline": "One hundred and forty-seven messages arrive at once. The minute never changes. And whatever is texting him already knows he has done this before.",
-   "hook": "147 messages. One warning. No time left.",
-   "beats": [
-    "One minute on the clock, and it never ticks over.",
-    "Every light in the apartment dies.",
-    "147 messages, all saying the same thing."
-   ],
-   "quote": "You've done this before.",
-   "cta": "Part 4 of The Last Message. The loop is closing.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#timeloop",
-    "#psychologicalthriller",
-    "#mysteryseries",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep04",
+    "part": 4,
+    "file": "THE_LAST_MESSAGE_Part4.mp4",
+    "poster": "poster4.jpg",
+    "title": "THE LOOP",
+    "alias": null,
+    "runtime": "61 seconds",
+    "en": {
+      "logline": "One hundred and forty-seven messages arrive at once. The minute never changes. And whatever is texting him already knows he has done this before.",
+      "hook": "147 messages. One warning. No time left.",
+      "beats": [
+        "One minute on the clock, and it never ticks over.",
+        "Every light in the apartment dies.",
+        "147 messages, all saying the same thing."
+      ],
+      "quote": "You've done this before.",
+      "cta": "Part 4 of The Last Message. The loop is closing.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#timeloop",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Seratus empat puluh tujuh pesan masuk sekaligus. Menitnya tidak pernah berganti. Dan pengirim pesan itu sudah tahu Noah pernah melakukan ini.",
+      "hook": "147 pesan. Satu peringatan. Waktu habis.",
+      "beats": [
+        "Satu menit di layar, dan tidak pernah berganti.",
+        "Semua lampu di apartemen mati.",
+        "147 pesan, semuanya kalimat yang sama."
+      ],
+      "quote": "You've done this before.",
+      "cta": "Part 4 dari The Last Message. Loop-nya menutup.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#timeloop",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Seratus empat puluh tujuh pesan masuk sekaligus. Menitnya tidak pernah berganti. Dan pengirim pesan itu sudah tahu Noah pernah melakukan ini.",
-   "hook": "147 pesan. Satu peringatan. Waktu habis.",
-   "beats": [
-    "Satu menit di layar, dan tidak pernah berganti.",
-    "Semua lampu di apartemen mati.",
-    "147 pesan, semuanya kalimat yang sama."
-   ],
-   "quote": "You've done this before.",
-   "cta": "Part 4 dari The Last Message. Loop-nya menutup.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#timeloop",
-    "#thrillerpsikologis",
-    "#misteri",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep05",
-  "part": 5,
-  "file": "THE_LAST_MESSAGE_Part5.mp4",
-  "poster": "poster5.jpg",
-  "title": "THE ROOM",
-  "alias": "SUBJECT 001",
-  "runtime": "67 seconds",
-  "en": {
-   "logline": "Noah wakes in a room he has never seen, in front of a woman who already knows his file. The record says SUBJECT 001 is terminated. He is still breathing.",
-   "hook": "The file says SUBJECT 001: TERMINATED. Noah is still breathing.",
-   "beats": [
-    "A room with a wall of monitors and no windows.",
-    "A woman who answers without turning around.",
-    "A file with his face on it, and a status that should be final."
-   ],
-   "quote": "Find the room where you were born.",
-   "cta": "Part 5 of The Last Message. Four parts before this one.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#subject001",
-    "#psychologicalthriller",
-    "#mysteryseries",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep05",
+    "part": 5,
+    "file": "THE_LAST_MESSAGE_Part5.mp4",
+    "poster": "poster5.jpg",
+    "title": "THE ROOM",
+    "alias": "SUBJECT 001",
+    "runtime": "67 seconds",
+    "en": {
+      "logline": "Noah wakes in a room he has never seen, in front of a woman who already knows his file. The record says SUBJECT 001 is terminated. He is still breathing.",
+      "hook": "The file says SUBJECT 001: TERMINATED. Noah is still breathing.",
+      "beats": [
+        "A room with a wall of monitors and no windows.",
+        "A woman who answers without turning around.",
+        "A file with his face on it, and a status that should be final."
+      ],
+      "quote": "Find the room where you were born.",
+      "cta": "Part 5 of The Last Message. Four parts before this one.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject001",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Noah terbangun di ruangan yang belum pernah ia lihat, di depan seorang perempuan yang sudah tahu isi berkasnya. Catatan itu menyebut SUBJECT 001 telah dihentikan. Noah masih bernapas.",
+      "hook": "Berkasnya bilang SUBJECT 001: TERMINATED. Noah masih bernapas.",
+      "beats": [
+        "Ruangan tanpa jendela, dinding penuh monitor.",
+        "Seorang perempuan yang menjawab tanpa berbalik badan.",
+        "Sebuah berkas dengan wajahnya, dan status yang seharusnya sudah final."
+      ],
+      "quote": "Find the room where you were born.",
+      "cta": "Part 5 dari The Last Message. Empat part sebelumnya wajib ditonton.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject001",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Noah terbangun di ruangan yang belum pernah ia lihat, di depan seorang perempuan yang sudah tahu isi berkasnya. Catatan itu menyebut SUBJECT 001 telah dihentikan. Noah masih bernapas.",
-   "hook": "Berkasnya bilang SUBJECT 001: TERMINATED. Noah masih bernapas.",
-   "beats": [
-    "Ruangan tanpa jendela, dinding penuh monitor.",
-    "Seorang perempuan yang menjawab tanpa berbalik badan.",
-    "Sebuah berkas dengan wajahnya, dan status yang seharusnya sudah final."
-   ],
-   "quote": "Find the room where you were born.",
-   "cta": "Part 5 dari The Last Message. Empat part sebelumnya wajib ditonton.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#subject001",
-    "#thrillerpsikologis",
-    "#misteri",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep06",
-  "part": 6,
-  "file": "THE_LAST_MESSAGE_Part6.mp4",
-  "poster": "poster6.jpg",
-  "title": "DON'T TRUST NOAH.",
-  "alias": "SUBJECT 002",
-  "runtime": "83 seconds",
-  "en": {
-   "logline": "Noah opens his own apartment door and finds the laboratory that has been recording him. Every screen shows a different death, every clock is stuck at 11:59, and the only person still answering him is a woman who will not turn around.",
-   "hook": "Every screen is him. Every clock says 11:59.",
-   "beats": [
-    "A door that opens onto a laboratory instead of a hallway.",
-    "Wall after wall of Noah, each one dying at the same minute.",
-    "Midnight finally arrives, and Amara's phone says DON'T TRUST NOAH."
-   ],
-   "quote": "Don't trust Noah.",
-   "cta": "Part 6 of The Last Message. The finale.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#subject002",
-    "#psychologicalthriller",
-    "#mysteryseries",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep06",
+    "part": 6,
+    "file": "THE_LAST_MESSAGE_Part6.mp4",
+    "poster": "poster6.jpg",
+    "title": "DON'T TRUST NOAH.",
+    "alias": "SUBJECT 002",
+    "runtime": "83 seconds",
+    "en": {
+      "logline": "Noah opens his own apartment door and finds the laboratory that has been recording him. Every screen shows a different death, every clock is stuck at 11:59, and the only person still answering him is a woman who will not turn around.",
+      "hook": "Every screen is him. Every clock says 11:59.",
+      "beats": [
+        "A door that opens onto a laboratory instead of a hallway.",
+        "Wall after wall of Noah, each one dying at the same minute.",
+        "Midnight finally arrives, and Amara's phone says DON'T TRUST NOAH."
+      ],
+      "quote": "Don't trust Noah.",
+      "cta": "Part 6 of The Last Message. The finale.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject002",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Noah membuka pintu apartemennya sendiri dan menemukan laboratorium yang selama ini merekamnya. Setiap layar menampilkan kematian yang berbeda, setiap jam berhenti di 23.59, dan satu-satunya orang yang masih menjawabnya adalah perempuan yang tak pernah berbalik badan.",
+      "hook": "Semua layar adalah dia. Semua jam menunjukkan 23.59.",
+      "beats": [
+        "Pintu yang terbuka ke laboratorium, bukan ke koridor.",
+        "Dinding demi dinding berisi Noah, semuanya mati di menit yang sama.",
+        "Tengah malam akhirnya tiba, dan ponsel Amara berbunyi DON'T TRUST NOAH."
+      ],
+      "quote": "Don't trust Noah.",
+      "cta": "Part 6 dari The Last Message. Penutup.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject002",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Noah membuka pintu apartemennya sendiri dan menemukan laboratorium yang selama ini merekamnya. Setiap layar menampilkan kematian yang berbeda, setiap jam berhenti di 23.59, dan satu-satunya orang yang masih menjawabnya adalah perempuan yang tak pernah berbalik badan.",
-   "hook": "Semua layar adalah dia. Semua jam menunjukkan 23.59.",
-   "beats": [
-    "Pintu yang terbuka ke laboratorium, bukan ke koridor.",
-    "Dinding demi dinding berisi Noah, semuanya mati di menit yang sama.",
-    "Tengah malam akhirnya tiba, dan ponsel Amara berbunyi DON'T TRUST NOAH."
-   ],
-   "quote": "Don't trust Noah.",
-   "cta": "Part 6 dari The Last Message. Penutup.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#subject002",
-    "#thrillerpsikologis",
-    "#misteri",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep07",
-  "part": 7,
-  "file": "THE_LAST_MESSAGE_Part7.mp4",
-  "poster": "poster7.jpg",
-  "title": "SUBJECT 002",
-  "alias": "SHE SENT IT HERSELF",
-  "runtime": "74 seconds",
-  "en": {
-   "logline": "The message on Noah's phone came from Amara, but Amara never sent it. One monitor is still alive in the dead control room, and it is playing footage of her standing beside Doctor Elias three years ago.",
-   "hook": "The message came from her own number.",
-   "beats": [
-    "A control room of dead screens with one survivor.",
-    "Archive footage: Amara and Doctor Elias, three years younger.",
-    "Two knocks at the door, a familiar voice, and a second Amara on the threshold."
-   ],
-   "quote": "SUBJECT 002",
-   "cta": "Part 7 of The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#subject002",
-    "#psychologicalthriller",
-    "#mysteryseries",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep07",
+    "part": 7,
+    "file": "THE_LAST_MESSAGE_Part7.mp4",
+    "poster": "poster7.jpg",
+    "title": "SUBJECT 002",
+    "alias": "SHE SENT IT HERSELF",
+    "runtime": "74 seconds",
+    "en": {
+      "logline": "The message on Noah's phone came from Amara, but Amara never sent it. One monitor is still alive in the dead control room, and it is playing footage of her standing beside Doctor Elias three years ago.",
+      "hook": "The message came from her own number.",
+      "beats": [
+        "A control room of dead screens with one survivor.",
+        "Archive footage: Amara and Doctor Elias, three years younger.",
+        "Two knocks at the door, a familiar voice, and a second Amara on the threshold."
+      ],
+      "quote": "SUBJECT 002",
+      "cta": "Part 7 of The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject002",
+        "#psychologicalthriller",
+        "#mysteryseries",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Pesan di ponsel Noah datang dari nomor Amara, tapi Amara tidak pernah mengirimnya. Satu monitor masih hidup di ruang kendali yang mati, dan yang diputarnya adalah rekaman dirinya berdiri di samping Dokter Elias tiga tahun lalu.",
+      "hook": "Pesannya datang dari nomornya sendiri.",
+      "beats": [
+        "Ruang kendali penuh layar mati, hanya satu yang bertahan.",
+        "Rekaman arsip: Amara dan Dokter Elias, tiga tahun lebih muda.",
+        "Dua ketukan di pintu, suara yang dikenalnya, dan Amara kedua di ambang pintu."
+      ],
+      "quote": "SUBJECT 002",
+      "cta": "Part 7 dari The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#subject002",
+        "#thrillerpsikologis",
+        "#misteri",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Pesan di ponsel Noah datang dari nomor Amara, tapi Amara tidak pernah mengirimnya. Satu monitor masih hidup di ruang kendali yang mati, dan yang diputarnya adalah rekaman dirinya berdiri di samping Dokter Elias tiga tahun lalu.",
-   "hook": "Pesannya datang dari nomornya sendiri.",
-   "beats": [
-    "Ruang kendali penuh layar mati, hanya satu yang bertahan.",
-    "Rekaman arsip: Amara dan Dokter Elias, tiga tahun lebih muda.",
-    "Dua ketukan di pintu, suara yang dikenalnya, dan Amara kedua di ambang pintu."
-   ],
-   "quote": "SUBJECT 002",
-   "cta": "Part 7 dari The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#subject002",
-    "#thrillerpsikologis",
-    "#misteri",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep08",
-  "part": 8,
-  "file": "THE_LAST_MESSAGE_Part8.mp4",
-  "poster": "poster8.jpg",
-  "title": "THE SECOND AMARA",
-  "alias": "THE ONE WHO STAYED",
-  "runtime": "78 seconds",
-  "en": {
-   "logline": "There are two Amaras in the doorway and only one wrist scar. One of them says she stayed. The other one starts remembering things that were never recorded, and every screen in the room begins to wake.",
-   "hook": "Same face. Same earrings. One difference.",
-   "beats": [
-    "Two Amaras, matched close-ups, a thin scar across one wrist.",
-    "The monitors wake one by one, each showing a different version of her.",
-    "A memory file that says she was the one who created Subject 002."
-   ],
-   "quote": "You were the one who created it.",
-   "cta": "Part 8 of The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#thesecondamara",
-    "#psychologicalthriller",
-    "#scifi",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep08",
+    "part": 8,
+    "file": "THE_LAST_MESSAGE_Part8.mp4",
+    "poster": "poster8.jpg",
+    "title": "THE SECOND AMARA",
+    "alias": "THE ONE WHO STAYED",
+    "runtime": "78 seconds",
+    "en": {
+      "logline": "There are two Amaras in the doorway and only one wrist scar. One of them says she stayed. The other one starts remembering things that were never recorded, and every screen in the room begins to wake.",
+      "hook": "Same face. Same earrings. One difference.",
+      "beats": [
+        "Two Amaras, matched close-ups, a thin scar across one wrist.",
+        "The monitors wake one by one, each showing a different version of her.",
+        "A memory file that says she was the one who created Subject 002."
+      ],
+      "quote": "You were the one who created it.",
+      "cta": "Part 8 of The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#thesecondamara",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Ada dua Amara di ambang pintu dan hanya satu bekas luka di pergelangan. Salah satunya bilang ia yang bertahan. Yang lain mulai mengingat hal-hal yang tak pernah terekam, dan satu per satu layar di ruangan itu terbangun.",
+      "hook": "Wajah sama. Anting sama. Satu perbedaan.",
+      "beats": [
+        "Dua Amara, close-up yang dicocokkan, satu bekas luka tipis di pergelangan.",
+        "Monitor bangun satu per satu, masing-masing menampilkan versi dirinya yang berbeda.",
+        "Berkas memori yang menyebut dialah pembuat Subjek 002."
+      ],
+      "quote": "You were the one who created it.",
+      "cta": "Part 8 dari The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#thesecondamara",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Ada dua Amara di ambang pintu dan hanya satu bekas luka di pergelangan. Salah satunya bilang ia yang bertahan. Yang lain mulai mengingat hal-hal yang tak pernah terekam, dan satu per satu layar di ruangan itu terbangun.",
-   "hook": "Wajah sama. Anting sama. Satu perbedaan.",
-   "beats": [
-    "Dua Amara, close-up yang dicocokkan, satu bekas luka tipis di pergelangan.",
-    "Monitor bangun satu per satu, masing-masing menampilkan versi dirinya yang berbeda.",
-    "Berkas memori yang menyebut dialah pembuat Subjek 002."
-   ],
-   "quote": "You were the one who created it.",
-   "cta": "Part 8 dari The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#thesecondamara",
-    "#thrillerpsikologis",
-    "#scifi",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep09",
-  "part": 9,
-  "file": "THE_LAST_MESSAGE_Part9.mp4",
-  "poster": "poster9.jpg",
-  "title": "THE FIRST EXPERIMENT",
-  "alias": "PROJECT ORIGIN",
-  "runtime": "94 seconds",
-  "en": {
-   "logline": "A hidden file opens the night the loop began: Amara and Elias, three years ago, a volunteer nobody expected, and a shutdown protocol she hid inside the one person Elias would never search.",
-   "hook": "The first volunteer was someone she knew.",
-   "beats": [
-    "The first experiment, opened from a file that should not exist.",
-    "A body dies in the chamber while the mind stays awake inside the machine.",
-    "She erases her own memory to hide the shutdown protocol, and seals it inside Noah."
-   ],
-   "quote": "Don't let Elias reach the original body.",
-   "cta": "Part 9 of The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#thefirstexperiment",
-    "#psychologicalthriller",
-    "#scifi",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep09",
+    "part": 9,
+    "file": "THE_LAST_MESSAGE_Part9.mp4",
+    "poster": "poster9.jpg",
+    "title": "THE FIRST EXPERIMENT",
+    "alias": "PROJECT ORIGIN",
+    "runtime": "94 seconds",
+    "en": {
+      "logline": "A hidden file opens the night the loop began: Amara and Elias, three years ago, a volunteer nobody expected, and a shutdown protocol she hid inside the one person Elias would never search.",
+      "hook": "The first volunteer was someone she knew.",
+      "beats": [
+        "The first experiment, opened from a file that should not exist.",
+        "A body dies in the chamber while the mind stays awake inside the machine.",
+        "She erases her own memory to hide the shutdown protocol, and seals it inside Noah."
+      ],
+      "quote": "Don't let Elias reach the original body.",
+      "cta": "Part 9 of The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#thefirstexperiment",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Sebuah berkas tersembunyi membuka malam ketika loop dimulai: Amara dan Elias, tiga tahun lalu, seorang relawan yang tak seorang pun duga, dan protokol mematikan yang ia sembunyikan di dalam orang yang tak akan pernah Elias periksa.",
+      "hook": "Relawan pertamanya adalah orang yang ia kenal.",
+      "beats": [
+        "Eksperimen pertama, dibuka dari berkas yang seharusnya tidak ada.",
+        "Tubuh mati di dalam bilik sementara pikirannya tetap terjaga di dalam mesin.",
+        "Ia menghapus ingatannya sendiri untuk menyembunyikan protokol, dan menanamnya di dalam Noah."
+      ],
+      "quote": "Don't let Elias reach the original body.",
+      "cta": "Part 9 dari The Last Message.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#thefirstexperiment",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Sebuah berkas tersembunyi membuka malam ketika loop dimulai: Amara dan Elias, tiga tahun lalu, seorang relawan yang tak seorang pun duga, dan protokol mematikan yang ia sembunyikan di dalam orang yang tak akan pernah Elias periksa.",
-   "hook": "Relawan pertamanya adalah orang yang ia kenal.",
-   "beats": [
-    "Eksperimen pertama, dibuka dari berkas yang seharusnya tidak ada.",
-    "Tubuh mati di dalam bilik sementara pikirannya tetap terjaga di dalam mesin.",
-    "Ia menghapus ingatannya sendiri untuk menyembunyikan protokol, dan menanamnya di dalam Noah."
-   ],
-   "quote": "Don't let Elias reach the original body.",
-   "cta": "Part 9 dari The Last Message.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#thefirstexperiment",
-    "#thrillerpsikologis",
-    "#scifi",
-    "#animasi2d"
-   ]
-  }
- },
- {
-  "key": "ep10",
-  "part": 10,
-  "file": "THE_LAST_MESSAGE_Part10.mp4",
-  "poster": "poster10.jpg",
-  "title": "THE ORIGINAL SIN",
-  "alias": "PROJECT EDEN",
-  "runtime": "124 seconds",
-  "en": {
-   "logline": "The sealed chamber opens on the body Elias kept alive for three years. The copies were never about immortality. They were about making a mind that would obey. Amara finally uses the protocol she buried, and Noah chooses what happens to everyone still inside the system.",
-   "hook": "The experiment was never about saving him.",
-   "beats": [
-    "The original Noah wakes in the chamber, identical down to the scar.",
-    "Elias admits the purpose: a consciousness that cannot refuse.",
-    "Noah releases every mind in the system; the clocks move, the loop ends, and three days later a last message names Project Eden."
-   ],
-   "quote": "Thank you for remembering me.",
-   "cta": "Season 1 finale of The Last Message. Season 2 is coming.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#theoriginalsin",
-    "#psychologicalthriller",
-    "#seasonfinale",
-    "#shortfilm"
-   ]
+  {
+    "key": "ep10",
+    "part": 10,
+    "file": "THE_LAST_MESSAGE_Part10.mp4",
+    "poster": "poster10.jpg",
+    "title": "THE ORIGINAL SIN",
+    "alias": "PROJECT EDEN",
+    "runtime": "124 seconds",
+    "en": {
+      "logline": "The sealed chamber opens on the body Elias kept alive for three years. The copies were never about immortality. They were about making a mind that would obey. Amara finally uses the protocol she buried, and Noah chooses what happens to everyone still inside the system.",
+      "hook": "The experiment was never about saving him.",
+      "beats": [
+        "The original Noah wakes in the chamber, identical down to the scar.",
+        "Elias admits the purpose: a consciousness that cannot refuse.",
+        "Noah releases every mind in the system; the clocks move, the loop ends, and three days later a last message names Project Eden."
+      ],
+      "quote": "Thank you for remembering me.",
+      "cta": "Season 1 finale of The Last Message. Season 2 is coming.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#theoriginalsin",
+        "#psychologicalthriller",
+        "#seasonfinale",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Bilik yang tersegel terbuka dan di dalamnya tubuh yang Elias jaga tetap hidup selama tiga tahun. Semua salinan itu bukan soal keabadian, tapi soal menciptakan pikiran yang patuh. Amara akhirnya memakai protokol yang ia kubur, dan Noah memilih nasib semua yang masih terkurung di dalam sistem.",
+      "hook": "Eksperimen itu tidak pernah soal menyelamatkannya.",
+      "beats": [
+        "Noah asli terbangun di bilik, identik hingga ke bekas lukanya.",
+        "Elias mengakui tujuannya: kesadaran yang tak bisa menolak.",
+        "Noah melepaskan semua pikiran di dalam sistem; jam berjalan lagi, loop berakhir, dan tiga hari kemudian satu pesan terakhir menyebut Project Eden."
+      ],
+      "quote": "Thank you for remembering me.",
+      "cta": "Final Season 1 The Last Message. Season 2 menyusul.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#theoriginalsin",
+        "#thrillerpsikologis",
+        "#finalseason",
+        "#animasi2d"
+      ]
+    }
   },
-  "id": {
-   "logline": "Bilik yang tersegel terbuka dan di dalamnya tubuh yang Elias jaga tetap hidup selama tiga tahun. Semua salinan itu bukan soal keabadian, tapi soal menciptakan pikiran yang patuh. Amara akhirnya memakai protokol yang ia kubur, dan Noah memilih nasib semua yang masih terkurung di dalam sistem.",
-   "hook": "Eksperimen itu tidak pernah soal menyelamatkannya.",
-   "beats": [
-    "Noah asli terbangun di bilik, identik hingga ke bekas lukanya.",
-    "Elias mengakui tujuannya: kesadaran yang tak bisa menolak.",
-    "Noah melepaskan semua pikiran di dalam sistem; jam berjalan lagi, loop berakhir, dan tiga hari kemudian satu pesan terakhir menyebut Project Eden."
-   ],
-   "quote": "Thank you for remembering me.",
-   "cta": "Final Season 1 The Last Message. Season 2 menyusul.",
-   "tags": [
-    "#TheLastMessage",
-    "#anime",
-    "#theoriginalsin",
-    "#thrillerpsikologis",
-    "#finalseason",
-    "#animasi2d"
-   ]
+  {
+    "key": "ep11",
+    "part": 11,
+    "file": "THE_LAST_MESSAGE_S02E01.mp4",
+    "poster": "poster11.jpg",
+    "title": "THE EDEN SIGNAL",
+    "alias": "PROJECT EDEN",
+    "runtime": "43 seconds",
+    "en": {
+      "logline": "Three days after Noah vanished, a relay tower outside the city switches itself back on. Amara opens the transmission and finds Noah inside a white room, telling her not to come, while a second voice behind him says he knows she is watching.",
+      "hook": "Amara. Do not come here.",
+      "beats": [
+        "A dead relay tower comes back to life, and her phone answers it.",
+        "A heartbeat down the line, then Noah on a screen, looking straight into the camera.",
+        "New coordinates appear beneath the city. She takes her keys."
+      ],
+      "quote": "Then I am coming anyway.",
+      "cta": "Season 2 begins. The Last Message: Project Eden, part 1 of 10.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Tiga hari setelah Noah menghilang, menara relay di luar kota menyala lagi. Amara membuka transmisinya dan melihat Noah di dalam ruangan putih, memintanya jangan datang, sementara suara kedua di belakangnya berkata bahwa ia tahu Amara sedang menonton.",
+      "hook": "Amara. Jangan ke sini.",
+      "beats": [
+        "Menara relay mati tiba-tiba hidup, dan ponselnya menjawab.",
+        "Detak jantung di saluran, lalu Noah di layar, menatap tepat ke kamera.",
+        "Koordinat baru muncul di bawah kota. Ia mengambil kuncinya."
+      ],
+      "quote": "Then I am coming anyway.",
+      "cta": "Season 2 dimulai. The Last Message: Project Eden, bagian 1 dari 10.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep12",
+    "part": 12,
+    "file": "THE_LAST_MESSAGE_S02E02.mp4",
+    "poster": "poster12.jpg",
+    "title": "THE EMPTY CITY",
+    "alias": "PROJECT EDEN",
+    "runtime": "42 seconds",
+    "en": {
+      "logline": "The coordinates lead to a city with working traffic lights, warm coffee and morning announcements, and no residents at all. On an underground platform a driverless train opens its doors onto hundreds of photographs of Noah, and one of Amara asleep in the same car.",
+      "hook": "Good morning, residents.",
+      "beats": [
+        "Empty roads, a full cup, a voice from every speaker.",
+        "Every clock in the city reads the same minute.",
+        "Hundreds of shoes outside the station, and a photograph with a message on the back."
+      ],
+      "quote": "You have already been here.",
+      "cta": "Part 2 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Koordinat itu membawa Amara ke kota dengan lampu lalu lintas yang bekerja, kopi yang masih mengepul, dan pengumuman pagi, tapi tanpa satu pun penduduk. Di peron bawah tanah, kereta tanpa masinis membuka pintunya pada ratusan foto Noah, dan satu foto Amara tertidur di kereta yang sama.",
+      "hook": "Selamat pagi, penduduk.",
+      "beats": [
+        "Jalan kosong, cangkir penuh, suara dari setiap pengeras suara.",
+        "Semua jam di kota menunjukkan menit yang sama.",
+        "Ratusan sepatu di luar stasiun, dan satu foto dengan pesan di baliknya."
+      ],
+      "quote": "You have already been here.",
+      "cta": "Bagian 2 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep13",
+    "part": 13,
+    "file": "THE_LAST_MESSAGE_S02E03.mp4",
+    "poster": "poster13.jpg",
+    "title": "THE ARCHIVE",
+    "alias": "PROJECT EDEN",
+    "runtime": "48 seconds",
+    "en": {
+      "logline": "A steel door recognizes Amara's face and calls her Architect. Behind it, in a room she has never entered, shelves of memory drives reach into the dark, each carrying a name, a date and a death. Subject 001 is Noah. Subject 002 is her.",
+      "hook": "Access granted. Architect privileges.",
+      "beats": [
+        "The train runs past stations erased from every public map.",
+        "Her hands find the light switch in a room she has never seen.",
+        "Subject 001. Subject 002. Her own voice on the file, warning her."
+      ],
+      "quote": "If I ever return here, do not let me remember what I did.",
+      "cta": "Part 3 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Pintu baja mengenali wajah Amara dan menyebutnya Architect. Di baliknya, di ruangan yang belum pernah ia masuki, rak-rak berisi drive memori membentang ke dalam gelap, masing-masing membawa nama, tanggal, dan kematian. Subject 001 adalah Noah. Subject 002 adalah dirinya.",
+      "hook": "Akses diberikan. Hak istimewa Architect.",
+      "beats": [
+        "Kereta melewati stasiun yang dihapus dari semua peta publik.",
+        "Tangannya tahu letak saklar lampu di ruangan yang belum pernah ia lihat.",
+        "Subject 001. Subject 002. Suaranya sendiri di berkas itu, memperingatkannya."
+      ],
+      "quote": "If I ever return here, do not let me remember what I did.",
+      "cta": "Bagian 3 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep14",
+    "part": 14,
+    "file": "THE_LAST_MESSAGE_S02E04.mp4",
+    "poster": "poster14.jpg",
+    "title": "THE FALSE MEMORY",
+    "alias": "PROJECT EDEN",
+    "runtime": "44 seconds",
+    "en": {
+      "logline": "The archive plays a memory Amara never lived: a sunlit lake, no rain, no laboratory, no clock, and Noah laughing beside her. For one second she wants it. Then the image skips, and a line of code appears across the water.",
+      "hook": "Emotional attachment trial: successful.",
+      "beats": [
+        "A lake, a sun, two people who are allowed to be happy.",
+        "The same smile, repeated three times, without a breath between.",
+        "The verdict is printed on the water like a test result."
+      ],
+      "quote": "Someone had built a memory of love and placed her inside it.",
+      "cta": "Part 4 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Arsip itu memutar memori yang tidak pernah Amara jalani: danau di bawah matahari, tanpa hujan, tanpa laboratorium, tanpa jam, dan Noah tertawa di sampingnya. Untuk satu detik ia ingin percaya. Lalu gambar itu melompat, dan sebaris kode muncul di atas air.",
+      "hook": "Uji ikatan emosional: berhasil.",
+      "beats": [
+        "Danau, matahari, dua orang yang boleh bahagia.",
+        "Senyum yang sama, diulang tiga kali, tanpa jeda.",
+        "Vonnis itu tercetak di atas air seperti hasil uji."
+      ],
+      "quote": "Someone had built a memory of love and placed her inside it.",
+      "cta": "Bagian 4 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep15",
+    "part": 15,
+    "file": "THE_LAST_MESSAGE_S02E05.mp4",
+    "poster": "poster15.jpg",
+    "title": "THE WITNESS",
+    "alias": "PROJECT EDEN",
+    "runtime": "41 seconds",
+    "en": {
+      "logline": "A woman waits at the archive exit with an old hospital bracelet under her sleeve. Iris remembers the resets, keeps a notebook of dates that never happened, and has crossed the one minute that traps Noah.",
+      "hook": "My name is Iris. I remember the resets.",
+      "beats": [
+        "A wrist band older than the building it is standing in.",
+        "Every page in the notebook ends at 11:59. One does not.",
+        "Footsteps behind the archive wall, while she is still talking."
+      ],
+      "quote": "The clock is not the prison. The prison is what they make us forget.",
+      "cta": "Part 5 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Seorang perempuan menunggu di pintu keluar arsip dengan gelang rumah sakit tua di bawah lengan bajunya. Iris ingat semua reset, menyimpan buku catatan berisi tanggal-tanggal yang tak pernah terjadi, dan pernah melewati satu menit yang mengurung Noah.",
+      "hook": "Namaku Iris. Aku ingat semua reset.",
+      "beats": [
+        "Gelang pergelangan yang lebih tua dari gedung tempat ia berdiri.",
+        "Setiap halaman buku itu berakhir di 11.59. Satu tidak.",
+        "Langkah kaki di balik dinding arsip, saat ia masih bicara."
+      ],
+      "quote": "The clock is not the prison. The prison is what they make us forget.",
+      "cta": "Bagian 5 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep16",
+    "part": 16,
+    "file": "THE_LAST_MESSAGE_S02E06.mp4",
+    "poster": "poster16.jpg",
+    "title": "THE DIVIDE",
+    "alias": "PROJECT EDEN",
+    "runtime": "41 seconds",
+    "en": {
+      "logline": "Noah appears on the other side of a glass partition and both halves of the recording answer her at once: one begs her to open the door, one warns her to run. Amara asks the only question a copied answer cannot fake.",
+      "hook": "Both men had the scar. Only one stayed silent.",
+      "beats": [
+        "Two hands meet on the glass, and the reflections touch before the recordings do.",
+        "The same conversation, played twice, with two different endings.",
+        "She closes her eyes and asks what he chose when the clocks stopped."
+      ],
+      "quote": "What did you choose when the clocks stopped?",
+      "cta": "Part 6 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Noah muncul di balik dinding kaca dan kedua versi rekaman itu menjawab bersamaan: satu memohon agar Amara membuka pintu, satu memperingatkan agar ia lari. Amara mengajukan satu pertanyaan yang tidak bisa dipalsukan oleh salinan.",
+      "hook": "Keduanya punya bekas luka. Hanya satu yang diam.",
+      "beats": [
+        "Dua tangan bertemu di kaca, pantulannya bersentuhan lebih dulu daripada rekamannya.",
+        "Percakapan yang sama, diputar dua kali, dengan dua akhir berbeda.",
+        "Ia menutup mata dan bertanya apa pilihan Noah saat jam berhenti."
+      ],
+      "quote": "What did you choose when the clocks stopped?",
+      "cta": "Bagian 6 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep17",
+    "part": 17,
+    "file": "THE_LAST_MESSAGE_S02E07.mp4",
+    "poster": "poster17.jpg",
+    "title": "THE SOURCE",
+    "alias": "PROJECT EDEN",
+    "runtime": "41 seconds",
+    "en": {
+      "logline": "Beyond the partition hangs the machine that feeds the city its memories, its cables dropping into a shaft deeper than the building. Every reset was copied here, and the access logs carry Elias's signature with a government seal under it.",
+      "hook": "Welcome home, original subject.",
+      "beats": [
+        "A cable shaft with no visible bottom.",
+        "Elias signed the logs. Someone above him countersigned.",
+        "Noah's hand on the console, and the machine knows him."
+      ],
+      "quote": "Elias did not build this alone.",
+      "cta": "Part 7 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Di balik partisi tergantung mesin yang memberi kota itu ingatannya, kabel-kabelnya turun ke poros yang lebih dalam dari gedungnya. Setiap reset disalin ke sini, dan log akses membawa tanda tangan Elias dengan stempel pemerintah di bawahnya.",
+      "hook": "Selamat datang di rumah, subjek asli.",
+      "beats": [
+        "Poros kabel tanpa dasar yang terlihat.",
+        "Elias menandatangani log. Seseorang di atasnya ikut mengesahkan.",
+        "Tangan Noah di konsol, dan mesin itu mengenalinya."
+      ],
+      "quote": "Elias did not build this alone.",
+      "cta": "Bagian 7 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep18",
+    "part": 18,
+    "file": "THE_LAST_MESSAGE_S02E08.mp4",
+    "poster": "poster18.jpg",
+    "title": "THE AWAKENING",
+    "alias": "PROJECT EDEN",
+    "runtime": "39 seconds",
+    "en": {
+      "logline": "The platform lowers Noah into a chamber of sleeping bodies, and every face is his. Amara counts the beds until she cannot look. Then one of them opens its eyes.",
+      "hook": "Which one of us got out?",
+      "beats": [
+        "A hundred beds, all of them breathing in the same rhythm.",
+        "The count stops being a number and becomes a weight.",
+        "Every bed unlocks at once, and the ceiling turns red."
+      ],
+      "quote": "You promised to stop making us.",
+      "cta": "Part 8 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Platform menurunkan Noah ke bilik berisi tubuh-tubuh yang tidur, dan setiap wajah adalah wajahnya. Amara menghitung ranjang sampai ia tak sanggup melihat lagi. Lalu salah satu dari mereka membuka mata.",
+      "hook": "Siapa di antara kita yang berhasil keluar?",
+      "beats": [
+        "Seratus ranjang, semuanya bernapas dengan irama yang sama.",
+        "Hitungannya berhenti jadi angka dan berubah jadi beban.",
+        "Semua ranjang terbuka bersamaan, dan langit-langit berubah merah."
+      ],
+      "quote": "You promised to stop making us.",
+      "cta": "Bagian 8 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep19",
+    "part": 19,
+    "file": "THE_LAST_MESSAGE_S02E09.mp4",
+    "poster": "poster19.jpg",
+    "title": "THE EDEN PROTOCOL",
+    "alias": "PROJECT EDEN",
+    "runtime": "44 seconds",
+    "en": {
+      "logline": "The awakened subjects do not attack. They look for a door. Amara finds the protocol that controls every lock, and it offers two choices: seal the chamber and preserve the network, or open every city at once.",
+      "hook": "One city became ten. Ten became hundreds.",
+      "beats": [
+        "A crowd that only wants out.",
+        "Two buttons, and no way to press both.",
+        "Noah watches her hand hover, and says the only thing that settles it."
+      ],
+      "quote": "If we are real enough to suffer, we are real enough to leave.",
+      "cta": "Part 9 of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Subjek yang terbangun tidak menyerang. Mereka mencari pintu. Amara menemukan protokol yang mengendalikan semua kunci, dan sistem itu menawarkan dua pilihan: segel bilik dan pertahankan jaringan, atau buka semua kota sekaligus.",
+      "hook": "Satu kota menjadi sepuluh. Sepuluh menjadi ratusan.",
+      "beats": [
+        "Kerumunan yang hanya ingin keluar.",
+        "Dua tombol, dan tak ada cara menekan keduanya.",
+        "Noah melihat tangannya menggantung, lalu mengatakan satu hal yang memutuskan."
+      ],
+      "quote": "If we are real enough to suffer, we are real enough to leave.",
+      "cta": "Bagian 9 dari The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
+  },
+  {
+    "key": "ep20",
+    "part": 20,
+    "file": "THE_LAST_MESSAGE_S02E10.mp4",
+    "poster": "poster20.jpg",
+    "title": "THE OTHER SIDE",
+    "alias": "PROJECT EDEN",
+    "runtime": "47 seconds",
+    "en": {
+      "logline": "In Eden's central control room Noah stands beside her: scar in the right place, voice the same, eyes that never blink. The map spreads past the coast to hundreds of identical sites, and something far out at sea answers.",
+      "hook": "Eden was never contained.",
+      "beats": [
+        "Every monitor wakes at once.",
+        "The network is not a city. It is a pattern repeated across the hemisphere.",
+        "One signal on open water, and a voice that had been waiting."
+      ],
+      "quote": "Phase 3 is waiting.",
+      "cta": "Season 2 finale of The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#psychologicalthriller",
+        "#scifi",
+        "#shortfilm"
+      ]
+    },
+    "id": {
+      "logline": "Di ruang kendali pusat Eden, Noah berdiri di sampingnya: bekas luka di tempat yang benar, suara yang sama, mata yang tidak pernah berkedip. Peta itu menyebar melewati pantai ke ratusan lokasi identik, dan sesuatu di laut lepas menjawab.",
+      "hook": "Eden tidak pernah terkurung.",
+      "beats": [
+        "Semua monitor menyala bersamaan.",
+        "Jaringan itu bukan satu kota. Itu pola yang diulang di seluruh belahan bumi.",
+        "Satu sinyal di laut terbuka, dan suara yang sudah lama menunggu."
+      ],
+      "quote": "Phase 3 is waiting.",
+      "cta": "Final Season 2 The Last Message: Project Eden.",
+      "tags": [
+        "#TheLastMessage",
+        "#anime",
+        "#projecteden",
+        "#thrillerpsikologis",
+        "#scifi",
+        "#animasi2d"
+      ]
+    }
   }
- }
 ]

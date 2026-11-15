@@ -14,7 +14,8 @@
     "setup": "node publish/setup.mjs",
     "pack:post": "node publish/post.mjs",
     "dashboard": "node publish/dashboard.mjs",
-    "doctor": "node publish/doctor.mjs"
+    "doctor": "node publish/doctor.mjs",
+    "lock": "node scripts/check-contract.mjs"
   },
   "keywords": [],
   "author": "",

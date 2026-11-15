@@ -83,6 +83,70 @@ Part baru dianggap selesai kalau **semua** ini benar:
 
 ---
 
+## 0.5 KONTRAK MODEL-AGNOSTIK (SEASON 02)
+
+Tujuannya satu: **model apa pun yang menghasilkan narasi, videonya tetap sama.**
+Itu bisa dijamin karena film ini 100% kode. Satu-satunya artefak yang bergantung
+pada model/akun/voice adalah file MP3. Semua sisanya deterministik.
+
+### 0.5.1 Urutan yang mengikat
+
+```
+naskah (01_NARRATION_ELEVENLABS.md, blok COPY INTO ELEVENLABS)
+   ↓  scripts/tts.mjs  (voice + model + akun bebas berubah)
+MP3  42.720 s
+   ↓  ffprobe                  durasi nyata
+frame = floor(durasi × 30)     gambar TIDAK PERNAH lebih panjang dari suara
+   ↓  Whisper base.en          batas kalimat nyata (out/s02/words/s02eNN.json)
+C.s1 … C.sN                    cut jatuh di kalimat, bukan di tenggat brief
+   ↓  src/S02ENN.tsx
+   ↓  npm run lock             kontrak dicek sebelum render
+```
+
+Kalau MP3 diganti (model lain, akun lain, regenerate), yang dilakukan **hanya**:
+ukur ulang durasi → hitung ulang frame → geser landmark → `npm run lock` →
+render. **Jangan** pernah men-stretch audio agar cocok dengan edit lama, dan
+jangan menyalin durasi dari bible.
+
+### 0.5.2 Yang tidak boleh berubah karena model
+
+| Hal | Sumber kebenaran |
+|---|---|
+| Canvas 1080×1920, 30 fps | `src/cNN.tsx` |
+| `durationInFrames` | `floor(ffprobe × 30)` |
+| Watermark `EldraMyth` + tail hitam | komponen episode |
+| Teks di layar | hanya yang disebut narasi part itu |
+| Rig karakter, scar, kostum | `src/character/*` |
+
+### 0.5.3 Perintah pemeriksa
+
+```bash
+npm run lock          # kontrak Season 02: canvas, fps, frame vs audio, watermark, tidak ada mp4 ter-track
+npm run lock -- --all # termasuk part Season 1 (laporan, bukan penegakan)
+```
+
+`npm run lock` harus exit 0 sebelum render master. Kalau gagal, pesannya
+menyebut file, jumlah frame, dan durasi audio yang benar — perbaiki
+`durationInFrames`, jangan audionya.
+
+### 0.5.4 Catatan per episode
+
+Setiap folder part Season 02 menyimpan `S02ENN.audio.json`: voice, model,
+fallback, durasi, jumlah frame, `sha256` MP3 asli dan salinan render. Kalau hash
+berubah, cut list wajib diukur ulang. Ini yang membuat hasilnya bisa
+direproduksi siapa pun, di mesin mana pun, dengan model apa pun.
+
+### 0.5.5 Kegagalan khas
+
+| Gejala | Sebab | Perbaikan |
+|---|---|---|
+| `npm run lock` bilang frame ≠ floor(durasi×30) | MP3 diregenerasi, frame tidak dihitung ulang | hitung ulang, geser landmark |
+| gambar lebih panjang dari suara | memakai `round()` atau durasi bible | pakai `floor()` dari `ffprobe` |
+| cut meleset dari kalimat | memakai timestamp brief | ukur ulang dengan Whisper |
+| audio terdengar dipercepat | MP3 di-stretch agar cocok edit lama | regenerate, jangan stretch |
+
+---
+
 ## 1. KONTRAK DELIVERABLE
 
 | Item | Nilai |

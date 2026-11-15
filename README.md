@@ -1,6 +1,6 @@
 # THE LAST MESSAGE
 
-**A ten-part animated psychological thriller.**
+**A twenty-part animated psychological thriller, in two seasons.**
 One apartment, one rainy night, and a minute that keeps happening to someone else.
 
 ![The screening room](docs/screening-room.png)
@@ -25,6 +25,8 @@ door. Over ten parts, the hallway, the clock, and the messages stop behaving
 like things that belong to him, until the laboratory underneath the building
 starts behaving like it has been waiting for him.
 
+### Season 01 — one minute
+
 | Part | Title | Runtime | Frames |
 |---|---|---|---|
 | 01 | **11:59 PM** | 1:00 | 1800 |
@@ -37,6 +39,31 @@ starts behaving like it has been waiting for him.
 | 08 | **THE SECOND AMARA** | 1:18 | 2329 |
 | 09 | **THE FIRST EXPERIMENT** *(Project Origin)* | 1:34 | 2831 |
 | 10 | **THE ORIGINAL SIN** *(Project Eden)* | 2:04 | 3733 |
+
+### Season 02 — PROJECT EDEN
+
+Season 2 leaves the apartment. The door Noah was told never to open opens onto a
+floor that was never on the plans, and every face down there is his.
+
+| Part | Title | Runtime | Frames |
+|---|---|---|---|
+| 01 | **THE EDEN SIGNAL** | 0:43 | 1281 |
+| 02 | **THE EMPTY CITY** | 0:42 | 1262 |
+| 03 | **THE ARCHIVE** | 0:48 | 1432 |
+| 04 | **THE FALSE MEMORY** | 0:44 | 1320 |
+| 05 | **THE WITNESS** | 0:41 | 1228 |
+| 06 | **THE DIVIDE** | 0:41 | 1221 |
+| 07 | **THE SOURCE** | 0:41 | 1228 |
+| 08 | **THE AWAKENING** | 0:39 | 1178 |
+| 09 | **THE EDEN PROTOCOL** | 0:44 | 1315 |
+| 10 | **THE OTHER SIDE** | 0:47 | 1406 |
+
+Season 2 is model-agnostic by contract: the frame count is `floor(audio_seconds ×
+30)` measured from the MP3 that is actually in `public/audio/`, and the cuts sit
+on words measured with Whisper — never on the timestamps written in the bible.
+`npm run lock` checks that before every render. Each episode folder keeps an
+`S02ENN.audio.json` with the voice, the duration, the frame count and the sha256
+of the MP3, so a regenerated narration only means new landmarks, not a new edit.
 
 Each episode is 1080 × 1920, 30 fps, H.264 + AAC, with the supplied narration
 kept intact — pauses, breaths and room tone included.
@@ -59,8 +86,11 @@ repository ships the code that renders them plus poster frames. See
 │  ├─ Episode.tsx    Part 1 + shared camera/room/grain components
 │  ├─ kit/           shared chrome for Parts 7–10: watermark, monitors,
 │  │                 control wall, phone UI, NoahBack, helpers
-│  ├─ Part2–Part10.tsx
-│  └─ c5, c7 … c15.tsx   render entry points per part
+│  ├─ kit2/          Season 2 atmosphere: Night, Haze, Grade, Skyline, Street
+│  ├─ kit3/          Season 2 sets and figures: Chamber, Iris, Walker, MapWall
+│  ├─ Part2–Part10.tsx   Season 1 episodes
+│  ├─ S02E01–S02E10.tsx  Season 2 episodes
+│  └─ c5, c7 … c25.tsx   render entry points per episode
 ├─ publish/          release desk: captions, review pages, upload adapters
 ├─ docs/             screenshots used by this README
 └─ out/              working renders (not committed)
@@ -138,6 +168,21 @@ npx remotion render src/c14.tsx Part9   out/part9.mp4 --timeout=300000 --concurr
 
 # Part 10 — 124.4 s (season finale, the sealed chamber)
 npx remotion render src/c15.tsx Part10  out/part10.mp4 --timeout=300000 --concurrency=3 --crf=19
+
+# ---- Season 02 ----
+npx remotion render src/c16.tsx S02E01 out/s02e01.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c17.tsx S02E02 out/s02e02.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c18.tsx S02E03 out/s02e03.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c19.tsx S02E04 out/s02e04.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c20.tsx S02E05 out/s02e05.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c21.tsx S02E06 out/s02e06.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c22.tsx S02E07 out/s02e07.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c23.tsx S02E08 out/s02e08.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c24.tsx S02E09 out/s02e09.mp4 --timeout=240000 --concurrency=3 --crf=19
+npx remotion render src/c25.tsx S02E10 out/s02e10.mp4 --timeout=240000 --concurrency=3 --crf=19
+
+# contract check — canvas, fps, frames vs audio, watermark, no tracked masters
+npm run lock
 ```
 
 Grab a single frame while tuning a shot:
@@ -227,6 +272,11 @@ Renders take roughly 15–25 minutes per part on three threads.
   the one card that speaks to the audience rather than to the characters.
   Everything else sits inside the fiction: phone screens, monitor labels, clocks
   and walls. There are no subtitles.
+- Season 2 keeps its own, much shorter list: `11:59`, `12:01`, `SUBJECT 001`,
+  `SUBJECT 002`, `DR. ELIAS`, `DON'T TRUST NOAH.`, `You have already been here.`,
+  `Emotional attachment trial: successful.` and `Phase 3 is waiting.` — plus
+  `Find the room where you were born.` on Noah's phone. No title cards, no
+  season label on screen, no captions.
 - A short black tail (Parts 1–7) or a fade to black inside the last spoken word
   (Parts 8–10), so the last frame is never clipped by players
 

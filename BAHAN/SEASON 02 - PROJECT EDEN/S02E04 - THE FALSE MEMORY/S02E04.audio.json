@@ -1,0 +1,26 @@
+{
+  "episode": "S02E04",
+  "voice": {
+    "id": "nPczCjzI2devNBz1zQrb",
+    "name": "Brian",
+    "note": "Oliver (L1aJrPa7pLJEyYlh3Ilq) unavailable: 402 paid_plan_required on library voices"
+  },
+  "model": "eleven_v4",
+  "model_fallback": [
+    "eleven_multilingual_v2",
+    "eleven_turbo_v2_5",
+    "eleven_flash_v2_5"
+  ],
+  "format": "mp3_44100_128",
+  "script": "01_NARRATION_ELEVENLABS.md#COPY INTO ELEVENLABS",
+  "duration_s": 44.0,
+  "frames_30fps": 1320,
+  "sha256": "3f48a72ee32e7804b7303b3f761cee991082d7a756f2ea7095e3bdfe167e9b74",
+  "render_copy": {
+    "path": "public/audio/s02e04.mp3",
+    "sha256": "3f48a72ee32e7804b7303b3f761cee991082d7a756f2ea7095e3bdfe167e9b74",
+    "identical": true
+  },
+  "generated": "2026-11-15",
+  "note": "The film is 100% code. Re-generating this narration with another model or account changes only this MP3; re-measure the duration, re-derive the cut list, and `npm run lock` must pass again. Never stretch the audio to fit an old edit."
+}
