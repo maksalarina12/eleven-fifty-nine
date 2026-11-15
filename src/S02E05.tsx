@@ -47,7 +47,7 @@ const ShotWaiting: React.FC<{f: number}> = ({f}) => {
         <Corridor f={f} door={0.85} lamp={0.9} />
         {/* she stands just short of the door, not in the light */}
         <div style={{position: 'absolute', left: 402, top: 286, width: 660, height: 1660}}>
-          <Iris rim={1.1} turn={-0.1} side="right" />
+          <Iris rim={1.1} turn={-0.1} side="right" expression="calm" look="camera" />
         </div>
         {/* Amara's shoulder, near us, barely lit */}
         <div
@@ -118,7 +118,7 @@ const ShotIrisName: React.FC<{f: number}> = ({f}) => {
           }}
         />
         <div style={{position: 'absolute', left: 30, top: 300, width: 1000, height: 1500}}>
-          <Iris rim={1.55} turn={0.06} side="right" preserve="xMidYMin slice" />
+          <Iris rim={1.55} turn={0.06} side="right" expression="stare" look="camera" preserve="xMidYMin slice" />
         </div>
         <div
           style={{
@@ -200,9 +200,22 @@ const ShotCeiling: React.FC<{f: number}> = ({f}) => {
           }}
         />
         {/* her head and shoulders from below, cropped by the bottom edge */}
-        <div style={{position: 'absolute', left: -120, top: 700, width: 980, height: 1560}}>
-          <Iris rim={1.2} turn={-0.02} side="left" />
+        <div style={{position: 'absolute', left: -120, top: 660, width: 980, height: 1560}}>
+          <Iris rim={1.2} turn={-0.02} side="left" expression="weary" look="up" viewBox="160 30 300 533" preserve="xMidYMin slice" />
         </div>
+        {/* the fixture light catching her shoulders, so the head is not a float */}
+        <div
+          style={{
+            position: 'absolute',
+            left: 60,
+            top: 1460,
+            width: 780,
+            height: 520,
+            background: 'radial-gradient(closest-side, rgba(176,214,238,0.4), transparent 74%)',
+            filter: 'blur(46px)',
+            mixBlendMode: 'screen',
+          }}
+        />
         {/* the fixture light landing on the top of her head */}
         <div
           style={{
@@ -322,8 +335,8 @@ const ShotWhisper: React.FC<{f: number}> = ({f}) => {
             filter: 'blur(12px)',
           }}
         />
-        <div style={{position: 'absolute', left: 30, top: 236, width: 1040, height: 1560}}>
-          <Iris rim={1.7} turn={-0.12} side="right" preserve="xMidYMin slice" />
+        <div style={{position: 'absolute', left: 20, top: 300, width: 1040, height: 1560}}>
+          <Iris rim={1.7} turn={-0.12} side="right" expression="whisper" look="camera" mouth={0.18} viewBox="168 46 300 533" preserve="xMidYMin slice" />
         </div>
         <div
           style={{
@@ -370,7 +383,7 @@ const ShotFootsteps: React.FC<{f: number}> = ({f}) => {
         />
         {/* Iris's head and shoulder at the left edge, listening */}
         <div style={{position: 'absolute', left: -350, top: -210, width: 880, height: 2060}}>
-          <Iris rim={0.9} turn={0.1} side="left" />
+          <Iris rim={0.9} turn={0.1} side="left" expression="calm" look="down" />
         </div>
         <div
           style={{

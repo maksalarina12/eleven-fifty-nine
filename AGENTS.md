@@ -22,7 +22,7 @@ kode (React + Remotion). Tidak ada stock footage, tidak ada AI video.
 3. **Audio part itu** — `BAHAN/ptN/*.mp3` (dan salinannya di `public/audio/`).
 4. **Gambar/referensi** di folder part tersebut, kalau ada.
 5. **Kode part sebelumnya** — `src/Part(N-1).tsx` + entry `src/c(N-1).tsx`.
-6. **Karakter** — `src/character/Noah.tsx`, `Amara.tsx`, `DrElias.tsx`.
+6. **Karakter** — `src/character/Noah.tsx`, `Amara.tsx`, `DrElias.tsx`, `Iris.tsx`.
 7. **Shared** — `src/Episode.tsx` (`Cam`, `Grain`, `Vignette`, `Room`, `RainStreaks`).
 8. **Deliverable sebelumnya** — `HASIL/index.html`, `publish/episodes.json`,
    `README.md` (supaya penomoran, poster, dan copy konsisten).
@@ -183,7 +183,7 @@ Watermark disembunyikan di tail hitam (`f < C.s20 ? <Watermark /> : null`).
 ├─ BAHAN/                 brief + audio per part (pt2 … pt6)
 ├─ public/audio/          audio yang dipakai saat render (vo.mp3, pt2..pt6.mp3, rain.wav)
 ├─ src/
-│  ├─ character/          Noah.tsx, Amara.tsx, DrElias.tsx
+│  ├─ character/          Noah.tsx, Amara.tsx, DrElias.tsx, Iris.tsx
 │  ├─ Episode.tsx         Part 1 + shared: Cam, Grain, Vignette, Room, RainStreaks
 │  ├─ Part2.tsx … Part6.tsx
 │  └─ c5, c7, c8, c9, c10, c11.tsx   entry render per part
@@ -315,11 +315,53 @@ Dipakai untuk shot berjalan/menghadap layar. Punya `rim` (0.7–1.5).
   (`ELIAS_CROPS`, `ELIAS_TURNS`, `ELIAS_LOOKS`, `ELIAS_EXPR`) supaya layar-layar
   terlihat seperti feed berbeda, bukan salinan.
 
-### 4.4 Aturan kontinuitas
+### 4.4 Iris — `src/character/Iris.tsx`
+
+Karakter Season 02: perempuan 60-an, saksi reset, muncul di S02E05 dan S02E07.
+Sebelum 15 Nov 2026 ia hanya siluet empat path di `src/kit3/index.tsx`
+(`/* Iris: silhouette / insert only */`) — satu mata terbaca, hidung hilang.
+Sekarang rig penuh, bahasa visual sama dengan Amara.
+
+- Artboard `0 0 600 1200`, kepala `253–347 × 116–241` (wajah), rambut sampai
+  `y 103`, rasio ~1 : 7,5 kepala (bukan 1 : 4,3 seperti siluet lama) — semua crop
+  shot wajib dihitung ulang.
+- Props: `expression`, `look`, `mouth`, `turn`, `rim`, `screen`, `lidOverride`,
+  `side`, `viewBox`, `preserve`, `style`.
+- `expression`: `calm | stare | whisper | weary`
+- `look`: `camera | left | right | down | up`
+- `side` = cermin seluruh figur (`left` membalik 600 lebar), bukan memutar rig.
+- Kunci desain: **rambut abu-abu part tengah disisir ke belakang**, mantel gelap
+  panjang dengan collar tegak, kulit lebih gelap dari Amara, gelang rumah sakit
+  digambar oleh `Bracelet` (bukan bagian rig). Usia dibawa oleh kelopak, hollow
+  pipi, nasolabial, bibir tipis, dagu lebar — **bukan garis kerut di seluruh
+  wajah**.
+- Semua id SVG berprefix `ir` (`irSkin`, `irHair`, `irHairBack`, `irEyeClipL/R`,
+  `irFaceClip`, `irHairClip`, `irTorsoClip`, `irRimCool`, `irSoft1/2`).
+- **Rambut**: satu massa mahkota yang tepi bawahnya *adalah* garis rambut
+  (`y 148` di tengah, `y 164–184` di pelipis), persis konstruksi Amara. Jangan
+  menambah massa kedua yang lebih lebar dari tengkorak — itu langsung terbaca
+  sebagai helm renang. Telinga digambar ulang **di atas** rambut (blok
+  `Iris` baris terakhir grup rambut) supaya rambut terlihat disisir ke belakang
+  telinga, bukan menutupinya.
+- **Jangan** menggambar strand panjang di samping rahang dari tampak depan: dua
+  strip abu-abu itu terbaca sebagai batang lepas dari kepala. Cukup bayangan
+  lembut di bawah tepi rambut.
+- Rim light (`irRimCool`) **wajib** di-clip `url(#irFaceClip)`; kalau tidak,
+  ujung atasnya melukis bar pucat di dalam rambut. Gradiennya transparan di
+  ujung pelipis dan terang di rahang.
+- Sanggaul rendah **tidak** digambar di rig ini: dari depan ia hanya terbaca
+  sebagai blob di leher. Kalau butuh sanggul terlihat, pakai tiga-perempat.
+- Crop resmi yang sudah dipakai: `"160 30 300 533"` (medium-close, E05 s4/s8,
+  E07 s7), `"168 46 300 533"` (close, E05 s8), `"120 20 360 640"` (medium,
+  E07 s3).
+
+### 4.5 Aturan kontinuitas
 
 - Noah versi arsip/original **identik** dengan Noah sekarang: wajah, scar, coat.
 - Amara selalu kostum yang sama di semua part.
 - Elias tidak boleh berubah kostum/rambut antar part.
+- Iris selalu mantel yang sama dan rambut abu-abu yang sama; ia tidak pernah
+  berubah jadi lebih muda.
 - Hands: jangan pernah menampilkan tangan yang "menempel" tanpa pangkal lengan.
   Lengan harus masuk frame atau tertutup lengan baju.
 

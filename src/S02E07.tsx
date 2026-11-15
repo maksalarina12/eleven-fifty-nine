@@ -95,7 +95,7 @@ const ShotIrisSource: React.FC<{f: number}> = ({f}) => {
         <div style={{position: 'absolute', left: 640, top: 280, width: 620, height: 1400, background: 'radial-gradient(closest-side, rgba(120,190,224,0.34), transparent 74%)', filter: 'blur(50px)', mixBlendMode: 'screen'}} />
         <div style={{position: 'absolute', right: -40, top: 380, width: 260, height: 1180, background: 'linear-gradient(180deg, rgba(160,206,232,0.2), rgba(40,74,98,0.04))', filter: 'blur(18px)'}} />
         <div style={{position: 'absolute', left: 40, top: 226, width: 980, height: 1460}}>
-          <Iris rim={1.6} turn={0.14} side="right" preserve="xMidYMin slice" />
+          <Iris rim={1.6} turn={0.14} side="right" expression="stare" look="camera" viewBox="120 20 360 640" preserve="xMidYMin slice" />
         </div>
         <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(64% 58% at 44% 40%, transparent 30%, rgba(2,5,9,0.92) 100%)'}} />
       </Cam>
@@ -199,7 +199,7 @@ const ShotIrisKnew: React.FC<{f: number}> = ({f}) => {
         {/* a cold strip of machine light at the left, out of focus */}
         <div style={{position: 'absolute', left: -120, top: 240, width: 400, height: 1500, background: 'linear-gradient(90deg, rgba(150,204,232,0.28), rgba(30,66,90,0.04))', filter: 'blur(26px)'}} />
         <div style={{position: 'absolute', left: 120, top: 250, width: 940, height: 1440}}>
-          <Iris rim={1.5} turn={-0.16} side="left" preserve="xMidYMin slice" />
+          <Iris rim={1.5} turn={-0.16} side="left" expression="calm" look="camera" viewBox="160 30 300 533" preserve="xMidYMin slice" />
         </div>
         <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(62% 56% at 44% 36%, transparent 30%, rgba(2,5,9,0.92) 100%)'}} />
       </Cam>
